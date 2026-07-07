@@ -1,0 +1,528 @@
+/**
+ * Vult de dataset met de homepage-content uit het design ("1a").
+ * Draaien: npm run seed   (= sanity exec scripts/seed.ts --with-user-token)
+ *
+ * Veilig om opnieuw te draaien: bestaande documenten worden nooit overschreven.
+ */
+import {getCliClient} from 'sanity/cli'
+
+const client = getCliClient({apiVersion: '2026-02-01'})
+
+const key = () => Math.random().toString(36).slice(2, 12)
+
+const cta = (label: string, href: string) => ({_type: 'cta', label, href})
+
+const MICROCOPY = '1 maand gratis · geen verplichtingen · maandelijks opzegbaar'
+
+async function ensureCollection<T extends {_type: string}>(
+  type: string,
+  docs: T[],
+): Promise<string[]> {
+  const existing: string[] = await client.fetch(
+    `*[_type == $type && !(_id in path("drafts.**"))]._id`,
+    {type},
+  )
+  if (existing.length > 0) {
+    console.log(`− ${type}: ${existing.length} bestaande documenten, overslaan`)
+    return existing
+  }
+  const ids: string[] = []
+  for (const doc of docs) {
+    const created = await client.create(doc)
+    ids.push(created._id)
+  }
+  console.log(`✓ ${type}: ${ids.length} documenten aangemaakt`)
+  return ids
+}
+
+async function run() {
+  // ---- Losse documenten -------------------------------------------------
+  const trainingTimeIds = await ensureCollection('trainingTime', [
+    {_type: 'trainingTime', group: 'Jeugd', day: 'maandag', startTime: '18:30', endTime: '19:45', order: 0},
+    {_type: 'trainingTime', group: 'Recreanten', day: 'maandag', startTime: '19:45', endTime: '21:30', order: 1},
+    {_type: 'trainingTime', group: 'Competitie', day: 'donderdag', startTime: '20:00', endTime: '22:00', order: 2},
+  ])
+  void trainingTimeIds // rijen worden via GROQ opgehaald, geen referenties nodig
+
+  const reviewIds = await ensureCollection('review', [
+    {_type: 'review', quote: 'Superleuke club. Binnen één avond stond ik gewoon mee te spelen.', name: 'Sanne', role: 'recreant', rating: 5},
+    {_type: 'review', quote: 'Onze zoon van 9 gaat elke week met plezier. Goede jeugdtrainers.', name: 'Mark', role: 'ouder', rating: 5},
+    {_type: 'review', quote: 'Fanatiek als je wilt, gezellig als je wilt. Precies goed.', name: 'Yasmin', role: 'competitie', rating: 5},
+  ])
+
+  // Let op: alleen het eerste antwoord komt uit het design; de rest is
+  // voorzetcopy — nalezen vóór livegang.
+  const faqIds = await ensureCollection('faqItem', [
+    {
+      _type: 'faqItem',
+      question: 'Wat kost het?',
+      answer:
+        'Je eerste maand is gratis. Daarna betaal je een vast bedrag per kwartaal — jeugd goedkoper dan volwassenen. De actuele tarieven staan op de lidmaatschapspagina.',
+    },
+    {
+      _type: 'faqItem',
+      question: 'Wat moet ik meenemen?',
+      answer:
+        'Sportkleding en zaalschoenen (geen zwarte zolen). Een racket kun je de eerste weken gratis van ons lenen; shuttles zijn er altijd.',
+    },
+    {
+      _type: 'faqItem',
+      question: 'Kan ik zomaar langskomen?',
+      answer:
+        'Ja! Stuur ons vooraf even een berichtje, dan staat er iemand voor je klaar. Je speelt de eerste avond direct mee.',
+    },
+    {
+      _type: 'faqItem',
+      question: 'Vanaf welke leeftijd?',
+      answer:
+        'De jeugdtraining is vanaf 8 jaar. Daarboven is er geen grens — bij ons speelt iedereen van 8 tot 80 mee.',
+    },
+    {
+      _type: 'faqItem',
+      question: 'Heb ik een eigen groep nodig?',
+      answer:
+        'Nee, je kunt gewoon alleen komen. We delen je in op niveau en je speelt meteen wisselende partijen mee.',
+    },
+  ])
+
+  // ---- Componenten-handoff (artboards 4a–4f, 5a) -------------------------
+  // ⚠ Bedragen, jaren en cijfers zijn illustratief (uit het design) —
+  //   de club vult echte waarden in via de Studio.
+  const packageIds = await ensureCollection('membershipPackage', [
+    {
+      _type: 'membershipPackage',
+      title: 'Jeugd',
+      description: 'Tot 18 jaar. Training met leeftijdsgenoten.',
+      price: 36,
+      priceSuffix: 'per kwartaal*',
+      features: ['Wekelijkse jeugdtraining', 'Racket lenen kan altijd', 'Jeugdtoernooien en clubactiviteiten'],
+      highlighted: false,
+      ctaLabel: 'Kies Jeugd',
+      ctaHref: '/lid-worden',
+      sortOrder: 0,
+    },
+    {
+      _type: 'membershipPackage',
+      title: 'Recreatief',
+      description: 'Volwassenen. Vrij spelen op vaste avonden.',
+      price: 48,
+      priceSuffix: 'per kwartaal*',
+      features: ['Elke week vrij spelen', 'Shuttles inbegrepen', 'Gezellige derde helft', 'Clubtoernooien en activiteiten'],
+      highlighted: true,
+      highlightLabel: 'Meest gekozen',
+      ctaLabel: 'Kies Recreatief',
+      ctaHref: '/lid-worden',
+      sortOrder: 1,
+    },
+    {
+      _type: 'membershipPackage',
+      title: 'Competitie',
+      description: 'Training én wedstrijden namens Borne.',
+      price: 66,
+      priceSuffix: 'per kwartaal*',
+      features: ['Alles uit Recreatief', 'Wekelijkse competitietraining', 'Bondscontributie inbegrepen'],
+      highlighted: false,
+      ctaLabel: 'Kies Competitie',
+      ctaHref: '/lid-worden',
+      sortOrder: 2,
+    },
+  ])
+
+  await ensureCollection('teamMember', [
+    {_type: 'teamMember', name: 'Naam Trainer', role: 'Hoofdtrainer', group: 'trainer', yearsExperience: 15, bio: 'Traint jeugd én competitie.', sortOrder: 0},
+    {_type: 'teamMember', name: 'Naam Trainer', role: 'Jeugdtrainer', group: 'trainer', yearsExperience: 8, bio: 'Maakt van elke training een feestje voor de jeugd.', sortOrder: 1},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Voorzitter', group: 'bestuur', yearsExperience: 12, sortOrder: 0},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Secretaris', group: 'bestuur', yearsExperience: 6, sortOrder: 1},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Penningmeester', group: 'bestuur', yearsExperience: 20, sortOrder: 2},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Ledenadministratie', group: 'bestuur', yearsExperience: 9, sortOrder: 3},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Competitieleider', group: 'bestuur', yearsExperience: 10, sortOrder: 4},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Jeugdcoördinator', group: 'bestuur', yearsExperience: 7, sortOrder: 5},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Activiteiten', group: 'bestuur', yearsExperience: 4, sortOrder: 6},
+    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Communicatie & sponsoring', group: 'bestuur', yearsExperience: 3, sortOrder: 7},
+  ])
+
+  await ensureCollection('honoraryMember', [
+    {_type: 'honoraryMember', name: 'Naam Erelid', memberSince: 1998, contribution: 'Medeoprichter van de club en 25 jaar lang de motor achter de jeugdafdeling.', sortOrder: 0},
+    {_type: 'honoraryMember', name: 'Naam Erelid', memberSince: 2005, contribution: 'Decennialang competitieleider en nog altijd elke maandag in de hal te vinden.', sortOrder: 1},
+    {_type: 'honoraryMember', name: 'Naam Erelid', memberSince: 2012, contribution: 'Het gezicht van de gezelligheid — organiseerde jarenlang alle clubtoernooien.', sortOrder: 2},
+  ])
+
+  await ensureCollection('event', [
+    {_type: 'event', title: 'Opening nieuwe sporthal', description: 'Feestelijke eerste speelavond — iedereen welkom, racket lenen kan.', date: '2026-08-15T19:00:00Z', ctaLabel: 'Ik kom', ctaLink: '/contact', featured: false},
+    {_type: 'event', title: 'Start competitieseizoen', description: 'Eerste thuiswedstrijden — kom aanmoedigen.', date: '2026-09-05T19:00:00Z', ctaLabel: 'Programma', ctaLink: '/competitie', featured: false},
+    {_type: 'event', title: 'Open toernooi voor niet-leden', description: 'Neem een vriend mee — team van 2, iedereen kan meedoen.', date: '2026-09-27T10:00:00Z', ctaLabel: 'Doe mee', ctaLink: '/contact', featured: true},
+  ])
+
+  await ensureCollection('sponsor', [
+    {_type: 'sponsor', name: 'Sponsor 1', sortOrder: 0},
+    {_type: 'sponsor', name: 'Sponsor 2', sortOrder: 1},
+    {_type: 'sponsor', name: 'Sponsor 3', sortOrder: 2},
+    {_type: 'sponsor', name: 'Sponsor 4', sortOrder: 3},
+  ])
+
+  const newsBody = (text: string) => [
+    {
+      _type: 'block',
+      _key: key(),
+      style: 'normal',
+      children: [{_type: 'span', _key: key(), text, marks: []}],
+      markDefs: [],
+    },
+  ]
+
+  await ensureCollection('newsArticle', [
+    {
+      _type: 'newsArticle',
+      title: 'Wij openen de nieuwe sporthal',
+      slug: {_type: 'slug', current: 'wij-openen-de-nieuwe-sporthal'},
+      publishedAt: '2026-07-01T09:00:00Z',
+      excerpt: 'Vanaf augustus spelen we als eersten in de splinternieuwe hal van Borne. Kom kijken op de feestelijke openingsavond.',
+      category: 'Club',
+      featured: true,
+      body: newsBody('Vanaf augustus spelen we als eersten in de splinternieuwe sporthal van Borne. Nieuwe vloer, nieuwe verlichting en eindelijk ruimte voor iedereen. Op de openingsavond is iedereen welkom — racket lenen kan, shuttles liggen klaar. [Voorbeeldbericht — vervang via de Studio.]'),
+    },
+    {
+      _type: 'newsArticle',
+      title: 'Competitieseizoen start in september',
+      slug: {_type: 'slug', current: 'competitieseizoen-start-in-september'},
+      publishedAt: '2026-06-20T09:00:00Z',
+      excerpt: 'Onze teams staan klaar voor het nieuwe seizoen. Kom aanmoedigen bij de eerste thuiswedstrijden.',
+      category: 'Competitie',
+      featured: false,
+      body: newsBody('In september beginnen de eerste thuiswedstrijden van het nieuwe competitieseizoen. Publiek is meer dan welkom — de koffie staat klaar. [Voorbeeldbericht — vervang via de Studio.]'),
+    },
+    {
+      _type: 'newsArticle',
+      title: 'Jeugdtoernooi groot succes',
+      slug: {_type: 'slug', current: 'jeugdtoernooi-groot-succes'},
+      publishedAt: '2026-06-05T09:00:00Z',
+      excerpt: 'Ruim dertig kinderen sloegen hun eerste smashes tijdens het jaarlijkse jeugdtoernooi.',
+      category: 'Jeugd',
+      featured: false,
+      body: newsBody('Ruim dertig kinderen deden mee aan het jaarlijkse jeugdtoernooi. Van eerste shuttle tot finale-rally: de zaal stond vol energie. [Voorbeeldbericht — vervang via de Studio.]'),
+    },
+  ])
+
+  // ---- Subpagina's (page-builder) ----------------------------------------
+  await ensureCollection('page', [
+    {
+      _type: 'page',
+      title: 'Lidmaatschap',
+      slug: {_type: 'slug', current: 'lidmaatschap'},
+      intro: 'Kies het pakket dat bij je past — overstappen kan altijd.',
+      sections: [
+        {
+          _type: 'pricingSection',
+          _key: key(),
+          eyebrow: 'Lidmaatschap',
+          heading: 'Kies je pakket',
+          intro: 'Altijd inclusief shuttles en begeleiding. Eerste maand gratis, daarna per kwartaal — maandelijks opzegbaar.',
+          packages: packageIds.map((id) => ({_type: 'reference', _key: key(), _ref: id})),
+          footnote: '*Bedragen ter illustratie — actuele tarieven checken vóór publicatie. Eerste maand altijd gratis.',
+        },
+        {
+          _type: 'comparisonSection',
+          _key: key(),
+          eyebrow: 'Badminton vs andere sporten',
+          heading: 'Waarom badminton wint',
+          columns: [
+            {_type: 'comparisonColumn', _key: key(), label: 'Badminton', highlighted: true},
+            {_type: 'comparisonColumn', _key: key(), label: 'Tennis', highlighted: false},
+            {_type: 'comparisonColumn', _key: key(), label: 'Padel', highlighted: false},
+          ],
+          rows: [
+            {_type: 'comparisonRow', _key: key(), label: 'Topsnelheid', values: ['±400 km/u*', '±250 km/u', '±180 km/u']},
+            {_type: 'comparisonRow', _key: key(), label: 'Hele jaar binnen spelen', values: ['✓', 'Seizoensgebonden', 'Vaak buiten']},
+            {_type: 'comparisonRow', _key: key(), label: 'Instapkosten', values: ['Laag — racket lenen kan', 'Middel', 'Middel']},
+            {_type: 'comparisonRow', _key: key(), label: 'Direct meespelen als beginner', values: ['✓ Eerste avond al', 'Lessen nodig', 'Snel te leren']},
+            {_type: 'comparisonRow', _key: key(), label: 'In Borne, zonder wachtlijst', values: ['✓', '—', 'Wachtlijsten']},
+          ],
+          footnote: '*Cijfers ter illustratie — checken vóór publicatie.',
+          ctaLabel: 'Probeer het zelf gratis',
+          ctaLink: '/probeer-gratis',
+        },
+        {_type: 'newsletterSection', _key: key(), heading: 'Mis geen smash', body: 'Eén mailtje per maand over toernooien, de nieuwe hal en clubnieuws.', buttonLabel: 'Aanmelden', note: 'Uitschrijven kan altijd met één klik.'},
+      ],
+      seo: {
+        title: 'Lidmaatschap — Badminton Borne',
+        description: 'Kies je pakket bij Badminton Borne: jeugd, recreatief of competitie. Eerste maand gratis, maandelijks opzegbaar.',
+      },
+    },
+    {
+      _type: 'page',
+      title: 'Over ons',
+      slug: {_type: 'slug', current: 'over-ons'},
+      intro: 'Dé badmintonclub van Borne — gezellig, fanatiek en voor alle leeftijden.',
+      sections: [
+        {_type: 'teamSection', _key: key(), eyebrow: 'Ons team', heading: 'Wie je op de baan tegenkomt'},
+        {_type: 'honoraryMembersSection', _key: key(), eyebrow: 'Ere-leden', heading: 'De legendes van de club', intro: 'Zonder hen was er geen Badminton Borne. Benoemd door de leden, voor jaren van inzet op en naast de baan.'},
+        {_type: 'agendaSection', _key: key(), eyebrow: 'Agenda', heading: 'Binnenkort bij Borne', link: cta('Hele agenda', '/agenda')},
+        {_type: 'sponsorsSection', _key: key(), eyebrow: 'Onze sponsors', link: cta('Ook sponsor worden?', '/sponsoring'), joinLabel: 'Jouw logo hier?', joinHref: '/sponsoring'},
+        {_type: 'newsletterSection', _key: key(), heading: 'Mis geen smash', body: 'Eén mailtje per maand over toernooien, de nieuwe hal en clubnieuws.', buttonLabel: 'Aanmelden', note: 'Uitschrijven kan altijd met één klik.'},
+      ],
+      seo: {
+        title: 'Over ons — Badminton Borne',
+        description: 'Maak kennis met de trainers, het bestuur en de ere-leden van Badminton Borne.',
+      },
+    },
+    {
+      _type: 'page',
+      title: 'Contact',
+      slug: {_type: 'slug', current: 'contact'},
+      intro: 'Vragen, proefles plannen of gewoon even kennismaken? We horen graag van je.',
+      sections: [
+        {_type: 'contactSection', _key: key(), eyebrow: 'Contact', heading: 'Stel je vraag', intro: 'Twijfel je nog, of wil je gewoon een keer komen kijken? Stuur een berichtje — we reageren meestal binnen een dag.'},
+        {_type: 'agendaSection', _key: key(), eyebrow: 'Agenda', heading: 'Binnenkort bij Borne', link: cta('Hele agenda', '/agenda')},
+      ],
+      seo: {
+        title: 'Contact — Badminton Borne',
+        description: 'Stel je vraag aan Badminton Borne. We reageren meestal binnen een dag.',
+      },
+    },
+  ])
+
+  // ---- Homepage ----------------------------------------------------------
+  await client.createIfNotExists({
+    _id: 'homePage',
+    _type: 'homePage',
+    title: 'Homepage',
+    language: 'nl',
+    sections: [
+      {
+        _type: 'hero',
+        _key: key(),
+        eyebrow: 'Badminton in Borne',
+        heading: 'De snelste sport van Borne',
+        tagline: 'Van eerste keer tot competitie. Alle leeftijden, alle niveaus.',
+        primaryCta: cta('Plan je eerste bezoek', '/probeer-gratis'),
+        secondaryCta: cta('Bekijk trainingstijden', '/trainingen'),
+        microcopy: MICROCOPY,
+        videoUrl:
+          'https://badmintonverenigingborne.nl/wordpress2/wp-content/uploads/2023/03/Badminton-Borne.mp4',
+        rating: {score: 4.8, source: 'op Google', note: 'Alle leeftijden en niveaus'},
+      },
+      {
+        _type: 'featureGrid',
+        _key: key(),
+        eyebrow: 'Waarom Badminton Borne',
+        heading: 'Bij ons speelt iedereen mee',
+        features: [
+          {_type: 'feature', _key: key(), title: 'Alle leeftijden en niveaus', description: 'Van 8 tot 80. Je stapt in op jouw niveau.'},
+          {_type: 'feature', _key: key(), title: 'Gezellig en sociaal', description: 'Na de rally is er altijd tijd voor een praatje.'},
+          {_type: 'feature', _key: key(), title: 'Eerste maand gratis', description: 'Kom vrijblijvend proberen. Racket lenen kan.'},
+          {_type: 'feature', _key: key(), title: 'Recreatief tot competitie', description: 'Vrij spelen of wedstrijden namens Borne.'},
+        ],
+      },
+      {
+        _type: 'sportHighlight',
+        _key: key(),
+        eyebrow: 'Badminton is cool',
+        heading: 'Sneller dan je denkt',
+        body:
+          'Vergeet het beeld van een campingsport. Badminton is explosief, tactisch en keihard. Wie één rally op tempo speelt, weet genoeg.',
+        stats: [
+          {_type: 'stat', _key: key(), value: '±450', label: 'kcal per uur*'},
+          {_type: 'stat', _key: key(), value: '#1', label: 'snelste racketsport*'},
+        ],
+        footnote: '*Cijfers checken vóór publicatie.',
+      },
+      {
+        _type: 'announcement',
+        _key: key(),
+        tag: 'Nieuw',
+        heading: 'Splinternieuwe sporthal vanaf augustus',
+        body: 'Wij spelen er als eersten. Nieuwe vloer, nieuwe start.',
+        link: cta('Meer over de nieuwe hal', '/nieuwe-hal'),
+      },
+      {
+        _type: 'audienceSegments',
+        _key: key(),
+        eyebrow: 'Vind je plek',
+        heading: 'Waar sta jij?',
+        segments: [
+          {
+            _type: 'segment',
+            _key: key(),
+            title: 'Eerste keer',
+            description: 'Nog nooit gespeeld? Begin hier.',
+            link: cta('Begin hier', '/probeer-gratis'),
+          },
+          {
+            _type: 'segment',
+            _key: key(),
+            title: 'Recreatief',
+            description: 'Voor de lol en de conditie.',
+            link: cta('Speel mee', '/volwassenen'),
+          },
+          {
+            _type: 'segment',
+            _key: key(),
+            title: 'Competitie',
+            description: 'Speel wedstrijden namens Borne.',
+            link: cta('Bekijk teams', '/competitie'),
+          },
+        ],
+      },
+      {
+        _type: 'ctaBanner',
+        _key: key(),
+        heading: 'Kom een keer langs.\nDe eerste maand is gratis.',
+        cta: cta('Plan je eerste bezoek', '/probeer-gratis'),
+        microcopy: MICROCOPY,
+        theme: 'lime',
+        enableGame: false,
+      },
+      {
+        _type: 'trainingTimes',
+        _key: key(),
+        eyebrow: 'Speelschema',
+        heading: 'Trainingstijden',
+        link: cta('Alle tijden', '/trainingen'),
+      },
+      {
+        _type: 'agendaSection',
+        _key: key(),
+        eyebrow: 'Agenda',
+        heading: 'Binnenkort bij Borne',
+        link: cta('Hele agenda', '/agenda'),
+      },
+      {
+        _type: 'newsSection',
+        _key: key(),
+        eyebrow: 'Nieuws',
+        heading: 'Nieuws van de club',
+        link: cta('Al het nieuws', '/nieuws'),
+      },
+      {
+        _type: 'gallery',
+        _key: key(),
+        eyebrow: 'De club in actie',
+        images: [],
+      },
+      {
+        _type: 'testimonials',
+        _key: key(),
+        eyebrow: 'Google reviews',
+        heading: 'Wat leden zeggen',
+        reviews: reviewIds.map((id) => ({_type: 'reference', _key: key(), _ref: id})),
+      },
+      {
+        _type: 'faqList',
+        _key: key(),
+        heading: 'Veelgestelde vragen',
+        items: faqIds.map((id) => ({_type: 'reference', _key: key(), _ref: id})),
+      },
+      {
+        _type: 'ctaBanner',
+        _key: key(),
+        heading: 'Klaar voor je eerste smash?',
+        cta: cta('Plan je eerste bezoek', '/probeer-gratis'),
+        microcopy: MICROCOPY,
+        theme: 'navy',
+        enableGame: true,
+      },
+    ],
+    seo: {
+      title: 'Badminton Borne — De snelste sport van Borne',
+      description:
+        'Badmintonvereniging in Borne voor alle leeftijden en niveaus. Eerste maand gratis, geen verplichtingen, maandelijks opzegbaar.',
+    },
+  })
+  console.log('✓ homePage aangemaakt (of bestond al)')
+
+  // ---- Site-instellingen -------------------------------------------------
+  await client.createIfNotExists({
+    _id: 'siteSettings',
+    _type: 'siteSettings',
+    mainNav: [
+      {...cta('Over ons', '/over-ons'), _key: key()},
+      {...cta('Badminton', '/badminton'), _key: key()},
+      {...cta('Trainingen', '/trainingen'), _key: key()},
+      {...cta('Jeugd', '/jeugd'), _key: key()},
+      {...cta('Volwassenen', '/volwassenen'), _key: key()},
+      {...cta('Competitie', '/competitie'), _key: key()},
+      {...cta('Contact', '/contact'), _key: key()},
+    ],
+    headerSecondaryCta: cta('Lid worden', '/lid-worden'),
+    headerPrimaryCta: cta('Plan je eerste bezoek', '/probeer-gratis'),
+    announcement: {
+      enabled: false,
+      text: 'Nieuwe sporthal vanaf augustus — wij spelen er als eersten',
+      linkLabel: 'Lees meer',
+      link: '/nieuwe-hal',
+    },
+    playTimes: 'Maandag 18:30 – 21:30 · Donderdag 20:00 – 22:00',
+    footerTagline:
+      'Elke smash telt. Badminton voor heel Borne — van eerste shuttle tot competitie.',
+    footerColumns: [
+      {
+        _type: 'footerColumn',
+        _key: key(),
+        title: 'Club',
+        links: [
+          {...cta('Over ons', '/over-ons'), _key: key()},
+          {...cta('Badminton', '/badminton'), _key: key()},
+          {...cta('Contact', '/contact'), _key: key()},
+          {...cta('Sponsoring', '/sponsoring'), _key: key()},
+          {...cta('Vertrouwenspersoon', '/vertrouwenspersoon'), _key: key()},
+          {...cta('Uitschrijven', '/uitschrijven'), _key: key()},
+        ],
+      },
+      {
+        _type: 'footerColumn',
+        _key: key(),
+        title: 'Spelen',
+        links: [
+          {...cta('Trainingen', '/trainingen'), _key: key()},
+          {...cta('Jeugd', '/jeugd'), _key: key()},
+          {...cta('Volwassenen', '/volwassenen'), _key: key()},
+          {...cta('Competitie', '/competitie'), _key: key()},
+          {...cta('Badminton vs andere sporten', '/badminton-vs-andere-sporten'), _key: key()},
+        ],
+      },
+    ],
+    contactTitle: 'Contact',
+    addressLines: 'Nieuwe sporthal Borne\n[adres volgt — vanaf augustus]',
+    email: 'info@badmintonborne.nl',
+    socialLinks: [
+      {...cta('Instagram', '#'), _key: key()},
+      {...cta('Facebook', '#'), _key: key()},
+      {...cta('Kaart', '#'), _key: key()},
+    ],
+    legalLinks: [
+      {...cta('Privacy', '/privacy'), _key: key()},
+      {...cta('Sitemap', '/sitemap.xml'), _key: key()},
+    ],
+    copyright: '© 2026 Badminton Vereniging Borne',
+    stickyBarCta: cta('Plan je eerste bezoek', '/probeer-gratis'),
+    stickyBarMicrocopy: MICROCOPY,
+    defaultSeo: {
+      title: 'Badminton Borne',
+      description:
+        'Badmintonvereniging in Borne voor alle leeftijden en niveaus. Eerste maand gratis proberen!',
+    },
+  })
+  console.log('✓ siteSettings aangemaakt (of bestond al)')
+
+  // Bestaande site-instellingen: vul de nieuwe velden aan zonder iets te overschrijven
+  await client
+    .patch('siteSettings')
+    .setIfMissing({
+      announcement: {
+        enabled: false,
+        text: 'Nieuwe sporthal vanaf augustus — wij spelen er als eersten',
+        linkLabel: 'Lees meer',
+        link: '/nieuwe-hal',
+      },
+      playTimes: 'Maandag 18:30 – 21:30 · Donderdag 20:00 – 22:00',
+    })
+    .commit()
+  console.log('✓ siteSettings: aankondigingsbalk + speelavonden aangevuld (indien leeg)')
+
+  console.log('\nKlaar! Open de Studio en publiceer/controleer de content.')
+}
+
+run().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})

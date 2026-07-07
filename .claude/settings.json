@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv src/api /tmp/strapi-backup/api-all)",
+      "Bash(mkdir -p src/api)",
+      "Bash(rm -rf .tmp .cache dist)",
+      "Bash(pkill -f \"strapi develop\")",
+      "Bash(cp -r /tmp/strapi-backup/api-all/page src/api/)",
+      "Bash(pkill -f \"strapi\")",
+      "Bash(rm -rf dist .tmp .cache)",
+      "Bash(rm tsconfig.json)",
+      "Bash(curl -s http://localhost:1337/_health)",
+      "Bash(curl -s http://localhost:1337/admin)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:1337/admin/@vite/client)",
+      "Bash(curl -s http://localhost:1337/admin/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:1337/admin/.strapi/client/app.js\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:1337/api/pages)",
+      "Bash(curl -s 'http://localhost:1337/api/pages?filters[slug][$eq]=home&populate[blocks][on][blocks.hero][populate]=*&populate[blocks][on][blocks.text][populate]=*&populate[blocks][on][blocks.image-text][populate]=*&populate[blocks][on][blocks.cta][populate]=*&populate[ogImage]=*')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s \"http://localhost:1337/api/i18n/locales\")",
+      "Bash(curl -s http://localhost:3000/nl/sitemap)",
+      "Bash(curl -s \"http://localhost:1337/api/pages?filters%5Bslug%5D%5B%24eq%5D=home&locale=nl&populate=*\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:1337/api/pages?filters%5Bslug%5D%5B%24eq%5D=home&locale=nl&populate%5Bblocks%5D%5Bon%5D%5Bblocks.hero%5D%5Bpopulate%5D=*&populate%5Bblocks%5D%5Bon%5D%5Bblocks.image-text%5D%5Bpopulate%5D=*\")",
+      "Bash(curl -s http://localhost:3000/nl)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(rm -rf .next)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/nl)",
+      "Bash(curl -s \"http://localhost:3000/nl\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:1337/uploads/P1030727_071f556023.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:3000/_next/image?url=http%3A%2F%2Flocalhost%3A1337%2Fuploads%2FP1030727_071f556023.jpg&w=640&q=75\")",
+      "Bash(curl -s \"http://localhost:3000/_next/image?url=http%3A%2F%2Flocalhost%3A1337%2Fuploads%2FP1030727_071f556023.jpg&w=640&q=75\")",
+      "Bash(node scripts/create-pages.js \"d0d0f4d1f8bde34f3afd0bd367a816f522149104a21e3dffc219104a469d80f420ce70f0f0283898ef50e7fcac77a8252aafc0fdfb9a9c7ccc9fb2a82a2ccc683818debc863abc5fc01b66519c35e42ac127129c7995926b59394d888b3833d0a9a00d7748925cafe0887cb5e334a1c2f071e05587f1242980c2fc3e75ef2a31\")",
+      "Bash(curl -s -H 'Authorization: Bearer d0d0f4d1f8bde34f3afd0bd367a816f522149104a21e3dffc219104a469d80f420ce70f0f0283898ef50e7fcac77a8252aafc0fdfb9a9c7ccc9fb2a82a2ccc683818debc863abc5fc01b66519c35e42ac127129c7995926b59394d888b3833d0a9a00d7748925cafe0887cb5e334a1c2f071e05587f1242980c2fc3e75ef2a31' 'http://localhost:1337/api/pages?filters%5Bslug%5D%5B%24eq%5D=over-ons&locale=nl&populate%5Bblocks%5D%5Bon%5D%5Bblocks.team%5D%5Bpopulate%5D%5Bmembers%5D%5Bpopulate%5D=true')",
+      "Bash(python3 -c ':*)"
+    ]
+  }
+}

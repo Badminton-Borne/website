@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "title": "بادمنتون بورنه",
+    "description": "نادي بادمنتون في بورنه لجميع الأعمار والمستويات. الشهر الأول مجاناً!"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "badminton": "بادمنتون",
+    "training": "التدريب",
+    "competition": "المنافسة",
+    "youth": "الشباب",
+    "adults": "الكبار",
+    "membership": "العضوية",
+    "tryFree": "جرب مجاناً",
+    "contact": "اتصل بنا",
+    "reviews": "التقييمات"
+  },
+  "common": {
+    "tryFreeMonth": "جرب شهراً مجاناً",
+    "signUp": "سجل الآن",
+    "learnMore": "اعرف المزيد",
+    "contactUs": "اتصل بنا",
+    "readMore": "اقرأ المزيد",
+    "backToHome": "العودة للرئيسية",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما"
+  },
+  "footer": {
+    "address": "العنوان",
+    "contact": "الاتصال",
+    "quickLinks": "روابط سريعة",
+    "followUs": "تابعنا",
+    "copyright": "© {year} بادمنتون بورنه. جميع الحقوق محفوظة."
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "backHome": "العودة للرئيسية"
+  },
+  "accessibility": {
+    "skipToContent": "انتقل إلى المحتوى",
+    "mainNavigation": "التنقل الرئيسي",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "switchLanguage": "تغيير اللغة"
+  }
+}

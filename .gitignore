@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Strapi
+strapi/.tmp/
+strapi/.cache/
+strapi/dist/
+strapi/build/
+strapi/public/uploads/*
+!strapi/public/uploads/.gitkeep
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Lokale Claude Code-instellingen (persoonlijk, niet voor het team)
+.claude/settings.local.json
+
+# Oude Strapi-backup: blijft lokaal — bevat mogelijk persoonsgegevens
+strapi-backup-2026-07-06.tar.gz

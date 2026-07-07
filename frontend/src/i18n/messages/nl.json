@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "title": "Badminton Borne",
+    "description": "Badmintonvereniging in Borne voor alle leeftijden en niveaus. Eerste maand gratis proberen!"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Over ons",
+    "badminton": "Badminton",
+    "training": "Trainingen",
+    "competition": "Competitie",
+    "youth": "Jeugd",
+    "adults": "Volwassenen",
+    "membership": "Lid worden",
+    "tryFree": "Probeer gratis",
+    "contact": "Contact",
+    "reviews": "Reviews"
+  },
+  "common": {
+    "tryFreeMonth": "Probeer een maand gratis",
+    "signUp": "Aanmelden",
+    "learnMore": "Meer informatie",
+    "contactUs": "Neem contact op",
+    "readMore": "Lees meer",
+    "backToHome": "Terug naar home",
+    "loading": "Laden...",
+    "error": "Er is iets misgegaan"
+  },
+  "footer": {
+    "address": "Adres",
+    "contact": "Contact",
+    "quickLinks": "Snelle links",
+    "followUs": "Volg ons",
+    "copyright": "© {year} Badminton Borne. Alle rechten voorbehouden."
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "backHome": "Terug naar home"
+  },
+  "accessibility": {
+    "skipToContent": "Ga naar inhoud",
+    "mainNavigation": "Hoofdnavigatie",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten",
+    "switchLanguage": "Taal wisselen"
+  }
+}

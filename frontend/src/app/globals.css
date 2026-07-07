@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Badminton Borne — brand theme (zie design handoff tokens/)
+   Lime #C2F03C op diep navy. Display: Unbounded. Body: Hanken Grotesk.
+   ========================================================================== */
+
+@theme {
+  /* Mammoet Lime */
+  --color-lime-50: #f4fcdc;
+  --color-lime-100: #e7f9b3;
+  --color-lime-200: #d9f586;
+  --color-lime-300: #cdf25c;
+  --color-lime-400: #c2f03c; /* CORE */
+  --color-lime-500: #a9d91f; /* hover / pressed */
+  --color-lime-600: #8fbb13; /* tekst-veilig op wit */
+
+  /* Navy */
+  --color-navy-950: #060c1a;
+  --color-navy-900: #091225; /* CORE */
+  --color-navy-800: #131e36;
+  --color-navy-700: #1e2b47;
+  --color-navy-600: #2c3b5c;
+  --color-navy-500: #35456a;
+  --color-navy-400: #5a6a8a;
+  --color-navy-300: #8a97b0; /* minimale kleur voor secundaire tekst op navy */
+
+  /* Accent & neutrals */
+  --color-pink-400: #f65c92;
+  --color-pink-500: #f03c78;
+  --color-pink-600: #d42561;
+  --color-mist-50: #f7f9fc;
+  --color-mist-100: #edf1f5;
+  --color-mist-200: #dde4ec;
+  --color-mist-300: #c4ceda;
+
+  /* Semantiek */
+  --color-background: var(--color-navy-950);
+  --color-foreground: #ffffff;
+
+  /* Vloeiende display-groottes (390px → 1440px referentiebreedtes) */
+  --text-hero: clamp(2.625rem, 2.1143rem + 2.0952vw, 4rem); /* 42 → 64 */
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.02em;
+  --text-display: clamp(2rem, 1.4429rem + 2.2857vw, 3.5rem); /* 32 → 56 */
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.02em;
+  --text-display-sm: clamp(2rem, 1.5357rem + 1.9048vw, 3.25rem); /* 32 → 52 */
+  --text-display-sm--line-height: 1.02;
+  --text-display-sm--letter-spacing: -0.02em;
+  --text-h2: clamp(1.875rem, 1.5464rem + 1.3333vw, 2.75rem); /* 30 → 44 */
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.02em;
+
+  /* Motion */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Schaduwen */
+  --shadow-lime: 0 8px 28px rgba(194, 240, 60, 0.35);
+  --shadow-card: 0 18px 48px rgba(9, 18, 37, 0.16);
+}
+
+@theme inline {
+  --font-display: var(--font-unbounded), "Arial Black", system-ui, sans-serif;
+  --font-sans: var(--font-hanken), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  /* Hoogte van de vaste header (mobiel / desktop via media query hieronder) */
+  --header-h: 66px;
+  --hairline: rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 100px;
+  }
+}
+
+/* Aankondigingsbalk boven de header telt mee in de headerhoogte,
+   zodat hero-paddings en anchors automatisch meeschuiven. */
+:root:has([data-announcement-bar]) {
+  --header-h: 106px;
+}
+
+@media (min-width: 1024px) {
+  :root:has([data-announcement-bar]) {
+    --header-h: 140px;
+  }
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-lime-400);
+  color: var(--color-navy-900);
+}
+
+/* Focus: 2px lime rand + zachte lime ring (WCAG 2.1 AA) */
+:focus-visible {
+  outline: 2px solid var(--color-lime-400);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(194, 240, 60, 0.25);
+  border-radius: 6px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  padding: 0.6rem 1.1rem;
+  background: var(--color-lime-400);
+  color: var(--color-navy-900);
+  font-weight: 700;
+  border-radius: 999px;
+  z-index: 100;
+  transition: top 0.2s var(--ease-brand);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Scroll-reveal (uitgeschakeld bij prefers-reduced-motion) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s var(--ease-brand),
+    transform 0.6s var(--ease-brand);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mini-game: racket vervangt de cursor binnen de zone */
+.game-zone,
+.game-zone * {
+  cursor: none !important;
+}

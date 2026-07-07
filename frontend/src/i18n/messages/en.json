@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "title": "Badminton Borne",
+    "description": "Badminton club in Borne for all ages and skill levels. First month free!"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "badminton": "Badminton",
+    "training": "Training",
+    "competition": "Competition",
+    "youth": "Youth",
+    "adults": "Adults",
+    "membership": "Become a member",
+    "tryFree": "Try for free",
+    "contact": "Contact",
+    "reviews": "Reviews"
+  },
+  "common": {
+    "tryFreeMonth": "Try a month for free",
+    "signUp": "Sign up",
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "readMore": "Read more",
+    "backToHome": "Back to home",
+    "loading": "Loading...",
+    "error": "Something went wrong"
+  },
+  "footer": {
+    "address": "Address",
+    "contact": "Contact",
+    "quickLinks": "Quick links",
+    "followUs": "Follow us",
+    "copyright": "© {year} Badminton Borne. All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLanguage": "Switch language"
+  }
+}
