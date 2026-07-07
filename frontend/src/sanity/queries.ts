@@ -64,7 +64,8 @@ const SECTION_FIELDS = `
       heading,
       link{label, href},
       "rows": *[_type == "trainingTime"] | order(order asc, group asc){
-        _id, group, day, startTime, endTime
+        _id, group, activity, day, startTime, endTime, location,
+        override{enabled, note, day, startTime, endTime, location}
       }
     },
     _type == "gallery" => {

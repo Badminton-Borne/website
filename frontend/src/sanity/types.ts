@@ -109,9 +109,21 @@ export interface CtaBannerSection {
 export interface TrainingTimeRow {
   _id: string;
   group?: string | null;
+  /** "training" of "vrij spelen" (optioneel) */
+  activity?: string | null;
   day?: string | null;
   startTime?: string | null;
   endTime?: string | null;
+  location?: string | null;
+  /** Tijdelijk afwijkend schema — lege velden vallen terug op het gewone rooster. */
+  override?: {
+    enabled?: boolean | null;
+    note?: string | null;
+    day?: string | null;
+    startTime?: string | null;
+    endTime?: string | null;
+    location?: string | null;
+  } | null;
 }
 
 export interface TrainingTimesSection {

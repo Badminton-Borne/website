@@ -37,10 +37,14 @@ async function ensureCollection<T extends {_type: string}>(
 
 async function run() {
   // ---- Losse documenten -------------------------------------------------
+  const WOOLDRIK = "'t Wooldrik Hal B (nieuwe sporthal)"
   const trainingTimeIds = await ensureCollection('trainingTime', [
-    {_type: 'trainingTime', group: 'Jeugd', day: 'maandag', startTime: '18:30', endTime: '19:45', order: 0},
-    {_type: 'trainingTime', group: 'Recreanten', day: 'maandag', startTime: '19:45', endTime: '21:30', order: 1},
-    {_type: 'trainingTime', group: 'Competitie', day: 'donderdag', startTime: '20:00', endTime: '22:00', order: 2},
+    {_type: 'trainingTime', group: 'Jeugd', activity: 'training', day: 'maandag', startTime: '19:00', endTime: '20:00', location: WOOLDRIK, order: 0},
+    {_type: 'trainingTime', group: 'Jeugd', activity: 'vrij spelen', day: 'maandag', startTime: '20:00', endTime: '21:00', location: WOOLDRIK, order: 1},
+    {_type: 'trainingTime', group: 'Jeugd', day: 'donderdag', startTime: '19:00', endTime: '20:00', location: 'De Hooiberg', order: 2},
+    {_type: 'trainingTime', group: 'Senioren', activity: 'training', day: 'maandag', startTime: '20:00', endTime: '21:00', location: WOOLDRIK, order: 3},
+    {_type: 'trainingTime', group: 'Senioren', activity: 'vrij spelen', day: 'maandag', startTime: '19:00', endTime: '22:00', location: WOOLDRIK, order: 4},
+    {_type: 'trainingTime', group: 'Senioren', activity: 'vrij spelen', day: 'donderdag', startTime: '20:00', endTime: '21:00', location: 'De Hooiberg', order: 5},
   ])
   void trainingTimeIds // rijen worden via GROQ opgehaald, geen referenties nodig
 
@@ -451,7 +455,7 @@ async function run() {
       linkLabel: 'Lees meer',
       link: '/nieuwe-hal',
     },
-    playTimes: 'Maandag 18:30 – 21:30 · Donderdag 20:00 – 22:00',
+    playTimes: 'Maandag 19:00 – 22:00 · Donderdag 19:00 – 21:00',
     footerTagline:
       'Elke smash telt. Badminton voor heel Borne — van eerste shuttle tot competitie.',
     footerColumns: [
@@ -514,7 +518,7 @@ async function run() {
         linkLabel: 'Lees meer',
         link: '/nieuwe-hal',
       },
-      playTimes: 'Maandag 18:30 – 21:30 · Donderdag 20:00 – 22:00',
+      playTimes: 'Maandag 19:00 – 22:00 · Donderdag 19:00 – 21:00',
     })
     .commit()
   console.log('✓ siteSettings: aankondigingsbalk + speelavonden aangevuld (indien leeg)')
