@@ -7,5 +7,8 @@ export default defineCliConfig({
   },
   // Gehoste Studio: `npx sanity deploy` → https://badminton-borne.sanity.studio
   studioHost: 'badminton-borne',
-  autoUpdates: true,
+  deployment: {
+    appId: 'ij0gevsu5zzx9t50kw1jjll6',
+    autoUpdates: true,
+  },
 })

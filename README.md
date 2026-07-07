@@ -18,7 +18,8 @@ redactie ──▶ Sanity Studio (lokaal of *.sanity.studio) ──▶ Content L
   Rendert alle pagina's server-side/statisch en werkt live bij via `next-sanity` (wijzigingen
   in de Studio verschijnen zonder redeploy).
 - **`studio/`** — Sanity Studio (schema's, structuur, seed- en beheerscripts). Draait los van
-  de site; deployt niet mee naar Vercel.
+  de site en staat gehost op **https://badminton-borne.sanity.studio** (inloggen met het
+  beheeraccount). Na schema-wijzigingen opnieuw publiceren met `cd studio && npx sanity deploy`.
 
 ### Contentmodel (page builder)
 
