@@ -3,6 +3,7 @@ import {homePage} from './documents/homePage'
 import {page} from './documents/page'
 import {siteSettings} from './documents/siteSettings'
 import {trainingTime} from './documents/trainingTime'
+import {location} from './documents/location'
 import {review} from './documents/review'
 import {faqItem} from './documents/faqItem'
 import {membershipPackage} from './documents/membershipPackage'
@@ -62,6 +63,7 @@ export const schemaTypes = [
   page,
   siteSettings,
   trainingTime,
+  location,
   review,
   faqItem,
   membershipPackage,

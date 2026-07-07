@@ -106,6 +106,13 @@ export interface CtaBannerSection {
   enableGame?: boolean | null;
 }
 
+export interface TrainingLocation {
+  name?: string | null;
+  street?: string | null;
+  city?: string | null;
+  mapsUrl?: string | null;
+}
+
 export interface TrainingTimeRow {
   _id: string;
   group?: string | null;
@@ -114,7 +121,7 @@ export interface TrainingTimeRow {
   day?: string | null;
   startTime?: string | null;
   endTime?: string | null;
-  location?: string | null;
+  location?: TrainingLocation | null;
   /** Tijdelijk afwijkend schema — lege velden vallen terug op het gewone rooster. */
   override?: {
     enabled?: boolean | null;
@@ -122,6 +129,7 @@ export interface TrainingTimeRow {
     day?: string | null;
     startTime?: string | null;
     endTime?: string | null;
+    /** Vrije tekst voor eenmalige uitwijklocaties. */
     location?: string | null;
   } | null;
 }

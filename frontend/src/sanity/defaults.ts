@@ -104,14 +104,18 @@ export const HOME_FALLBACK: HomePageData = {
       eyebrow: "Speelschema",
       heading: "Trainingstijden",
       link: { label: "Alle tijden", href: "/trainingen" },
-      rows: [
-        { _id: "t1", group: "Jeugd", activity: "training", day: "maandag", startTime: "19:00", endTime: "20:00", location: "'t Wooldrik Hal B (nieuwe sporthal)" },
-        { _id: "t2", group: "Jeugd", activity: "vrij spelen", day: "maandag", startTime: "20:00", endTime: "21:00", location: "'t Wooldrik Hal B (nieuwe sporthal)" },
-        { _id: "t3", group: "Jeugd", day: "donderdag", startTime: "19:00", endTime: "20:00", location: "De Hooiberg" },
-        { _id: "t4", group: "Senioren", activity: "training", day: "maandag", startTime: "20:00", endTime: "21:00", location: "'t Wooldrik Hal B (nieuwe sporthal)" },
-        { _id: "t5", group: "Senioren", activity: "vrij spelen", day: "maandag", startTime: "19:00", endTime: "22:00", location: "'t Wooldrik Hal B (nieuwe sporthal)" },
-        { _id: "t6", group: "Senioren", activity: "vrij spelen", day: "donderdag", startTime: "20:00", endTime: "21:00", location: "De Hooiberg" },
-      ],
+      rows: (() => {
+        const wooldrik = { name: "'t Wooldrik Hal B (nieuwe sporthal)", street: "'t Wooldrik 1", city: "Borne" };
+        const hooiberg = { name: "De Hooiberg", street: "Dorsvloer 27", city: "Borne" };
+        return [
+          { _id: "t1", group: "Jeugd", activity: "training", day: "maandag", startTime: "19:00", endTime: "20:00", location: wooldrik },
+          { _id: "t2", group: "Jeugd", activity: "vrij spelen", day: "maandag", startTime: "20:00", endTime: "21:00", location: wooldrik },
+          { _id: "t3", group: "Jeugd", day: "donderdag", startTime: "19:00", endTime: "20:00", location: hooiberg },
+          { _id: "t4", group: "Volwassenen", activity: "training", day: "maandag", startTime: "20:00", endTime: "21:00", location: wooldrik },
+          { _id: "t5", group: "Volwassenen", activity: "vrij spelen", day: "maandag", startTime: "19:00", endTime: "22:00", location: wooldrik },
+          { _id: "t6", group: "Volwassenen", activity: "vrij spelen", day: "donderdag", startTime: "20:00", endTime: "21:00", location: hooiberg },
+        ];
+      })(),
     },
     {
       _type: "gallery",

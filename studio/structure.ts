@@ -11,6 +11,7 @@ import {
   EnvelopeIcon,
   HelpCircleIcon,
   HomeIcon,
+  PinIcon,
   StarIcon,
   UsersIcon,
 } from '@sanity/icons'
@@ -25,6 +26,7 @@ const CURATED = [
   'honoraryMember',
   'sponsor',
   'trainingTime',
+  'location',
   'review',
   'faqItem',
   'contactSubmission',
@@ -59,6 +61,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('sponsor').title('Sponsors').icon(CaseIcon),
       S.divider(),
       S.documentTypeListItem('trainingTime').title('Trainingstijden').icon(CalendarIcon),
+      S.documentTypeListItem('location').title('Locaties').icon(PinIcon),
       S.documentTypeListItem('review').title('Reviews').icon(CommentIcon),
       S.documentTypeListItem('faqItem').title('Veelgestelde vragen').icon(HelpCircleIcon),
       S.divider(),

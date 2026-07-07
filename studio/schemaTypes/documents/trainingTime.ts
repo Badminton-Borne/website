@@ -65,8 +65,8 @@ export const trainingTime = defineType({
     defineField({
       name: 'location',
       title: 'Locatie',
-      description: "Bijvoorbeeld: 't Wooldrik Hal B, De Hooiberg",
-      type: 'string',
+      type: 'reference',
+      to: [{type: 'location'}],
     }),
     defineField({
       name: 'override',
@@ -123,7 +123,7 @@ export const trainingTime = defineType({
         defineField({
           name: 'location',
           title: 'Afwijkende locatie',
-          description: 'Leeg = locatie blijft gelijk',
+          description: 'Vrije tekst (bv. "Gymzaal De Vonder"); leeg = locatie blijft gelijk',
           type: 'string',
         }),
       ],
@@ -150,7 +150,7 @@ export const trainingTime = defineType({
       day: 'day',
       start: 'startTime',
       end: 'endTime',
-      location: 'location',
+      location: 'location.name',
       overrideEnabled: 'override.enabled',
     },
     prepare({title, activity, day, start, end, location, overrideEnabled}) {

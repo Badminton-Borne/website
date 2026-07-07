@@ -64,7 +64,8 @@ const SECTION_FIELDS = `
       heading,
       link{label, href},
       "rows": *[_type == "trainingTime"] | order(order asc, group asc){
-        _id, group, activity, day, startTime, endTime, location,
+        _id, group, activity, day, startTime, endTime,
+        location->{name, street, city, mapsUrl},
         override{enabled, note, day, startTime, endTime, location}
       }
     },

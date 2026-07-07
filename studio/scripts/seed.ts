@@ -37,14 +37,31 @@ async function ensureCollection<T extends {_type: string}>(
 
 async function run() {
   // ---- Losse documenten -------------------------------------------------
-  const WOOLDRIK = "'t Wooldrik Hal B (nieuwe sporthal)"
+  // Locaties met vaste id's zodat trainingstijden er stabiel naar verwijzen
+  await client.createIfNotExists({
+    _id: 'locatie-wooldrik',
+    _type: 'location',
+    name: "'t Wooldrik Hal B (nieuwe sporthal)",
+    street: "'t Wooldrik 1",
+    city: 'Borne',
+  })
+  await client.createIfNotExists({
+    _id: 'locatie-hooiberg',
+    _type: 'location',
+    name: 'De Hooiberg',
+    street: 'Dorsvloer 27',
+    city: 'Borne',
+  })
+  console.log('✓ locaties aangemaakt (of bestonden al)')
+
+  const locRef = (id: string) => ({_type: 'reference', _ref: id})
   const trainingTimeIds = await ensureCollection('trainingTime', [
-    {_type: 'trainingTime', group: 'Jeugd', activity: 'training', day: 'maandag', startTime: '19:00', endTime: '20:00', location: WOOLDRIK, order: 0},
-    {_type: 'trainingTime', group: 'Jeugd', activity: 'vrij spelen', day: 'maandag', startTime: '20:00', endTime: '21:00', location: WOOLDRIK, order: 1},
-    {_type: 'trainingTime', group: 'Jeugd', day: 'donderdag', startTime: '19:00', endTime: '20:00', location: 'De Hooiberg', order: 2},
-    {_type: 'trainingTime', group: 'Senioren', activity: 'training', day: 'maandag', startTime: '20:00', endTime: '21:00', location: WOOLDRIK, order: 3},
-    {_type: 'trainingTime', group: 'Senioren', activity: 'vrij spelen', day: 'maandag', startTime: '19:00', endTime: '22:00', location: WOOLDRIK, order: 4},
-    {_type: 'trainingTime', group: 'Senioren', activity: 'vrij spelen', day: 'donderdag', startTime: '20:00', endTime: '21:00', location: 'De Hooiberg', order: 5},
+    {_type: 'trainingTime', group: 'Jeugd', activity: 'training', day: 'maandag', startTime: '19:00', endTime: '20:00', location: locRef('locatie-wooldrik'), order: 0},
+    {_type: 'trainingTime', group: 'Jeugd', activity: 'vrij spelen', day: 'maandag', startTime: '20:00', endTime: '21:00', location: locRef('locatie-wooldrik'), order: 1},
+    {_type: 'trainingTime', group: 'Jeugd', day: 'donderdag', startTime: '19:00', endTime: '20:00', location: locRef('locatie-hooiberg'), order: 2},
+    {_type: 'trainingTime', group: 'Volwassenen', activity: 'training', day: 'maandag', startTime: '20:00', endTime: '21:00', location: locRef('locatie-wooldrik'), order: 3},
+    {_type: 'trainingTime', group: 'Volwassenen', activity: 'vrij spelen', day: 'maandag', startTime: '19:00', endTime: '22:00', location: locRef('locatie-wooldrik'), order: 4},
+    {_type: 'trainingTime', group: 'Volwassenen', activity: 'vrij spelen', day: 'donderdag', startTime: '20:00', endTime: '21:00', location: locRef('locatie-hooiberg'), order: 5},
   ])
   void trainingTimeIds // rijen worden via GROQ opgehaald, geen referenties nodig
 

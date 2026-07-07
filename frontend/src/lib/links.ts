@@ -13,3 +13,20 @@ export function localizeHref(
   if (href === "/") return `/${locale}`;
   return `/${locale}${href}`;
 }
+
+/**
+ * Google Maps-link voor een locatie: een handmatige mapsUrl wint, anders
+ * zoeken op naam + adres.
+ */
+export function mapsHref(location: {
+  name?: string | null;
+  street?: string | null;
+  city?: string | null;
+  mapsUrl?: string | null;
+}): string {
+  if (location.mapsUrl) return location.mapsUrl;
+  const query = [location.name, location.street, location.city]
+    .filter(Boolean)
+    .join(", ");
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
