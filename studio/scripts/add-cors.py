@@ -5,7 +5,7 @@ de site (live content-verversing) met Sanity mag praten.
 Draaien vanuit de repo-root, bv.:
   python3 studio/scripts/add-cors.py https://badminton-borne.vercel.app https://badmintonborne.nl
 
-Gebruikt je Sanity CLI-login (administratie@badmintonborne.nl); idempotent.
+Gebruikt je Sanity CLI-login (het beheeraccount van de club); idempotent.
 """
 import json
 import pathlib

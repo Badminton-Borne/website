@@ -6,7 +6,7 @@ Next.js-frontend met Sanity als headless CMS, gehost op Vercel.
 ## Architectuur
 
 ```
-bezoeker ──▶ Vercel (Next.js 16, App Router) ──▶ Sanity Content Lake (project atjj2izc)
+bezoeker ──▶ Vercel (Next.js 16, App Router) ──▶ Sanity Content Lake
                     │                                      ▲
                     ├─ /api/contact ───────────────────────┤  (privé contactSubmission-documenten)
                     ├─ /api/newsletter ────────────────────┘  (Laposta, of privé newsletterSignup)
@@ -65,8 +65,8 @@ niet in git). Nieuwe machine? Draai de scripts hieronder.
 
 ## Beheerscripts (studio/scripts/)
 
-Alle provisioning loopt via de Sanity CLI-login (`npx sanity login` — account:
-administratie@badmintonborne.nl):
+Alle provisioning loopt via de Sanity CLI-login (`npx sanity login` met het
+beheeraccount van de club):
 
 | Script | Doel |
 | --- | --- |
@@ -76,8 +76,8 @@ administratie@badmintonborne.nl):
 
 ## Deployment
 
-- **Vercel-project** `badminton-borne` (account administratie@badmintonborne.nl), Root
-  Directory `frontend`, gekoppeld aan deze GitHub-repo.
+- **Vercel-project** `badminton-borne` (beheeraccount van de club), Root Directory
+  `frontend`, gekoppeld aan deze GitHub-repo.
 - Push naar `main` → productie ([badminton-borne.vercel.app](https://badminton-borne.vercel.app)
   en na de DNS-omzetting badmintonborne.nl). Elke andere branch → preview-URL.
 - Env-vars staan in Vercel (production + preview): `NEXT_PUBLIC_SANITY_PROJECT_ID`,
@@ -86,9 +86,10 @@ administratie@badmintonborne.nl):
 
 ## Accounts & eigendom
 
-Alles van de club hangt aan **administratie@badmintonborne.nl**: het Sanity-project
-(`atjj2izc`), het Vercel-account en deze GitHub-organisatie. Vrijwilligers committen vanaf hun
-persoonlijke GitHub-account als member van de organisatie.
+Alles van de club (Sanity-project, Vercel-account, deze GitHub-organisatie) hangt aan het
+centrale beheer-e-mailadres van de vereniging — adres en project-id's staan bewust niet in
+deze publieke README (zie de env-bestanden en de interne notities van het bestuur).
+Vrijwilligers committen vanaf hun persoonlijke GitHub-account als member van de organisatie.
 
 ## Handig om te weten
 
