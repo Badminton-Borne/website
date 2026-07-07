@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/fx/Reveal";
 import { NewsCard } from "@/components/news/NewsCard";
@@ -21,12 +21,9 @@ export function NewsSection({
 
   const firstIsLarge = Boolean(articles[0]?.featured);
   const link = section.link?.label ? (
-    <Link
-      href={localizeHref(section.link.href, locale)}
-      className="text-[15px] font-bold text-lime-400 transition-colors hover:text-lime-300 lg:text-base"
-    >
-      {section.link.label} <span aria-hidden="true">→</span>
-    </Link>
+    <ArrowLink href={localizeHref(section.link.href, locale)}>
+      {section.link.label}
+    </ArrowLink>
   ) : null;
 
   return (

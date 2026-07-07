@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SanityImg } from "@/components/ui/SanityImg";
 import { Reveal } from "@/components/fx/Reveal";
@@ -59,12 +60,9 @@ export function SponsorsSection({
         <Reveal className="flex flex-wrap items-center justify-between gap-6">
           {section.eyebrow && <Eyebrow>{section.eyebrow}</Eyebrow>}
           {section.link?.label && (
-            <Link
-              href={localizeHref(section.link.href, locale)}
-              className="text-[15px] font-bold text-lime-400 transition-colors hover:text-lime-300"
-            >
-              {section.link.label} <span aria-hidden="true">→</span>
-            </Link>
+            <ArrowLink href={localizeHref(section.link.href, locale)}>
+              {section.link.label}
+            </ArrowLink>
           )}
         </Reveal>
 

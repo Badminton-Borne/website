@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { PortableText } from "next-sanity";
@@ -10,6 +9,7 @@ import type {
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 import { AccentBar } from "@/components/ui/AccentBar";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { SanityImg } from "@/components/ui/SanityImg";
 import { formatNewsDate } from "@/lib/format";
 import { getNewsArticle, getNewsSlugs } from "@/sanity/content";
@@ -181,7 +181,7 @@ export default async function NieuwsArtikelPage({ params }: PageProps) {
             {article.publishedAt && (
               <time
                 dateTime={article.publishedAt}
-                className="text-[13px] text-navy-400"
+                className="text-[13px] text-navy-300"
               >
                 {formatNewsDate(article.publishedAt)}
               </time>
@@ -209,12 +209,9 @@ export default async function NieuwsArtikelPage({ params }: PageProps) {
         )}
 
         <div className="mx-auto w-full max-w-[720px]">
-          <Link
-            href={`/${locale}/nieuws`}
-            className="text-[15px] font-bold text-lime-400 transition-colors hover:text-lime-300"
-          >
-            <span aria-hidden="true">←</span> Al het nieuws
-          </Link>
+          <ArrowLink href={`/${locale}/nieuws`} direction="left">
+            Al het nieuws
+          </ArrowLink>
         </div>
       </div>
 

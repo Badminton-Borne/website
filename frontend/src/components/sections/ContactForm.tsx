@@ -4,7 +4,7 @@ import { useState } from "react";
 import { BrandButton } from "@/components/ui/BrandButton";
 
 const INPUT_CLASSES =
-  "w-full rounded-xl border border-white/16 bg-navy-900 px-4 py-3.5 text-[15px] leading-normal text-white placeholder:text-navy-400 transition-[border-color,box-shadow] duration-200 focus:border-lime-400 focus:shadow-[0_0_0_4px_rgba(194,240,60,0.18)] focus-visible:shadow-[0_0_0_4px_rgba(194,240,60,0.18)] focus-visible:outline-none";
+  "w-full rounded-xl border border-white/16 bg-navy-900 px-4 py-3.5 text-[15px] leading-normal text-white placeholder:text-navy-300 transition-[border-color,box-shadow] duration-200 focus:border-lime-400 focus:shadow-[0_0_0_4px_rgba(194,240,60,0.18)] focus-visible:shadow-[0_0_0_4px_rgba(194,240,60,0.18)] focus-visible:outline-none";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -196,7 +196,7 @@ export function ContactForm() {
             Versturen lukte even niet. Probeer het opnieuw of mail ons direct.
           </p>
         )}
-        <p className="text-center text-[13px] text-navy-400">
+        <p className="text-center text-[13px] text-navy-300">
           We gebruiken je gegevens alleen om te reageren.
         </p>
       </div>

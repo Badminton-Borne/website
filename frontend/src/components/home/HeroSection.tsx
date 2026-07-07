@@ -2,6 +2,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { AccentBar } from "@/components/ui/AccentBar";
 import { BrandButton } from "@/components/ui/BrandButton";
 import { MiniGameZone } from "@/components/fx/MiniGameZone";
+import { LazyVideo } from "@/components/fx/LazyVideo";
 import { localizeHref } from "@/lib/links";
 import { formatScore, stars } from "@/lib/format";
 import { hasImage, imageUrl } from "@/sanity/image";
@@ -99,17 +100,15 @@ export function HeroSection({
 
           {section.videoUrl && (
             <div className="flex flex-col gap-3">
-              <div className="relative overflow-hidden rounded-[20px] border border-white/12">
-                <video
+              <div
+                className="relative overflow-hidden rounded-[20px] border border-white/12"
+                aria-label="Sfeerbeelden van badminton bij Badminton Borne"
+                role="img"
+              >
+                <LazyVideo
                   src={section.videoUrl}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
                   poster={poster}
-                  className="block h-[300px] w-full bg-navy-800 object-cover lg:h-[520px]"
-                  aria-label="Sfeerbeelden van badminton bij Badminton Borne"
+                  className="block h-[300px] w-full bg-navy-800 lg:h-[520px]"
                 />
               </div>
               <AccentBar />

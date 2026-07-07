@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { AccentBar } from "@/components/ui/AccentBar";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/fx/Reveal";
 import { SanityImg } from "@/components/ui/SanityImg";
 import { localizeHref } from "@/lib/links";
@@ -13,12 +13,9 @@ export function AnnouncementSection({
   locale: string;
 }) {
   const link = section.link?.label ? (
-    <Link
-      href={localizeHref(section.link.href, locale)}
-      className="text-[15px] font-bold text-lime-400 transition-colors hover:text-lime-300 lg:text-base"
-    >
-      {section.link.label} <span aria-hidden="true">→</span>
-    </Link>
+    <ArrowLink href={localizeHref(section.link.href, locale)}>
+      {section.link.label}
+    </ArrowLink>
   ) : null;
 
   return (

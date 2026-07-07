@@ -57,7 +57,7 @@ export function FaqSection({ section }: { section: FaqData }) {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-[60ch] px-1 pb-4 text-sm leading-relaxed text-navy-300 lg:pb-[22px] lg:text-[15px]">
+                    <p className="max-w-[60ch] px-1 pb-4 text-sm leading-relaxed text-mist-300 lg:pb-[22px] lg:text-[15px]">
                       {item.answer}
                     </p>
                   </div>

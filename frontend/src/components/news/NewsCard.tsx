@@ -47,7 +47,7 @@ export function NewsCard({
           {article.publishedAt && (
             <time
               dateTime={article.publishedAt}
-              className="text-[13px] text-navy-400"
+              className="text-[13px] text-navy-300"
             >
               {formatNewsDate(article.publishedAt)}
             </time>
@@ -61,8 +61,14 @@ export function NewsCard({
             {article.excerpt}
           </p>
         )}
-        <span className="mt-auto pt-1 text-[15px] font-bold text-lime-400 transition-colors group-hover:text-lime-300">
-          Lees meer <span aria-hidden="true">→</span>
+        <span className="mt-auto inline-flex items-baseline gap-1.5 pt-1 text-[15px] font-bold text-lime-400 transition-colors group-hover:text-lime-300">
+          Lees meer{" "}
+          <span
+            aria-hidden="true"
+            className="transition-transform duration-200 ease-brand group-hover:translate-x-1"
+          >
+            →
+          </span>
         </span>
       </div>
     </Link>

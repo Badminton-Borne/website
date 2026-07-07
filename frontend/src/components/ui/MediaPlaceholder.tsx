@@ -32,7 +32,7 @@ export function MediaPlaceholder({ label, className = "" }: MediaPlaceholderProp
         <circle cx="11" cy="16" r="5" fill="#C2F03C" />
       </svg>
       {label ? (
-        <span className="max-w-[26ch] px-4 text-center text-xs leading-relaxed text-navy-400">
+        <span className="max-w-[26ch] px-4 text-center text-xs leading-relaxed text-navy-300">
           {label}
         </span>
       ) : null}

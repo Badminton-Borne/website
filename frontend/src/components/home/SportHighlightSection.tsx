@@ -62,7 +62,7 @@ export function SportHighlightSection({
             </dl>
           )}
           {section.footnote && (
-            <p className="text-xs text-navy-400">{section.footnote}</p>
+            <p className="text-xs text-navy-300">{section.footnote}</p>
           )}
         </Reveal>
       </div>

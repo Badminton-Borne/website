@@ -126,7 +126,7 @@ export function PricingSection({
         </div>
 
         {section.footnote && (
-          <p className="text-[13px] text-navy-400">{section.footnote}</p>
+          <p className="text-[13px] text-navy-300">{section.footnote}</p>
         )}
       </div>
     </section>

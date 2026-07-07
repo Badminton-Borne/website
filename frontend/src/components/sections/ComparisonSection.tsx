@@ -106,7 +106,7 @@ export function ComparisonSection({
 
         {(section.footnote || section.ctaLabel) && (
           <Reveal className="flex flex-wrap items-center justify-between gap-6">
-            <p className="text-[13px] text-navy-400">{section.footnote}</p>
+            <p className="text-[13px] text-navy-300">{section.footnote}</p>
             {section.ctaLabel && (
               <BrandButton
                 href={localizeHref(section.ctaLink, locale)}

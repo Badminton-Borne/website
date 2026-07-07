@@ -37,7 +37,7 @@ function LocaleSwitch({
     >
       {(["nl", "en"] as const).map((l, i) => (
         <span key={l}>
-          {i > 0 && <span className="text-navy-400"> / </span>}
+          {i > 0 && <span className="text-navy-300"> / </span>}
           {l === locale ? (
             <span className="text-white" aria-current="true">
               {l.toUpperCase()}
@@ -45,7 +45,7 @@ function LocaleSwitch({
           ) : (
             <Link
               href={pathFor(l)}
-              className="text-navy-400 transition-colors hover:text-lime-400"
+              className="text-navy-300 transition-colors hover:text-lime-400"
             >
               {l.toUpperCase()}
             </Link>

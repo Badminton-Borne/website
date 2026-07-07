@@ -96,10 +96,10 @@ export function SiteFooter({ settings, locale }: SiteFooterProps) {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-5 lg:gap-6 lg:pt-6">
-          <p className="text-xs text-navy-400 lg:text-[13px]">
+          <p className="text-xs text-navy-300 lg:text-[13px]">
             {settings.copyright}
           </p>
-          <div className="flex items-center gap-4 text-xs text-navy-400 lg:gap-5 lg:text-[13px]">
+          <div className="flex items-center gap-4 text-xs text-navy-300 lg:gap-5 lg:text-[13px]">
             {(settings.legalLinks ?? []).map((link) =>
               link.href?.startsWith("/") && !link.href.includes(".") ? (
                 <Link

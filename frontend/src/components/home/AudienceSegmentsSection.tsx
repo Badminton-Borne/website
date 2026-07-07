@@ -68,8 +68,14 @@ export function AudienceSegmentsSection({
                       </p>
                     )}
                     {segment.link?.label && (
-                      <p className="text-sm font-bold text-lime-400 lg:text-[15px]">
-                        {segment.link.label} <span aria-hidden="true">→</span>
+                      <p className="inline-flex items-baseline gap-1.5 text-sm font-bold text-lime-400 lg:text-[15px]">
+                        {segment.link.label}
+                        <span
+                          aria-hidden="true"
+                          className="transition-transform duration-200 ease-brand group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
                       </p>
                     )}
                   </div>
