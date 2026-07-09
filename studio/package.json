@@ -8,7 +8,8 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate",
-    "seed": "sanity exec scripts/seed.ts --with-user-token"
+    "seed": "sanity exec scripts/seed.ts --with-user-token",
+    "seed:team": "sanity exec scripts/seed-team.ts --with-user-token"
   },
   "dependencies": {
     "@sanity/icons": "^3",

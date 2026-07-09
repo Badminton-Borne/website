@@ -34,5 +34,6 @@ npm run dev         # Studio op http://localhost:3333
 | --- | --- |
 | `npm run dev` | Studio lokaal draaien |
 | `npm run seed` | Startcontent inladen (idempotent, overschrijft niets) |
+| `npm run seed:team` | Teamleden bijwerken met echte namen/rollen + foto's (idempotent) |
 | `npm run typegen` | Schema extraheren + TypeScript-types genereren naar `frontend/src/sanity/types.generated.ts` |
 | `npm run deploy` | Studio hosten op *.sanity.studio |

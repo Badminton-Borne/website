@@ -149,17 +149,16 @@ async function run() {
     },
   ])
 
+  // Echte namen/rollen (bron: wie-zijn-wij). Foto's voegt scripts/seed-team.ts
+  // toe; dat script werkt óók een al-geseede dataset bij.
   await ensureCollection('teamMember', [
-    {_type: 'teamMember', name: 'Naam Trainer', role: 'Hoofdtrainer', group: 'trainer', yearsExperience: 15, bio: 'Traint jeugd én competitie.', sortOrder: 0},
-    {_type: 'teamMember', name: 'Naam Trainer', role: 'Jeugdtrainer', group: 'trainer', yearsExperience: 8, bio: 'Maakt van elke training een feestje voor de jeugd.', sortOrder: 1},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Voorzitter', group: 'bestuur', yearsExperience: 12, sortOrder: 0},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Secretaris', group: 'bestuur', yearsExperience: 6, sortOrder: 1},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Penningmeester', group: 'bestuur', yearsExperience: 20, sortOrder: 2},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Ledenadministratie', group: 'bestuur', yearsExperience: 9, sortOrder: 3},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Competitieleider', group: 'bestuur', yearsExperience: 10, sortOrder: 4},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Jeugdcoördinator', group: 'bestuur', yearsExperience: 7, sortOrder: 5},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Activiteiten', group: 'bestuur', yearsExperience: 4, sortOrder: 6},
-    {_type: 'teamMember', name: 'Naam Bestuurslid', role: 'Communicatie & sponsoring', group: 'bestuur', yearsExperience: 3, sortOrder: 7},
+    {_type: 'teamMember', name: 'Diederik', role: 'Voorzitter', group: 'bestuur', sortOrder: 0},
+    {_type: 'teamMember', name: 'Max', role: 'Secretaris', group: 'bestuur', sortOrder: 1},
+    {_type: 'teamMember', name: 'Lukas', role: 'Penningmeester', group: 'bestuur', sortOrder: 2},
+    {_type: 'teamMember', name: 'Vincent Eidhof', role: 'Algemeen bestuurslid', group: 'bestuur', sortOrder: 3},
+    {_type: 'teamMember', name: 'Mitchell Bollemeijer', role: 'Competitieleider', group: 'bestuur', sortOrder: 4},
+    {_type: 'teamMember', name: 'Roelie', role: 'Vertrouwenspersoon', group: 'bestuur', sortOrder: 5},
+    {_type: 'teamMember', name: 'Sem Gombert', role: 'Trainer', group: 'trainer', sortOrder: 0},
   ])
 
   await ensureCollection('honoraryMember', [
