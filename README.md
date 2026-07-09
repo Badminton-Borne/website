@@ -73,6 +73,7 @@ beheeraccount van de club):
 | --- | --- |
 | `python3 studio/scripts/setup-sanity.py` | Project/dataset/CORS/read-token aanmaken en env-bestanden schrijven (idempotent) |
 | `cd studio && npm run seed` | Dataset vullen met de designcontent (slaat bestaande documenten over) |
+| `cd studio && npm run seed:pages` | Subpagina's + lokale SEO-landingspagina's ("Badminton in _plaats_") synchroniseren met echte content; werkt contributietarieven bij, zet USP's op /over-ons en maakt de verzamelpagina /badminton-in-de-buurt met één footerlink (idempotent). `page-*`/`faq-*`-documenten worden bij een re-run overschreven (script = bron) |
 | `python3 studio/scripts/create-write-token.py` | Editor-token voor het contactformulier/nieuwsbrief in env zetten |
 
 ## Deployment
