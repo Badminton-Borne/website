@@ -193,7 +193,7 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
     { _key: "n0", label: "Home", href: "/" },
     { _key: "n1", label: "Over ons", href: "/over-ons" },
     { _key: "n2", label: "Badminton", href: "/badminton" },
-    { _key: "n3", label: "Trainingen", href: "/trainingen" },
+    { _key: "n3", label: "Tijden", href: "/trainingen" },
     { _key: "n4", label: "Jeugd", href: "/jeugd" },
     { _key: "n5", label: "Volwassenen", href: "/volwassenen" },
     { _key: "n6", label: "Competitie", href: "/competitie" },

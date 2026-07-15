@@ -449,7 +449,7 @@ async function run() {
       {...cta('Home', '/'), _key: key()},
       {...cta('Over ons', '/over-ons'), _key: key()},
       {...cta('Badminton', '/badminton'), _key: key()},
-      {...cta('Trainingen', '/trainingen'), _key: key()},
+      {...cta('Tijden', '/trainingen'), _key: key()},
       {...cta('Jeugd', '/jeugd'), _key: key()},
       {...cta('Volwassenen', '/volwassenen'), _key: key()},
       {...cta('Competitie', '/competitie'), _key: key()},
