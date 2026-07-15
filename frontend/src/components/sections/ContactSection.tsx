@@ -1,5 +1,6 @@
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/fx/Reveal";
+import { mapsHref } from "@/lib/links";
 import type { ContactSection as ContactData } from "@/sanity/types";
 import { ContactForm } from "./ContactForm";
 
@@ -58,11 +59,34 @@ export function ContactSection({ section }: { section: ContactData }) {
                 </a>
               </InfoBlock>
             )}
-            {info?.addressLines && (
-              <InfoBlock label="Locatie">
-                <p className="whitespace-pre-line text-base leading-relaxed text-white">
-                  {info.addressLines}
-                </p>
+            {/* Speellocaties — zelfde bron als het trainingsrooster */}
+            {(section.locations?.length ?? 0) > 0 && (
+              <InfoBlock label="Locaties">
+                <ul className="flex flex-col gap-2.5">
+                  {section.locations!.map((loc) => (
+                    <li key={loc._id}>
+                      <a
+                        href={mapsHref(loc)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/loc block"
+                      >
+                        <span className="block text-base font-semibold text-white transition-colors group-hover/loc:text-lime-400">
+                          {loc.name}{" "}
+                          <span aria-hidden="true" className="text-[11px]">
+                            ↗
+                          </span>
+                        </span>
+                        <span className="block text-sm text-navy-300">
+                          {[loc.street, loc.city].filter(Boolean).join(", ")}
+                        </span>
+                        <span className="sr-only">
+                          (opent Google Maps in een nieuw tabblad)
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </InfoBlock>
             )}
             {(info?.socialLinks?.length ?? 0) > 0 && (

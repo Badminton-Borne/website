@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { localizeHref } from "@/lib/links";
+import { localizeHref, mapsHref } from "@/lib/links";
 import type { SiteSettingsData } from "@/sanity/types";
 
 interface SiteFooterProps {
@@ -56,17 +56,29 @@ export function SiteFooter({ settings, locale }: SiteFooterProps) {
                 {settings.contactTitle}
               </h2>
             )}
-            {settings.addressLines && (
-              <p className="hidden text-[15px] leading-relaxed lg:block">
-                {settings.addressLines.split("\n").map((line, i) => (
-                  <span
-                    key={i}
-                    className={i > 0 ? "block text-navy-300" : "block text-white"}
+            {/* Speellocaties — zelfde bron als het trainingsrooster */}
+            {(settings.locations?.length ?? 0) > 0 && (
+              <div className="hidden flex-col gap-2.5 lg:flex">
+                {settings.locations!.map((loc) => (
+                  <a
+                    key={loc._id}
+                    href={mapsHref(loc)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block text-[15px] leading-snug"
                   >
-                    {line}
-                  </span>
+                    <span className="block text-white transition-colors group-hover:text-lime-400">
+                      {loc.name}
+                    </span>
+                    <span className="block text-navy-300">
+                      {[loc.street, loc.city].filter(Boolean).join(", ")}
+                    </span>
+                    <span className="sr-only">
+                      (opent Google Maps in een nieuw tabblad)
+                    </span>
+                  </a>
                 ))}
-              </p>
+              </div>
             )}
             {settings.email && (
               <a

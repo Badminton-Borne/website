@@ -109,43 +109,34 @@ async function run() {
   // ---- Componenten-handoff (artboards 4a–4f, 5a) -------------------------
   // ⚠ Bedragen, jaren en cijfers zijn illustratief (uit het design) —
   //   de club vult echte waarden in via de Studio.
+  // Twee lidmaatschappen: Jeugd en Senioren. Competitie is geen apart
+  // pakket — de toeslag varieert (€ 50 p.p. jeugd / € 260 per team) en
+  // staat in de features + voetnoot van de prijstabel.
   const packageIds = await ensureCollection('membershipPackage', [
     {
       _type: 'membershipPackage',
       title: 'Jeugd',
-      description: 'Tot 18 jaar. Training met leeftijdsgenoten.',
-      price: 36,
-      priceSuffix: 'per kwartaal*',
-      features: ['Wekelijkse jeugdtraining', 'Racket lenen kan altijd', 'Jeugdtoernooien en clubactiviteiten'],
+      description: 'T/m 18 jaar. Training met leeftijdsgenoten.',
+      price: 18.5,
+      priceSuffix: 'per maand',
+      features: ['Wekelijkse jeugdtraining', 'Racket lenen kan altijd', 'Shuttles inbegrepen', 'Competitie mogelijk (toeslag € 50 p.p. per seizoen)'],
       highlighted: false,
-      ctaLabel: 'Kies Jeugd',
+      ctaLabel: 'Aanmelden',
       ctaHref: '/lid-worden',
       sortOrder: 0,
     },
     {
       _type: 'membershipPackage',
-      title: 'Recreatief',
-      description: 'Volwassenen. Vrij spelen op vaste avonden.',
-      price: 48,
-      priceSuffix: 'per kwartaal*',
-      features: ['Elke week vrij spelen', 'Shuttles inbegrepen', 'Gezellige derde helft', 'Clubtoernooien en activiteiten'],
+      title: 'Senioren',
+      description: 'Volwassenen. Vrij spelen én training op vaste avonden.',
+      price: 26,
+      priceSuffix: 'per maand',
+      features: ['Elke week vrij spelen én training', 'Shuttles inbegrepen', 'Gezellige derde helft', 'Competitie mogelijk (toeslag per team)'],
       highlighted: true,
       highlightLabel: 'Meest gekozen',
-      ctaLabel: 'Kies Recreatief',
+      ctaLabel: 'Aanmelden',
       ctaHref: '/lid-worden',
       sortOrder: 1,
-    },
-    {
-      _type: 'membershipPackage',
-      title: 'Competitie',
-      description: 'Training én wedstrijden namens Borne.',
-      price: 66,
-      priceSuffix: 'per kwartaal*',
-      features: ['Alles uit Recreatief', 'Wekelijkse competitietraining', 'Bondscontributie inbegrepen'],
-      highlighted: false,
-      ctaLabel: 'Kies Competitie',
-      ctaHref: '/lid-worden',
-      sortOrder: 2,
     },
   ])
 
@@ -455,6 +446,7 @@ async function run() {
     _id: 'siteSettings',
     _type: 'siteSettings',
     mainNav: [
+      {...cta('Home', '/'), _key: key()},
       {...cta('Over ons', '/over-ons'), _key: key()},
       {...cta('Badminton', '/badminton'), _key: key()},
       {...cta('Trainingen', '/trainingen'), _key: key()},
@@ -502,7 +494,7 @@ async function run() {
       },
     ],
     contactTitle: 'Contact',
-    addressLines: 'Nieuwe sporthal Borne\n[adres volgt — vanaf augustus]',
+    // Adressen komen automatisch uit de "Locatie"-documenten
     email: 'info@badmintonborne.nl',
     socialLinks: [
       {...cta('Instagram', '#'), _key: key()},

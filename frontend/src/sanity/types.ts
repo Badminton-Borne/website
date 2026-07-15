@@ -251,9 +251,10 @@ export interface ContactSection {
   settings?: {
     email?: string | null;
     phone?: string | null;
-    addressLines?: string | null;
     socialLinks?: Array<Cta & { _key: string }> | null;
   } | null;
+  /** Speellocaties — zelfde bron als het trainingsrooster. */
+  locations?: Array<TrainingLocation & { _id: string }> | null;
 }
 
 export interface ComparisonSection {
@@ -413,7 +414,8 @@ export interface SiteSettingsData {
   footerTagline?: string | null;
   footerColumns?: FooterColumn[] | null;
   contactTitle?: string | null;
-  addressLines?: string | null;
+  /** Speellocaties — zelfde bron als het trainingsrooster. */
+  locations?: Array<TrainingLocation & { _id: string }> | null;
   email?: string | null;
   phone?: string | null;
   socialLinks?: Array<Cta & { _key: string }> | null;

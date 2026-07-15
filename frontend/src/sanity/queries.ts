@@ -118,8 +118,11 @@ const SECTION_FIELDS = `
       heading,
       intro,
       "settings": *[_id == "siteSettings"][0]{
-        email, phone, addressLines,
+        email, phone,
         socialLinks[]{_key, label, href}
+      },
+      "locations": *[_type == "location"] | order(sortOrder asc, name asc){
+        _id, name, street, city, mapsUrl
       }
     },
     _type == "comparisonSection" => {
@@ -213,7 +216,9 @@ export const SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   footerTagline,
   footerColumns[]{_key, title, links[]{_key, label, href}},
   contactTitle,
-  addressLines,
+  "locations": *[_type == "location"] | order(sortOrder asc, name asc){
+    _id, name, street, city, mapsUrl
+  },
   email,
   phone,
   socialLinks[]{_key, label, href},

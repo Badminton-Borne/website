@@ -352,51 +352,10 @@ const PLACES: Place[] = [
 ]
 
 async function run() {
-  // ---- Contributie: echte bedragen (live site) --------------------------
-  // Deelt de bestaande "Lidmaatschapspakket"-documenten met /lidmaatschap.
-  // Bestaan ze nog niet, dan maken we ze aan met vaste id's.
-  const realPackages: Record<string, Record<string, unknown>> = {
-    Jeugd: {
-      description: 'T/m 18 jaar. Training met leeftijdsgenoten.',
-      price: 18.5,
-      priceSuffix: 'per maand',
-      features: [
-        'Wekelijkse jeugdtraining',
-        'Racket lenen kan altijd',
-        'Shuttles inbegrepen',
-        'Jeugdactiviteiten en toernooien',
-      ],
-      ctaLabel: 'Aanmelden',
-      ctaHref: FORM_LID_WORDEN,
-    },
-    Recreatief: {
-      description: 'Volwassenen. Vrij spelen én training op vaste avonden.',
-      price: 26,
-      priceSuffix: 'per maand',
-      features: [
-        'Elke week vrij spelen én training',
-        'Shuttles inbegrepen',
-        'Gezellige derde helft',
-        'Clubtoernooien en activiteiten',
-      ],
-      ctaLabel: 'Aanmelden',
-      ctaHref: FORM_LID_WORDEN,
-    },
-    Competitie: {
-      description: 'Training én wedstrijden namens Borne.',
-      price: 26,
-      priceSuffix: 'per maand + toeslag',
-      features: [
-        'Alles uit Recreatief',
-        'Wekelijkse competitietraining',
-        'Wedstrijden namens Borne (Badminton NL)',
-        'Competitietoeslag per seizoen',
-      ],
-      ctaLabel: 'Aanmelden',
-      ctaHref: FORM_LID_WORDEN,
-    },
-  }
-
+  // ---- Contributie: twee pakketten (Jeugd + Senioren) --------------------
+  // Competitie is géén apart pakket — de toeslag varieert (€ 50 p.p. jeugd /
+  // € 260 per team) en staat in de features + voetnoot. Bestaande pakketten
+  // worden NIET overschreven: de club beheert ze in de Studio.
   let pkgs: Array<{_id: string; title: string}> = await client.fetch(
     `*[_type == "membershipPackage" && !(_id in path("drafts.**"))] | order(sortOrder asc){_id, title}`,
   )
@@ -405,43 +364,51 @@ async function run() {
       _id: 'pkg-jeugd',
       _type: 'membershipPackage',
       title: 'Jeugd',
+      description: 'T/m 18 jaar. Training met leeftijdsgenoten.',
+      price: 18.5,
+      priceSuffix: 'per maand',
+      features: [
+        'Wekelijkse jeugdtraining',
+        'Racket lenen kan altijd',
+        'Shuttles inbegrepen',
+        'Competitie mogelijk (toeslag € 50 p.p. per seizoen)',
+      ],
       highlighted: false,
+      ctaLabel: 'Aanmelden',
+      ctaHref: FORM_LID_WORDEN,
       sortOrder: 0,
-      ...realPackages.Jeugd,
     })
     await client.createIfNotExists({
-      _id: 'pkg-recreatief',
+      _id: 'pkg-senioren',
       _type: 'membershipPackage',
-      title: 'Recreatief',
+      title: 'Senioren',
+      description: 'Volwassenen. Vrij spelen én training op vaste avonden.',
+      price: 26,
+      priceSuffix: 'per maand',
+      features: [
+        'Elke week vrij spelen én training',
+        'Shuttles inbegrepen',
+        'Gezellige derde helft',
+        'Competitie mogelijk (toeslag per team)',
+      ],
       highlighted: true,
       highlightLabel: 'Meest gekozen',
+      ctaLabel: 'Aanmelden',
+      ctaHref: FORM_LID_WORDEN,
       sortOrder: 1,
-      ...realPackages.Recreatief,
-    })
-    await client.createIfNotExists({
-      _id: 'pkg-competitie',
-      _type: 'membershipPackage',
-      title: 'Competitie',
-      highlighted: false,
-      sortOrder: 2,
-      ...realPackages.Competitie,
     })
     pkgs = await client.fetch(
       `*[_type == "membershipPackage" && !(_id in path("drafts.**"))] | order(sortOrder asc){_id, title}`,
     )
     console.log(`✓ lidmaatschapspakketten aangemaakt (${pkgs.length})`)
   } else {
-    for (const p of pkgs) {
-      const real = realPackages[p.title]
-      if (real) await client.patch(p._id).set(real).commit()
-    }
-    console.log(`✓ lidmaatschapspakketten bijgewerkt naar actuele tarieven (${pkgs.length})`)
+    console.log(`− lidmaatschapspakketten bestaan al (${pkgs.length}) — club beheert ze in de Studio`)
   }
   const packageRefs = pkgs.map((p) => ({_type: 'reference', _key: key(), _ref: p._id}))
   const PRICING_INTRO =
     'Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis — daarna maandelijks opzegbaar.'
   const PRICING_FOOTNOTE =
-    'Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie kost per seizoen extra: € 50 p.p. (jeugd) of € 260 per team (senioren). Eerste maand gratis.'
+    'Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten — de toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.'
 
   // Bestaande /lidmaatschap-pagina: intro + voetnoot van de prijstabel
   // gelijktrekken met de echte tarieven (illustratieve tekst weghalen).
@@ -459,10 +426,10 @@ async function run() {
     console.log('✓ /lidmaatschap: prijstabel-intro en voetnoot geactualiseerd')
   }
 
-  // ---- Adres De Hooiberg corrigeren (Dorsvloer 25) + postcodes ----------
-  await patchIfExists('locatie-hooiberg', {street: 'Dorsvloer 25', city: '7623 DX Borne'})
-  await patchIfExists('locatie-wooldrik', {city: '7621 AH Borne'})
-  console.log('✓ locatie-adressen bijgewerkt (indien aanwezig)')
+  // ---- Adres De Hooiberg corrigeren (Dorsvloer 25) + postcodes + volgorde --
+  await patchIfExists('locatie-hooiberg', {street: 'Dorsvloer 25', city: '7623 DX Borne', sortOrder: 1})
+  await patchIfExists('locatie-wooldrik', {city: '7621 AH Borne', sortOrder: 0})
+  console.log('✓ locatie-adressen en volgorde bijgewerkt (indien aanwezig)')
 
   // ---- Reviews ophalen voor testimonials --------------------------------
   const reviewIds: string[] = await client.fetch(

@@ -114,14 +114,8 @@ export const siteSettings = defineType({
       initialValue: 'Contact',
       group: 'footer',
     }),
-    defineField({
-      name: 'addressLines',
-      title: 'Adres',
-      description: 'Elke regel op een nieuwe regel',
-      type: 'text',
-      rows: 3,
-      group: 'footer',
-    }),
+    // Het adresblok komt automatisch uit de "Locatie"-documenten (zelfde
+    // bron als het trainingsrooster) — geen los adresveld meer.
     defineField({
       name: 'email',
       title: 'E-mailadres',

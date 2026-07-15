@@ -33,6 +33,20 @@ export const location = defineType({
       type: 'url',
       validation: (rule) => rule.uri({scheme: ['http', 'https']}),
     }),
+    defineField({
+      name: 'sortOrder',
+      title: 'Volgorde',
+      description: 'Bepaalt de volgorde in footer en contactblok (laag = eerst)',
+      type: 'number',
+      initialValue: 0,
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Volgorde',
+      name: 'sortOrder',
+      by: [{field: 'sortOrder', direction: 'asc'}],
+    },
   ],
   preview: {
     select: {title: 'name', street: 'street', city: 'city'},

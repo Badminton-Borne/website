@@ -190,6 +190,7 @@ export const HOME_FALLBACK: HomePageData = {
 
 export const SETTINGS_FALLBACK: SiteSettingsData = {
   mainNav: [
+    { _key: "n0", label: "Home", href: "/" },
     { _key: "n1", label: "Over ons", href: "/over-ons" },
     { _key: "n2", label: "Badminton", href: "/badminton" },
     { _key: "n3", label: "Trainingen", href: "/trainingen" },
@@ -234,7 +235,20 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
     link: "/nieuwe-hal",
   },
   contactTitle: "Contact",
-  addressLines: "Nieuwe sporthal Borne\n[adres volgt — vanaf augustus]",
+  locations: [
+    {
+      _id: "locatie-wooldrik",
+      name: "'t Wooldrik Hal B (nieuwe sporthal)",
+      street: "'t Wooldrik 1",
+      city: "7621 AH Borne",
+    },
+    {
+      _id: "locatie-hooiberg",
+      name: "De Hooiberg",
+      street: "Dorsvloer 25",
+      city: "7623 DX Borne",
+    },
+  ],
   email: "info@badmintonborne.nl",
   phone: "06 81 05 60 15",
   socialLinks: [
@@ -266,7 +280,6 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
 const CONTACT_SETTINGS = {
   email: SETTINGS_FALLBACK.email,
   phone: SETTINGS_FALLBACK.phone,
-  addressLines: SETTINGS_FALLBACK.addressLines,
   socialLinks: [
     { _key: "s1", label: "Instagram", href: "#" },
     { _key: "s2", label: "Facebook", href: "#" },
@@ -285,58 +298,44 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
         eyebrow: "Lidmaatschap",
         heading: "Kies je pakket",
         intro:
-          "Altijd inclusief shuttles en begeleiding. Eerste maand gratis, daarna per kwartaal — maandelijks opzegbaar.",
+          "Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis — daarna maandelijks opzegbaar.",
         packages: [
           {
             _id: "pkg-jeugd",
             title: "Jeugd",
-            description: "Tot 18 jaar. Training met leeftijdsgenoten.",
-            price: 36,
-            priceSuffix: "per kwartaal*",
+            description: "T/m 18 jaar. Training met leeftijdsgenoten.",
+            price: 18.5,
+            priceSuffix: "per maand",
             features: [
               "Wekelijkse jeugdtraining",
               "Racket lenen kan altijd",
-              "Jeugdtoernooien en clubactiviteiten",
+              "Shuttles inbegrepen",
+              "Competitie mogelijk (toeslag € 50 p.p. per seizoen)",
             ],
             highlighted: false,
-            ctaLabel: "Kies Jeugd",
+            ctaLabel: "Aanmelden",
             ctaHref: "/lid-worden",
           },
           {
-            _id: "pkg-recreatief",
-            title: "Recreatief",
-            description: "Volwassenen. Vrij spelen op vaste avonden.",
-            price: 48,
-            priceSuffix: "per kwartaal*",
+            _id: "pkg-senioren",
+            title: "Senioren",
+            description: "Volwassenen. Vrij spelen én training op vaste avonden.",
+            price: 26,
+            priceSuffix: "per maand",
             features: [
-              "Elke week vrij spelen",
+              "Elke week vrij spelen én training",
               "Shuttles inbegrepen",
               "Gezellige derde helft",
-              "Clubtoernooien en activiteiten",
+              "Competitie mogelijk (toeslag per team)",
             ],
             highlighted: true,
             highlightLabel: "Meest gekozen",
-            ctaLabel: "Kies Recreatief",
-            ctaHref: "/lid-worden",
-          },
-          {
-            _id: "pkg-competitie",
-            title: "Competitie",
-            description: "Training én wedstrijden namens Borne.",
-            price: 66,
-            priceSuffix: "per kwartaal*",
-            features: [
-              "Alles uit Recreatief",
-              "Wekelijkse competitietraining",
-              "Bondscontributie inbegrepen",
-            ],
-            highlighted: false,
-            ctaLabel: "Kies Competitie",
+            ctaLabel: "Aanmelden",
             ctaHref: "/lid-worden",
           },
         ],
         footnote:
-          "*Bedragen ter illustratie — actuele tarieven checken vóór publicatie. Eerste maand altijd gratis.",
+          "Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten — de toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.",
       },
       {
         _type: "comparisonSection",
@@ -522,6 +521,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
         intro:
           "Twijfel je nog, of wil je gewoon een keer komen kijken? Stuur een berichtje — we reageren meestal binnen een dag.",
         settings: CONTACT_SETTINGS,
+        locations: SETTINGS_FALLBACK.locations,
       },
       {
         _type: "agendaSection",
