@@ -625,7 +625,7 @@ async function run() {
       ],
       '*Richtwaarde ter illustratie; afhankelijk van intensiteit.',
     ),
-    trainingTimes('Wanneer we spelen', {label: 'Alle trainingstijden', href: '/trainingen'}),
+    trainingTimes('Wanneer we spelen'),
   ]
   if (reviewIds.length) {
     volwassenenSections.push(
@@ -802,7 +802,7 @@ async function run() {
         ['Geen verplichtingen', 'De eerste maand is gratis. Je zit nergens aan vast.'],
         ['Alle leeftijden', 'Van 8 tot 80 en van eerste keer tot competitie — iedereen is welkom.'],
       ]),
-      trainingTimes('Wanneer je kunt langskomen', {label: 'Alle trainingstijden', href: '/trainingen'}),
+      trainingTimes('Wanneer je kunt langskomen'),
       ctaBanner('Plan je eerste bezoek.', 'Vul het formulier in', FORM_EERSTE_BEZOEK, 'lime', true),
       faqList('Veelgestelde vragen', faqProbeer),
     ],

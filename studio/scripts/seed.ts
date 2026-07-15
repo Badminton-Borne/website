@@ -388,7 +388,7 @@ async function run() {
         _key: key(),
         eyebrow: 'Speelschema',
         heading: 'Trainingstijden',
-        link: cta('Alle tijden', '/trainingen'),
+        // Geen "Alle tijden"-link: het blok toont het volledige rooster al
       },
       {
         _type: 'agendaSection',

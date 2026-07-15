@@ -25,7 +25,9 @@ export const trainingTimes = defineType({
     }),
     defineField({
       name: 'link',
-      title: 'Link naar alle tijden',
+      title: 'Tekstlink (optioneel)',
+      description:
+        'Bv. "Plan je eerste bezoek". Het blok toont het volledige rooster al, dus een "alle tijden"-link is niet nodig.',
       type: 'cta',
     }),
   ],
