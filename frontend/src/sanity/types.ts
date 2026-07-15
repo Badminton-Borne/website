@@ -209,7 +209,8 @@ export interface TeamMemberCard {
   name?: string | null;
   role?: string | null;
   group?: string | null;
-  yearsExperience?: number | null;
+  /** Jaartal waarin dit teamlid begon — de site rekent er "X jaar ervaring" van uit. */
+  activeSince?: number | null;
   photo?: SanityImage | null;
   bio?: string | null;
 }

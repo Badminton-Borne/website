@@ -54,8 +54,14 @@ export function formatEventMonth(date: string | null | undefined): string {
   return capitalizeDay(month.replace(/\.$/, ""));
 }
 
-/** 12 → "12 jaar ervaring", 1 → "1 jaar ervaring", leeg → "" (chip verbergen) */
-export function experienceChip(years: number | null | undefined): string {
-  if (years == null) return "";
+/**
+ * Startjaartal → "X jaar ervaring", berekend t.o.v. vandaag zodat het nooit
+ * handmatig bijgewerkt hoeft. 2008 → "18 jaar ervaring" (in 2026).
+ * Leeg of korter dan een jaar actief → "" (chip verbergen).
+ */
+export function experienceChip(activeSince: number | null | undefined): string {
+  if (activeSince == null) return "";
+  const years = new Date().getFullYear() - activeSince;
+  if (years < 1) return "";
   return `${years} jaar ervaring`;
 }

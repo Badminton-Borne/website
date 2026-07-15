@@ -34,11 +34,12 @@ export const teamMember = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'yearsExperience',
-      title: 'Jaren ervaring',
-      description: 'Wordt de chip "X jaar ervaring" op de foto. Leeg = geen chip.',
+      name: 'activeSince',
+      title: 'Actief sinds (jaartal)',
+      description:
+        'Bv. 2008. De site rekent hier zelf de chip "X jaar ervaring" uit — hoeft dus nooit meer bijgewerkt te worden. Leeg = geen chip.',
       type: 'number',
-      validation: (rule) => rule.min(0).integer(),
+      validation: (rule) => rule.min(1950).max(new Date().getFullYear()).integer(),
     }),
     defineField({
       name: 'photo',

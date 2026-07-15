@@ -96,11 +96,11 @@ const SECTION_FIELDS = `
       eyebrow,
       heading,
       "trainers": *[_type == "teamMember" && group == "trainer"] | order(sortOrder asc, name asc){
-        _id, name, role, group, yearsExperience, bio,
+        _id, name, role, group, activeSince, bio,
         photo{${IMAGE_FIELDS}}
       },
       "board": *[_type == "teamMember" && group == "bestuur"] | order(sortOrder asc, name asc){
-        _id, name, role, group, yearsExperience, bio,
+        _id, name, role, group, activeSince, bio,
         photo{${IMAGE_FIELDS}}
       }
     },
