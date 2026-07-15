@@ -5,8 +5,10 @@ import { useEffect, useRef } from "react";
 /**
  * Game-logica van de easter-egg minigame (zie MiniGameZone.tsx voor de
  * wrapper): binnen de zone wordt de cursor een badmintonracket en vliegt er
- * elke 10 seconden een shuttle in een rechte lijn voorbij. Raak = punt voor
- * de bezoeker, mis = punt voor de website. Alleen desktop/muis; volledig
+ * elke 10 seconden een shuttle in een rechte lijn voorbij. Er wordt alleen
+ * gescoord als de bezoeker tijdens de vlucht slaat (klikt): raak = punt voor
+ * de bezoeker, mis = punt voor de website. Vliegt de shuttle ongemoeid
+ * voorbij, dan gebeurt er niets. Alleen desktop/muis; volledig
  * uitgeschakeld bij prefers-reduced-motion. De overlay is pointer-events:none,
  * dus knoppen en links blijven altijd gewoon klikbaar.
  *
@@ -89,7 +91,13 @@ export default function MiniGameOverlay({
     let swinging = false;
     let lastX: number | undefined;
     let swayTimeout: ReturnType<typeof setTimeout> | undefined;
-    let fly: { el: HTMLElement; x: number; y: number; hit: boolean } | null = null;
+    let fly: {
+      el: HTMLElement;
+      x: number;
+      y: number;
+      hit: boolean;
+      swung: boolean;
+    } | null = null;
     let flyRaf = 0;
     let toastTimeouts: ReturnType<typeof setTimeout>[] = [];
 
@@ -227,7 +235,7 @@ export default function MiniGameOverlay({
 
       const dur = 700 + Math.random() * 5300;
       const t0 = performance.now();
-      const current = { el, x: from.x, y: from.y, hit: false };
+      const current = { el, x: from.x, y: from.y, hit: false, swung: false };
       fly = current;
       const ang = (Math.atan2(-(to.x - from.x), to.y - from.y) * 180) / Math.PI;
 
@@ -237,9 +245,13 @@ export default function MiniGameOverlay({
         if (t >= 1) {
           fly = null;
           el.remove();
-          score.site++;
-          writeScore(score);
-          toast("Gemist!", false);
+          // Alleen een punt voor de website als de bezoeker wél sloeg maar
+          // miste. Vloog de shuttle ongemoeid voorbij: niets aan de hand.
+          if (current.swung) {
+            score.site++;
+            writeScore(score);
+            toast("Gemist!", false);
+          }
           return;
         }
         current.x = from.x + (to.x - from.x) * t;
@@ -304,6 +316,9 @@ export default function MiniGameOverlay({
 
       const p = local(e);
       if (hitFly(p.x, p.y)) return;
+      // Geslagen maar niet geraakt: onthoud de poging — de website scoort
+      // pas als deze shuttle daarna ongeraakt de zone verlaat.
+      if (fly) fly.swung = true;
 
       const target = (e.target as Element | null)?.closest?.("a, button, [data-smack]");
       if (target && zone.contains(target)) {
