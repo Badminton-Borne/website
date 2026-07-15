@@ -90,8 +90,12 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
     };
   }, [menuOpen]);
 
+  // Home (de locale-root, bv. /nl) telt alleen bij een exacte match —
+  // anders "begint" elke pagina met de home-URL en is Home altijd actief.
   const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+    href === `/${locale}`
+      ? pathname === href || pathname === `${href}/`
+      : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <>
