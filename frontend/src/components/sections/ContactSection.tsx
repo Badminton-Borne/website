@@ -48,17 +48,20 @@ export function ContactSection({ section }: { section: ContactData }) {
                 </a>
               </InfoBlock>
             )}
+            {info?.phone && (
+              <InfoBlock label="Telefoon">
+                <a
+                  href={`tel:${info.phone.replace(/\s/g, "")}`}
+                  className="text-base font-semibold text-white transition-colors hover:text-lime-400"
+                >
+                  {info.phone}
+                </a>
+              </InfoBlock>
+            )}
             {info?.addressLines && (
               <InfoBlock label="Locatie">
                 <p className="whitespace-pre-line text-base leading-relaxed text-white">
                   {info.addressLines}
-                </p>
-              </InfoBlock>
-            )}
-            {info?.playTimes && (
-              <InfoBlock label="Speelavonden">
-                <p className="text-base leading-relaxed text-white">
-                  {info.playTimes}
                 </p>
               </InfoBlock>
             )}

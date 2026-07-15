@@ -118,7 +118,7 @@ const SECTION_FIELDS = `
       heading,
       intro,
       "settings": *[_id == "siteSettings"][0]{
-        email, addressLines, playTimes,
+        email, phone, addressLines,
         socialLinks[]{_key, label, href}
       }
     },
@@ -210,12 +210,12 @@ export const SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   headerSecondaryCta{label, href},
   headerPrimaryCta{label, href},
   announcement{enabled, text, linkLabel, link},
-  playTimes,
   footerTagline,
   footerColumns[]{_key, title, links[]{_key, label, href}},
   contactTitle,
   addressLines,
   email,
+  phone,
   socialLinks[]{_key, label, href},
   legalLinks[]{_key, label, href},
   copyright,

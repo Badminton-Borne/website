@@ -66,7 +66,12 @@ function GroupSchedule({ label, rows }: { label: string; rows: EffectiveRow[] })
         {label}
       </h3>
       <ul className="flex flex-col">
-        {rows.map((row, index) => (
+        {rows.map((row, index) => {
+          // Zelfde dag als de rij erboven (bv. training + vrij spelen op
+          // maandag): dagnaam niet herhalen. Voor screenreaders blijft de
+          // dag wel op elke rij staan (sr-only).
+          const repeatDay = index > 0 && rows[index - 1].day === row.day;
+          return (
           <li
             key={row.id}
             className={`flex flex-col gap-1.5 border-t border-white/10 px-1 py-4 lg:grid lg:grid-cols-[130px_1fr_auto_minmax(0,1.15fr)] lg:items-center lg:gap-6 lg:px-2 lg:py-[18px] ${
@@ -78,17 +83,19 @@ function GroupSchedule({ label, rows }: { label: string; rows: EffectiveRow[] })
               className="hidden font-display text-base font-bold uppercase text-lime-400 lg:block"
               aria-hidden="true"
             >
-              {capitalizeDay(row.day)}
+              {!repeatDay && capitalizeDay(row.day)}
             </span>
 
             {/* Activiteit (+ aangepast-chip); mobiel met dag ervoor */}
             <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-              <span
-                className="font-display text-[13px] font-bold uppercase text-lime-400 lg:hidden"
-                aria-hidden="true"
-              >
-                {abbreviateDay(row.day)}
-              </span>
+              {!repeatDay && (
+                <span
+                  className="font-display text-[13px] font-bold uppercase text-lime-400 lg:hidden"
+                  aria-hidden="true"
+                >
+                  {abbreviateDay(row.day)}
+                </span>
+              )}
               <span className="sr-only">{capitalizeDay(row.day)} </span>
               <span className="text-[15px] font-bold text-white lg:text-base">
                 {row.activity
@@ -117,7 +124,8 @@ function GroupSchedule({ label, rows }: { label: string; rows: EffectiveRow[] })
               </span>
             )}
           </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );

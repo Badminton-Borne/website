@@ -250,8 +250,8 @@ export interface ContactSection {
   /** Clubinfo uit siteSettings — zelfde bron als de footer. */
   settings?: {
     email?: string | null;
+    phone?: string | null;
     addressLines?: string | null;
-    playTimes?: string | null;
     socialLinks?: Array<Cta & { _key: string }> | null;
   } | null;
 }
@@ -410,12 +410,12 @@ export interface SiteSettingsData {
   headerSecondaryCta?: Cta | null;
   headerPrimaryCta?: Cta | null;
   announcement?: AnnouncementBarData | null;
-  playTimes?: string | null;
   footerTagline?: string | null;
   footerColumns?: FooterColumn[] | null;
   contactTitle?: string | null;
   addressLines?: string | null;
   email?: string | null;
+  phone?: string | null;
   socialLinks?: Array<Cta & { _key: string }> | null;
   legalLinks?: Array<Cta & { _key: string }> | null;
   copyright?: string | null;

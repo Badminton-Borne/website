@@ -471,7 +471,7 @@ async function run() {
       linkLabel: 'Lees meer',
       link: '/nieuwe-hal',
     },
-    playTimes: 'Maandag 19:00 – 22:00 · Donderdag 19:00 – 21:00',
+    phone: '06 81 05 60 15',
     footerTagline:
       'Elke smash telt. Badminton voor heel Borne — van eerste shuttle tot competitie.',
     footerColumns: [
@@ -534,10 +534,10 @@ async function run() {
         linkLabel: 'Lees meer',
         link: '/nieuwe-hal',
       },
-      playTimes: 'Maandag 19:00 – 22:00 · Donderdag 19:00 – 21:00',
+      phone: '06 81 05 60 15',
     })
     .commit()
-  console.log('✓ siteSettings: aankondigingsbalk + speelavonden aangevuld (indien leeg)')
+  console.log('✓ siteSettings: aankondigingsbalk + telefoonnummer aangevuld (indien leeg)')
 
   console.log('\nKlaar! Open de Studio en publiceer/controleer de content.')
 }

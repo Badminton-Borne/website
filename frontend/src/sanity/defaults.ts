@@ -233,10 +233,10 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
     linkLabel: "Lees meer",
     link: "/nieuwe-hal",
   },
-  playTimes: "Maandag 19:00 – 22:00 · Donderdag 19:00 – 21:00",
   contactTitle: "Contact",
   addressLines: "Nieuwe sporthal Borne\n[adres volgt — vanaf augustus]",
   email: "info@badmintonborne.nl",
+  phone: "06 81 05 60 15",
   socialLinks: [
     { _key: "s1", label: "Instagram", href: "#" },
     { _key: "s2", label: "Facebook", href: "#" },
@@ -265,8 +265,8 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
 
 const CONTACT_SETTINGS = {
   email: SETTINGS_FALLBACK.email,
+  phone: SETTINGS_FALLBACK.phone,
   addressLines: SETTINGS_FALLBACK.addressLines,
-  playTimes: SETTINGS_FALLBACK.playTimes,
   socialLinks: [
     { _key: "s1", label: "Instagram", href: "#" },
     { _key: "s2", label: "Facebook", href: "#" },

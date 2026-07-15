@@ -130,9 +130,9 @@ export const siteSettings = defineType({
       validation: (rule) => rule.email(),
     }),
     defineField({
-      name: 'playTimes',
-      title: 'Speelavonden (één regel)',
-      description: 'Bv. "Maandag 18:30 – 21:30 · Donderdag 20:00 – 22:00" — o.a. in het contactblok',
+      name: 'phone',
+      title: 'Telefoonnummer',
+      description: 'Bv. "06 81 05 60 15" — getoond in de footer en op de contactpagina',
       type: 'string',
       group: 'footer',
     }),

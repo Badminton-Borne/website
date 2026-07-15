@@ -76,6 +76,14 @@ export function SiteFooter({ settings, locale }: SiteFooterProps) {
                 {settings.email}
               </a>
             )}
+            {settings.phone && (
+              <a
+                href={`tel:${settings.phone.replace(/\s/g, "")}`}
+                className="text-sm text-white transition-colors hover:text-lime-400 lg:text-[15px]"
+              >
+                {settings.phone}
+              </a>
+            )}
             {(settings.socialLinks?.length ?? 0) > 0 && (
               <div className="hidden gap-4 lg:flex">
                 {settings.socialLinks!.map((link) => (
