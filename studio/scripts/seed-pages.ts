@@ -1018,6 +1018,7 @@ async function run() {
   await page('page-badminton-vs-andere-sporten', {
     title: 'Badminton vs andere sporten',
     slug: {_type: 'slug', current: 'badminton-vs-andere-sporten'},
+    pageGroup: 'vergelijking',
     intro:
       'Padel, tennis, squash — allemaal leuk. Maar hoe verhoudt badminton zich? We zetten het eerlijk naast elkaar.',
     sections: [
@@ -1095,6 +1096,7 @@ async function run() {
   await page('page-badminton-vs-padel', {
     title: 'Badminton vs padel',
     slug: {_type: 'slug', current: 'badminton-vs-padel'},
+    pageGroup: 'vergelijking',
     intro:
       'Padel is booming — ook in en rond Borne wil iedereen het proberen. Maar is padel of badminton de slimste keuze? We vergelijken beide sporten eerlijk: snelheid, kosten en waar je in Borne terechtkunt.',
     sections: [
@@ -1166,6 +1168,7 @@ async function run() {
   await page('page-badminton-vs-tennis', {
     title: 'Badminton vs tennis',
     slug: {_type: 'slug', current: 'badminton-vs-tennis'},
+    pageGroup: 'vergelijking',
     intro:
       'Tennis en badminton lijken familie, maar spelen totaal anders. Denk je aan tennis in Borne? Vergelijk het eerst met badminton: sneller, explosiever en het hele jaar door binnen.',
     sections: [
@@ -1237,6 +1240,7 @@ async function run() {
   await page('page-badminton-vs-squash', {
     title: 'Badminton vs squash',
     slug: {_type: 'slug', current: 'badminton-vs-squash'},
+    pageGroup: 'vergelijking',
     intro:
       'Squash en badminton zijn allebei snelle binnensporten. Toch is badminton socialer, veelzijdiger en voor élke leeftijd. Overweeg je squash in Borne? Lees eerst hoe het zich verhoudt tot badminton.',
     sections: [
@@ -1462,6 +1466,7 @@ async function run() {
     await page(`page-loc-${p.slug}`, {
       title: `Badminton in ${p.name}`,
       slug: {_type: 'slug', current: `badminton-${p.slug}`},
+      pageGroup: 'buurt',
       intro: p.intro,
       sections: [
         sportHighlight(`Badminton in ${p.name}`, p.hlHeading, p.hlBody, [p.stat, ['1e maand', 'gratis']]),
@@ -1496,6 +1501,7 @@ async function run() {
   await page('page-badminton-in-de-buurt', {
     title: 'Badminton in de buurt',
     slug: {_type: 'slug', current: 'badminton-in-de-buurt'},
+    pageGroup: 'buurt',
     intro:
       'Woon je in Borne of in een van de dorpen en steden eromheen? Bij Badminton Borne ben je altijd dichtbij. Kies je plaats en zie waarom je bij ons op je plek zit.',
     sections: [

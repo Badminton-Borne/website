@@ -7,11 +7,13 @@ import {
   CommentIcon,
   CreditCardIcon,
   DocumentIcon,
+  DocumentsIcon,
   DocumentTextIcon,
   EnvelopeIcon,
   HelpCircleIcon,
   HomeIcon,
   PinIcon,
+  SortIcon,
   StarIcon,
   UsersIcon,
 } from '@sanity/icons'
@@ -41,7 +43,52 @@ export const structure: StructureResolver = (S) =>
         .title('Homepage')
         .icon(HomeIcon)
         .child(S.document().schemaType('homePage').documentId('homePage').title('Homepage')),
-      S.documentTypeListItem('page').title("Pagina's").icon(DocumentIcon),
+      // Pagina's gegroepeerd op pageGroup, zodat de SEO-landingspagina's
+      // ("Badminton in <plaats>", "Badminton vs <sport>") de gewone
+      // pagina's niet ondersneeuwen.
+      S.listItem()
+        .title("Pagina's")
+        .icon(DocumentIcon)
+        .child(
+          S.list()
+            .title("Pagina's")
+            .items([
+              S.listItem()
+                .title("Gewone pagina's")
+                .icon(DocumentIcon)
+                .child(
+                  S.documentList()
+                    .title("Gewone pagina's")
+                    .schemaType('page')
+                    .filter('_type == "page" && (!defined(pageGroup) || pageGroup == "standaard")')
+                    .apiVersion('2026-02-01'),
+                ),
+              S.listItem()
+                .title('SEO · Badminton in de buurt')
+                .icon(PinIcon)
+                .child(
+                  S.documentList()
+                    .title('SEO · Badminton in de buurt')
+                    .schemaType('page')
+                    .filter('_type == "page" && pageGroup == "buurt"')
+                    .apiVersion('2026-02-01')
+                    .initialValueTemplates([S.initialValueTemplateItem('page-buurt')]),
+                ),
+              S.listItem()
+                .title('SEO · Badminton vs sporten')
+                .icon(SortIcon)
+                .child(
+                  S.documentList()
+                    .title('SEO · Badminton vs sporten')
+                    .schemaType('page')
+                    .filter('_type == "page" && pageGroup == "vergelijking"')
+                    .apiVersion('2026-02-01')
+                    .initialValueTemplates([S.initialValueTemplateItem('page-vergelijking')]),
+                ),
+              S.divider(),
+              S.documentTypeListItem('page').title("Alle pagina's").icon(DocumentsIcon),
+            ]),
+        ),
       S.listItem()
         .title('Site-instellingen')
         .icon(CogIcon)

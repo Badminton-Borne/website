@@ -33,6 +33,23 @@ export const page = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'pageGroup',
+      title: 'Paginagroep',
+      description:
+        'Bepaalt onder welk kopje deze pagina in het menu links staat — handig om SEO-pagina\'s gescheiden te houden van de gewone pagina\'s',
+      type: 'string',
+      group: 'content',
+      options: {
+        list: [
+          {title: 'Standaard', value: 'standaard'},
+          {title: 'SEO — Badminton in de buurt', value: 'buurt'},
+          {title: 'SEO — Badminton vs andere sporten', value: 'vergelijking'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'standaard',
+    }),
+    defineField({
       name: 'intro',
       title: 'Intro',
       description: 'Korte introductie onder de paginatitel (optioneel)',

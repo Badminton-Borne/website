@@ -23,8 +23,22 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
-    templates: (templates) =>
-      templates.filter(({schemaType}) => !SINGLETON_TYPES.has(schemaType)),
+    templates: (templates) => [
+      ...templates.filter(({schemaType}) => !SINGLETON_TYPES.has(schemaType)),
+      // "Nieuw document" in de SEO-lijsten zet de paginagroep alvast goed
+      {
+        id: 'page-buurt',
+        title: 'SEO-pagina · Badminton in de buurt',
+        schemaType: 'page',
+        value: {pageGroup: 'buurt'},
+      },
+      {
+        id: 'page-vergelijking',
+        title: 'SEO-pagina · Badminton vs sporten',
+        schemaType: 'page',
+        value: {pageGroup: 'vergelijking'},
+      },
+    ],
   },
 
   document: {
