@@ -22,7 +22,7 @@ export function HeroSection({
   return (
     <section className="bg-navy-900">
       <MiniGameZone>
-        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 pb-14 pt-[calc(var(--header-h)+48px)] lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-[72px] lg:px-20 lg:pb-24 lg:pt-[calc(var(--header-h)+88px)]">
+        <div className="mx-auto grid max-w-[1280px] gap-10 px-5 pb-14 pt-[calc(var(--header-h)+48px)] lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-[72px] lg:px-20 lg:pb-24 lg:pt-[calc(var(--header-h)+88px)]">
           <div className="flex flex-col items-start gap-5 lg:gap-6">
             {section.eyebrow && <Eyebrow>{section.eyebrow}</Eyebrow>}
             <h1 className="font-display text-hero font-black uppercase text-white">

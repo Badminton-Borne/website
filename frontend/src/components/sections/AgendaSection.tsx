@@ -26,7 +26,7 @@ export function AgendaSection({
 
   return (
     <section className="bg-navy-950 py-14 lg:py-24">
-      <div className="mx-auto flex max-w-[1080px] flex-col gap-6 px-5 lg:gap-9 lg:px-20">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-6 px-5 lg:gap-9 lg:px-20">
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-col items-start gap-4">
             {section.eyebrow && (

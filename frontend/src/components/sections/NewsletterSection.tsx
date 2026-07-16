@@ -42,7 +42,7 @@ export function NewsletterSection({ section }: { section: NewsletterData }) {
 
   return (
     <section className="bg-lime-400 py-14 lg:py-[72px]">
-      <div className="mx-auto grid max-w-[1080px] items-center gap-8 px-5 lg:grid-cols-[1.2fr_1fr] lg:gap-14 lg:px-20">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-8 px-5 lg:grid-cols-[1.2fr_1fr] lg:gap-14 lg:px-20">
         <Reveal className="flex flex-col gap-3">
           <h2 className="font-display text-[32px] font-black uppercase leading-[1.05] tracking-tight text-navy-900 lg:text-[40px]">
             {section.heading}

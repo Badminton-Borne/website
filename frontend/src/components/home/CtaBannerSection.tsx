@@ -16,7 +16,7 @@ export function CtaBannerSection({
   const isNavy = theme === "navy";
 
   const inner = (
-    <div className="mx-auto flex max-w-[1080px] flex-col items-center gap-5 px-6 py-14 text-center lg:gap-[26px] lg:px-20 lg:py-[88px]">
+    <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-5 px-6 py-14 text-center lg:gap-[26px] lg:px-20 lg:py-[88px]">
       <Reveal>
         <h2
           className={`whitespace-pre-line font-display font-black uppercase ${
