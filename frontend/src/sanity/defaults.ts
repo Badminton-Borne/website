@@ -25,7 +25,7 @@ export const HOME_FALLBACK: HomePageData = {
       heading: "De snelste sport van Borne",
       tagline: "Van eerste keer tot competitie. Alle leeftijden, alle niveaus.",
       primaryCta: { label: "Plan je eerste bezoek", href: "/probeer-gratis" },
-      secondaryCta: { label: "Bekijk trainingstijden", href: "/trainingen" },
+      secondaryCta: { label: "Bekijk trainingstijden", href: "/tijden" },
       microcopy: MICROCOPY,
       videoUrl:
         "https://badmintonverenigingborne.nl/wordpress2/wp-content/uploads/2023/03/Badminton-Borne.mp4",
@@ -103,7 +103,7 @@ export const HOME_FALLBACK: HomePageData = {
       _key: "fallback-tijden",
       eyebrow: "Speelschema",
       heading: "Trainingstijden",
-      link: { label: "Alle tijden", href: "/trainingen" },
+      link: { label: "Alle tijden", href: "/tijden" },
       rows: (() => {
         const wooldrik = { name: "'t Wooldrik Hal B (nieuwe sporthal)", street: "'t Wooldrik 1", city: "Borne" };
         const hooiberg = { name: "De Hooiberg", street: "Dorsvloer 27", city: "Borne" };
@@ -193,7 +193,7 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
     { _key: "n0", label: "Home", href: "/" },
     { _key: "n1", label: "Over ons", href: "/over-ons" },
     { _key: "n2", label: "Badminton", href: "/badminton" },
-    { _key: "n3", label: "Tijden", href: "/trainingen" },
+    { _key: "n3", label: "Tijden", href: "/tijden" },
     { _key: "n4", label: "Jeugd", href: "/jeugd" },
     { _key: "n5", label: "Volwassenen", href: "/volwassenen" },
     { _key: "n6", label: "Competitie", href: "/competitie" },
@@ -220,7 +220,7 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
       _key: "c2",
       title: "Spelen",
       links: [
-        { _key: "l7", label: "Trainingen", href: "/trainingen" },
+        { _key: "l7", label: "Tijden", href: "/tijden" },
         { _key: "l8", label: "Jeugd", href: "/jeugd" },
         { _key: "l9", label: "Volwassenen", href: "/volwassenen" },
         { _key: "l10", label: "Competitie", href: "/competitie" },

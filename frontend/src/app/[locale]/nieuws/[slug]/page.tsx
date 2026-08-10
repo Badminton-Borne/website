@@ -12,6 +12,7 @@ import { AccentBar } from "@/components/ui/AccentBar";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { SanityImg } from "@/components/ui/SanityImg";
 import { formatNewsDate } from "@/lib/format";
+import { localizeHref, localizedPath } from "@/lib/links";
 import { getNewsArticle, getNewsSlugs } from "@/sanity/content";
 import { hasImage } from "@/sanity/image";
 import type { CtaBannerSection as CtaBannerData, SanityImage } from "@/sanity/types";
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: article.title ?? "Nieuws",
     description: article.excerpt ?? undefined,
+    alternates: { canonical: localizeHref(`/nieuws/${slug}`, locale) },
     openGraph: {
       title: article.title ?? "Nieuws",
       description: article.excerpt ?? undefined,
@@ -138,7 +140,7 @@ function buildJsonLd(
     ...(article.coverImage?.asset?.url
       ? { image: [article.coverImage.asset.url] }
       : {}),
-    mainEntityOfPage: `${siteUrl}/${locale}/nieuws/${article.slug}`,
+    mainEntityOfPage: `${siteUrl}${localizedPath(`/nieuws/${article.slug}`, locale)}`,
     author: { "@type": "Organization", name: "Badminton Vereniging Borne" },
     publisher: { "@type": "Organization", name: "Badminton Vereniging Borne" },
   };
@@ -167,8 +169,8 @@ export default async function NieuwsArtikelPage({ params }: PageProps) {
       <PageHero
         title={article.title ?? "Nieuws"}
         crumbs={[
-          { label: "Home", href: `/${locale}` },
-          { label: "Nieuws", href: `/${locale}/nieuws` },
+          { label: "Home", href: localizeHref("/", locale) },
+          { label: "Nieuws", href: localizeHref("/nieuws", locale) },
           { label: article.title ?? "Artikel" },
         ]}
         meta={
@@ -209,7 +211,7 @@ export default async function NieuwsArtikelPage({ params }: PageProps) {
         )}
 
         <div className="mx-auto w-full max-w-[720px]">
-          <ArrowLink href={`/${locale}/nieuws`} direction="left">
+          <ArrowLink href={localizeHref("/nieuws", locale)} direction="left">
             Al het nieuws
           </ArrowLink>
         </div>

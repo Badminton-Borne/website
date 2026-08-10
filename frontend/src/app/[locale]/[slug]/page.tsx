@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionRenderer } from "@/components/home/SectionRenderer";
+import { localizeHref, localizedPath } from "@/lib/links";
 import { getPage, getPageSlugs, getSiteSettings } from "@/sanity/content";
 
 interface PageProps {
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
+    alternates: { canonical: localizeHref(`/${slug}`, locale) },
     openGraph: {
       title,
       description,
@@ -47,8 +49,8 @@ function buildBreadcrumbJsonLd(title: string, slug: string, locale: string) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/${locale}` },
-      { "@type": "ListItem", position: 2, name: title, item: `${siteUrl}/${locale}/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}${localizedPath("/", locale)}` },
+      { "@type": "ListItem", position: 2, name: title, item: `${siteUrl}${localizedPath(`/${slug}`, locale)}` },
     ],
   };
 }
@@ -71,7 +73,7 @@ export default async function SubPage({ params }: PageProps) {
       <PageHero
         title={title}
         intro={page.intro}
-        crumbs={[{ label: "Home", href: `/${locale}` }, { label: title }]}
+        crumbs={[{ label: "Home", href: localizeHref("/", locale) }, { label: title }]}
       />
       <SectionRenderer sections={page.sections ?? []} locale={locale} />
       <script

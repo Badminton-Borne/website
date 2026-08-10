@@ -139,21 +139,6 @@ export function SiteFooter({ settings, locale }: SiteFooterProps) {
                 </a>
               ),
             )}
-            <span>
-              <Link
-                href={`/nl`}
-                className={locale === "nl" ? "text-white" : "transition-colors hover:text-lime-400"}
-              >
-                NL
-              </Link>
-              <span> / </span>
-              <Link
-                href={`/en`}
-                className={locale === "en" ? "text-white" : "transition-colors hover:text-lime-400"}
-              >
-                EN
-              </Link>
-            </span>
           </div>
         </div>
       </div>

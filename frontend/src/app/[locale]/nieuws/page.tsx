@@ -5,6 +5,7 @@ import { stegaClean } from "next-sanity";
 import { PageHero } from "@/components/site/PageHero";
 import { NewsCard } from "@/components/news/NewsCard";
 import { Reveal } from "@/components/fx/Reveal";
+import { localizeHref } from "@/lib/links";
 import { getNewsList } from "@/sanity/content";
 
 interface PageProps {
@@ -18,6 +19,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: "Nieuws",
     description:
       "Al het nieuws van Badminton Borne: clubnieuws, competitie, jeugd en evenementen.",
+    // De categorie-filter draait op ?categorie=…; die varianten wijzen allemaal
+    // terug naar het ongefilterde overzicht, zodat ze niet als duplicaten tellen.
+    alternates: { canonical: localizeHref("/nieuws", locale) },
     openGraph: {
       title: "Nieuws — Badminton Borne",
       description:
@@ -57,7 +61,7 @@ export default async function NieuwsPage({ params, searchParams }: PageProps) {
       <PageHero
         title="Nieuws"
         intro="Clubnieuws, competitie, jeugd en evenementen — alles wat er speelt bij Borne."
-        crumbs={[{ label: "Home", href: `/${locale}` }, { label: "Nieuws" }]}
+        crumbs={[{ label: "Home", href: localizeHref("/", locale) }, { label: "Nieuws" }]}
       />
 
       <div className="mx-auto flex max-w-[1280px] flex-col gap-8 px-5 py-14 lg:px-20 lg:py-20">
@@ -66,7 +70,7 @@ export default async function NieuwsPage({ params, searchParams }: PageProps) {
             <ul className="flex flex-wrap gap-2.5">
               <li>
                 <Link
-                  href={`/${locale}/nieuws`}
+                  href={localizeHref("/nieuws", locale)}
                   className={`${chipBase} ${
                     activeCategory === null
                       ? "bg-lime-400 text-navy-900"
@@ -80,7 +84,7 @@ export default async function NieuwsPage({ params, searchParams }: PageProps) {
               {categories.map((category) => (
                 <li key={category}>
                   <Link
-                    href={`/${locale}/nieuws?categorie=${encodeURIComponent(category)}`}
+                    href={`${localizeHref("/nieuws", locale)}?categorie=${encodeURIComponent(category)}`}
                     className={`${chipBase} ${
                       activeCategory === category
                         ? "bg-lime-400 text-navy-900"

@@ -48,21 +48,18 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const settings = await getSiteSettings();
-  const dir = locale === "ar" ? "rtl" : "ltr";
 
+  // NL-only tot na de livegang. Komt er weer een RTL-locale bij, dan hier
+  // dir afleiden uit de locale (ar → "rtl") en de skip-link vertalen.
   return (
     <html
       lang={locale}
-      dir={dir}
+      dir="ltr"
       className={`${unbounded.variable} ${hankenGrotesk.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
         <a href="#main-content" className="skip-link">
-          {locale === "ar"
-            ? "انتقل إلى المحتوى"
-            : locale === "en"
-              ? "Skip to content"
-              : "Ga naar inhoud"}
+          Ga naar inhoud
         </a>
         <NextIntlClientProvider messages={messages}>
           <SiteHeader settings={settings} locale={locale} />

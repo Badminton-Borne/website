@@ -13,49 +13,6 @@ interface SiteHeaderProps {
   locale: string;
 }
 
-function LocaleSwitch({
-  locale,
-  className = "",
-}: {
-  locale: string;
-  className?: string;
-}) {
-  const pathname = usePathname();
-
-  function pathFor(target: string) {
-    const segments = pathname.split("/");
-    if (segments[1] === locale) segments[1] = target;
-    else segments.splice(1, 0, target);
-    return segments.join("/") || `/${target}`;
-  }
-
-  return (
-    <span
-      className={`text-sm font-semibold ${className}`}
-      role="navigation"
-      aria-label="Taalkeuze"
-    >
-      {(["nl", "en"] as const).map((l, i) => (
-        <span key={l}>
-          {i > 0 && <span className="text-navy-300"> / </span>}
-          {l === locale ? (
-            <span className="text-white" aria-current="true">
-              {l.toUpperCase()}
-            </span>
-          ) : (
-            <Link
-              href={pathFor(l)}
-              className="text-navy-300 transition-colors hover:text-lime-400"
-            >
-              {l.toUpperCase()}
-            </Link>
-          )}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 export function SiteHeader({ settings, locale }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -90,10 +47,10 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
     };
   }, [menuOpen]);
 
-  // Home (de locale-root, bv. /nl) telt alleen bij een exacte match —
-  // anders "begint" elke pagina met de home-URL en is Home altijd actief.
+  // Home (de locale-root, "/" in het NL-only geval) telt alleen bij een exacte
+  // match — anders "begint" elke pagina met de home-URL en is Home altijd actief.
   const isActive = (href: string) =>
-    href === `/${locale}`
+    href === localizeHref("/", locale)
       ? pathname === href || pathname === `${href}/`
       : pathname === href || pathname.startsWith(`${href}/`);
 
@@ -128,7 +85,7 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
       )}
       <div className="flex items-center justify-between gap-6 px-5 py-3.5 lg:px-12 lg:py-[18px]">
         <Link
-          href={`/${locale}`}
+          href={localizeHref("/", locale)}
           className="shrink-0"
           aria-label="Badminton Borne — naar de homepage"
         >
@@ -163,7 +120,6 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
         </nav>
 
         <div className="hidden items-center gap-5 xl:flex">
-          <LocaleSwitch locale={locale} />
           {secondary?.label && (
             <BrandButton
               href={localizeHref(secondary.href, locale)}
@@ -278,9 +234,6 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
                 {secondary.label}
               </BrandButton>
             )}
-            <div className="pt-2 text-center">
-              <LocaleSwitch locale={locale} />
-            </div>
           </div>
         </div>
       )}

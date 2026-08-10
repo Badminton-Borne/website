@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://badmintonborne.nl";
+
 export const metadata: Metadata = {
+  // Basis voor relatieve metadata-URL's (o.a. alternates.canonical per pagina).
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Badminton Borne",
     template: "%s | Badminton Borne",

@@ -37,6 +37,196 @@ export type SegmentImage = {
   _type: "image";
 };
 
+export type NewsletterSignup = {
+  _id: string;
+  _type: "newsletterSignup";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  email?: string;
+  submittedAt?: string;
+};
+
+export type ContactSubmission = {
+  _id: string;
+  _type: "contactSubmission";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  submittedAt?: string;
+};
+
+export type NewsArticle = {
+  _id: string;
+  _type: "newsArticle";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  publishedAt: string;
+  excerpt?: string;
+  coverImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt: string;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  category?: "Club" | "Competitie" | "Jeugd" | "Evenement";
+  featured?: boolean;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
+};
+
+export type Sponsor = {
+  _id: string;
+  _type: "sponsor";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  url?: string;
+  sortOrder?: number;
+};
+
+export type Event = {
+  _id: string;
+  _type: "event";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: string;
+  date: string;
+  ctaLabel?: string;
+  ctaLink?: string;
+  featured?: boolean;
+};
+
+export type HonoraryMember = {
+  _id: string;
+  _type: "honoraryMember";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  memberSince?: number;
+  photo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  contribution: string;
+  sortOrder?: number;
+};
+
+export type TeamMember = {
+  _id: string;
+  _type: "teamMember";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  role: string;
+  group: "trainer" | "bestuur";
+  activeSince?: number;
+  photo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  bio?: string;
+  sortOrder?: number;
+};
+
+export type MembershipPackage = {
+  _id: string;
+  _type: "membershipPackage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: string;
+  price: number;
+  priceSuffix?: string;
+  features?: Array<string>;
+  highlighted?: boolean;
+  highlightLabel?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  sortOrder?: number;
+};
+
 export type FaqItem = {
   _id: string;
   _type: "faqItem";
@@ -59,6 +249,13 @@ export type Review = {
   rating: number;
 };
 
+export type LocationReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "location";
+};
+
 export type TrainingTime = {
   _id: string;
   _type: "trainingTime";
@@ -66,6 +263,7 @@ export type TrainingTime = {
   _updatedAt: string;
   _rev: string;
   group: string;
+  activity?: "training" | "vrij spelen";
   day:
     | "maandag"
     | "dinsdag"
@@ -76,7 +274,36 @@ export type TrainingTime = {
     | "zondag";
   startTime: string;
   endTime: string;
+  location?: LocationReference;
+  override?: {
+    enabled?: boolean;
+    note?: string;
+    day?:
+      | "maandag"
+      | "dinsdag"
+      | "woensdag"
+      | "donderdag"
+      | "vrijdag"
+      | "zaterdag"
+      | "zondag";
+    startTime?: string;
+    endTime?: string;
+    location?: string;
+  };
   order?: number;
+};
+
+export type Location = {
+  _id: string;
+  _type: "location";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  street?: string;
+  city?: string;
+  mapsUrl?: string;
+  sortOrder?: number;
 };
 
 export type SiteSettings = {
@@ -85,6 +312,12 @@ export type SiteSettings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  announcement?: {
+    enabled?: boolean;
+    text?: string;
+    linkLabel?: string;
+    link?: string;
+  };
   mainNav?: Array<
     {
       _key: string;
@@ -104,8 +337,8 @@ export type SiteSettings = {
     _key: string;
   }>;
   contactTitle?: string;
-  addressLines?: string;
   email?: string;
+  phone?: string;
   socialLinks?: Array<
     {
       _key: string;
@@ -132,37 +365,50 @@ export type SiteSettings = {
   };
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
-
 export type Cta = {
   _type: "cta";
   label: string;
   href: string;
 };
 
-export type HomePage = {
+export type Page = {
   _id: string;
-  _type: "homePage";
+  _type: "page";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  language?: string;
+  title: string;
+  slug: Slug;
+  pageGroup?: "standaard" | "buurt" | "vergelijking";
+  intro?: string;
   sections?: Array<
+    | ({
+        _key: string;
+      } & PricingSection)
+    | ({
+        _key: string;
+      } & TeamSection)
+    | ({
+        _key: string;
+      } & HonoraryMembersSection)
+    | ({
+        _key: string;
+      } & ContactSection)
+    | ({
+        _key: string;
+      } & ComparisonSection)
+    | ({
+        _key: string;
+      } & AgendaSection)
+    | ({
+        _key: string;
+      } & SponsorsSection)
+    | ({
+        _key: string;
+      } & NewsletterSection)
+    | ({
+        _key: string;
+      } & NewsSection)
     | ({
         _key: string;
       } & Hero)
@@ -205,6 +451,177 @@ export type HomePage = {
       _type: "image";
     };
   };
+};
+
+export type HomePage = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  language?: string;
+  sections?: Array<
+    | ({
+        _key: string;
+      } & Hero)
+    | ({
+        _key: string;
+      } & FeatureGrid)
+    | ({
+        _key: string;
+      } & SportHighlight)
+    | ({
+        _key: string;
+      } & Announcement)
+    | ({
+        _key: string;
+      } & AudienceSegments)
+    | ({
+        _key: string;
+      } & CtaBanner)
+    | ({
+        _key: string;
+      } & TrainingTimes)
+    | ({
+        _key: string;
+      } & Gallery)
+    | ({
+        _key: string;
+      } & Testimonials)
+    | ({
+        _key: string;
+      } & FaqList)
+    | ({
+        _key: string;
+      } & PricingSection)
+    | ({
+        _key: string;
+      } & TeamSection)
+    | ({
+        _key: string;
+      } & HonoraryMembersSection)
+    | ({
+        _key: string;
+      } & ContactSection)
+    | ({
+        _key: string;
+      } & ComparisonSection)
+    | ({
+        _key: string;
+      } & AgendaSection)
+    | ({
+        _key: string;
+      } & SponsorsSection)
+    | ({
+        _key: string;
+      } & NewsletterSection)
+    | ({
+        _key: string;
+      } & NewsSection)
+  >;
+  seo?: {
+    title?: string;
+    description?: string;
+    ogImage?: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+  };
+};
+
+export type NewsSection = {
+  _type: "newsSection";
+  eyebrow?: string;
+  heading: string;
+  link?: Cta;
+};
+
+export type NewsletterSection = {
+  _type: "newsletterSection";
+  heading: string;
+  body?: string;
+  buttonLabel?: string;
+  note?: string;
+};
+
+export type SponsorsSection = {
+  _type: "sponsorsSection";
+  eyebrow?: string;
+  link?: Cta;
+  joinLabel?: string;
+  joinHref?: string;
+};
+
+export type AgendaSection = {
+  _type: "agendaSection";
+  eyebrow?: string;
+  heading: string;
+  link?: Cta;
+};
+
+export type ComparisonSection = {
+  _type: "comparisonSection";
+  eyebrow?: string;
+  heading: string;
+  columns?: Array<{
+    label: string;
+    highlighted?: boolean;
+    _type: "comparisonColumn";
+    _key: string;
+  }>;
+  rows?: Array<{
+    label: string;
+    values?: Array<string>;
+    _type: "comparisonRow";
+    _key: string;
+  }>;
+  footnote?: string;
+  ctaLabel?: string;
+  ctaLink?: string;
+};
+
+export type ContactSection = {
+  _type: "contactSection";
+  eyebrow?: string;
+  heading: string;
+  intro?: string;
+};
+
+export type HonoraryMembersSection = {
+  _type: "honoraryMembersSection";
+  eyebrow?: string;
+  heading: string;
+  intro?: string;
+};
+
+export type TeamSection = {
+  _type: "teamSection";
+  eyebrow?: string;
+  heading: string;
+};
+
+export type MembershipPackageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "membershipPackage";
+};
+
+export type PricingSection = {
+  _type: "pricingSection";
+  eyebrow?: string;
+  heading: string;
+  intro?: string;
+  packages?: Array<
+    {
+      _key: string;
+    } & MembershipPackageReference
+  >;
+  footnote?: string;
 };
 
 export type FaqItemReference = {
@@ -453,24 +870,40 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
-
 export type AllSanitySchemaTypes =
   | Rating
   | SanityImageAssetReference
   | SegmentImage
-  | FaqItem
-  | Review
-  | TrainingTime
-  | SiteSettings
+  | NewsletterSignup
+  | ContactSubmission
+  | NewsArticle
   | SanityImageCrop
   | SanityImageHotspot
+  | Slug
+  | Sponsor
+  | Event
+  | HonoraryMember
+  | TeamMember
+  | MembershipPackage
+  | FaqItem
+  | Review
+  | LocationReference
+  | TrainingTime
+  | Location
+  | SiteSettings
   | Cta
+  | Page
   | HomePage
+  | NewsSection
+  | NewsletterSection
+  | SponsorsSection
+  | AgendaSection
+  | ComparisonSection
+  | ContactSection
+  | HonoraryMembersSection
+  | TeamSection
+  | MembershipPackageReference
+  | PricingSection
   | FaqItemReference
   | FaqList
   | ReviewReference
@@ -490,12 +923,11 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint
-  | Slug;
+  | Geopoint;
 
 // Source: ../frontend/src/sanity/queries.ts
 // Variable: HOME_QUERY
-// Query: *[_id == "homePage"][0]{  title,  "sections": sections[]{    _key,    _type,    _type == "hero" => {      eyebrow,      heading,      tagline,      primaryCta{label, href},      secondaryCta{label, href},      microcopy,      videoUrl,      videoPoster{alt, "asset": asset->{_id, url, metadata{lqip, dimensions}}},      rating{score, source, note}    },    _type == "featureGrid" => {      eyebrow,      heading,      features[]{_key, title, description}    },    _type == "sportHighlight" => {      eyebrow,      heading,      body,      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},      stats[]{_key, value, label},      footnote    },    _type == "announcement" => {      tag,      heading,      body,      link{label, href},      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}    },    _type == "audienceSegments" => {      eyebrow,      heading,      segments[]{        _key,        title,        description,        link{label, href},        image{alt, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "ctaBanner" => {      heading,      cta{label, href},      microcopy,      theme,      enableGame    },    _type == "trainingTimes" => {      eyebrow,      heading,      link{label, href},      "rows": *[_type == "trainingTime"] | order(order asc, group asc){        _id, group, day, startTime, endTime      }    },    _type == "gallery" => {      eyebrow,      images[]{_key, alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}    },    _type == "testimonials" => {      eyebrow,      heading,      "reviews": reviews[]->{_id, quote, name, role, rating}    },    _type == "faqList" => {      heading,      "items": items[]->{_id, question, answer}    }  },  seo{title, description, ogImage{"asset": asset->{url}}}}
+// Query: *[_id == "homePage"][0]{  title,  "sections": sections[]{    _key,    _type,    _type == "hero" => {      eyebrow,      heading,      tagline,      primaryCta{label, href},      secondaryCta{label, href},      microcopy,      videoUrl,      videoPoster{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},      rating{score, source, note}    },    _type == "featureGrid" => {      eyebrow,      heading,      features[]{_key, title, description}    },    _type == "sportHighlight" => {      eyebrow,      heading,      body,      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},      stats[]{_key, value, label},      footnote    },    _type == "announcement" => {      tag,      heading,      body,      link{label, href},      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}    },    _type == "audienceSegments" => {      eyebrow,      heading,      segments[]{        _key,        title,        description,        link{label, href},        image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "ctaBanner" => {      heading,      cta{label, href},      microcopy,      theme,      enableGame    },    _type == "trainingTimes" => {      eyebrow,      heading,      link{label, href},      "rows": *[_type == "trainingTime"] | order(order asc, group asc){        _id, group, activity, day, startTime, endTime,        location->{name, street, city, mapsUrl},        override{enabled, note, day, startTime, endTime, location}      }    },    _type == "gallery" => {      eyebrow,      images[]{_key, alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}    },    _type == "testimonials" => {      eyebrow,      heading,      "reviews": reviews[]->{_id, quote, name, role, rating}    },    _type == "faqList" => {      heading,      "items": items[]->{_id, question, answer}    },    _type == "pricingSection" => {      eyebrow,      heading,      intro,      "packages": packages[]->{        _id, title, description, price, priceSuffix, features,        highlighted, highlightLabel, ctaLabel, ctaHref      },      footnote    },    _type == "teamSection" => {      eyebrow,      heading,      "trainers": *[_type == "teamMember" && group == "trainer"] | order(sortOrder asc, name asc){        _id, name, role, group, activeSince, bio,        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      },      "board": *[_type == "teamMember" && group == "bestuur"] | order(sortOrder asc, name asc){        _id, name, role, group, activeSince, bio,        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "honoraryMembersSection" => {      eyebrow,      heading,      intro,      "members": *[_type == "honoraryMember"] | order(sortOrder asc, memberSince asc){        _id, name, memberSince, contribution,        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "contactSection" => {      eyebrow,      heading,      intro,      "settings": *[_id == "siteSettings"][0]{        email, phone,        socialLinks[]{_key, label, href}      },      "locations": *[_type == "location"] | order(sortOrder asc, name asc){        _id, name, street, city, mapsUrl      }    },    _type == "comparisonSection" => {      eyebrow,      heading,      columns[]{_key, label, highlighted},      rows[]{_key, label, values},      footnote,      ctaLabel,      ctaLink    },    _type == "agendaSection" => {      eyebrow,      heading,      link{label, href},      "events": *[_type == "event" && date >= now()] | order(date asc)[0..2]{        _id, title, description, date, ctaLabel, ctaLink, featured      }    },    _type == "sponsorsSection" => {      eyebrow,      link{label, href},      joinLabel,      joinHref,      "sponsors": *[_type == "sponsor"] | order(sortOrder asc, name asc){        _id, name, url,        logo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "newsletterSection" => {      heading,      body,      buttonLabel,      note    },    _type == "newsSection" => {      eyebrow,      heading,      link{label, href},      "articles": *[_type == "newsArticle"] | order(publishedAt desc)[0..2]{        _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,        coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    }},  seo{title, description, ogImage{"asset": asset->{url}}}}
 export type HOME_QUERY_RESULT =
   | {
       title: null;
@@ -503,13 +935,37 @@ export type HOME_QUERY_RESULT =
       seo: null;
     }
   | {
-      title: string | null;
+      title: string;
       sections: null;
       seo: null;
     }
   | {
       title: string | null;
+      sections: null;
+      seo: null;
+    }
+  | {
+      title: string;
       sections: Array<
+        | {
+            _key: string;
+            _type: "agendaSection";
+            eyebrow: string | null;
+            heading: string;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            events: Array<{
+              _id: string;
+              title: string;
+              description: string | null;
+              date: string;
+              ctaLabel: string | null;
+              ctaLink: string | null;
+              featured: boolean | null;
+            }>;
+          }
         | {
             _key: string;
             _type: "announcement";
@@ -549,6 +1005,8 @@ export type HOME_QUERY_RESULT =
               };
               image: {
                 alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
                 asset: {
                   _id: string;
                   url: string;
@@ -559,6 +1017,60 @@ export type HOME_QUERY_RESULT =
                 } | null;
               } | null;
             }> | null;
+          }
+        | {
+            _key: string;
+            _type: "comparisonSection";
+            eyebrow: string | null;
+            heading: string;
+            columns: Array<{
+              _key: string;
+              label: string;
+              highlighted: boolean | null;
+            }> | null;
+            rows: Array<{
+              _key: string;
+              label: string;
+              values: Array<string> | null;
+            }> | null;
+            footnote: string | null;
+            ctaLabel: string | null;
+            ctaLink: string | null;
+          }
+        | {
+            _key: string;
+            _type: "contactSection";
+            eyebrow: string | null;
+            heading: string;
+            intro: string | null;
+            settings:
+              | {
+                  email: null;
+                  phone: null;
+                  socialLinks: null;
+                }
+              | {
+                  email: string | null;
+                  phone: null;
+                  socialLinks: null;
+                }
+              | {
+                  email: string | null;
+                  phone: string | null;
+                  socialLinks: Array<{
+                    _key: string;
+                    label: string;
+                    href: string;
+                  }> | null;
+                }
+              | null;
+            locations: Array<{
+              _id: string;
+              name: string;
+              street: string | null;
+              city: string | null;
+              mapsUrl: string | null;
+            }>;
           }
         | {
             _key: string;
@@ -630,6 +1142,8 @@ export type HOME_QUERY_RESULT =
             videoUrl: string | null;
             videoPoster: {
               alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
               asset: {
                 _id: string;
                 url: string;
@@ -644,6 +1158,121 @@ export type HOME_QUERY_RESULT =
               source: string | null;
               note: string | null;
             } | null;
+          }
+        | {
+            _key: string;
+            _type: "honoraryMembersSection";
+            eyebrow: string | null;
+            heading: string;
+            intro: string | null;
+            members: Array<{
+              _id: string;
+              name: string;
+              memberSince: number | null;
+              contribution: string;
+              photo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "newsletterSection";
+            heading: string;
+            body: string | null;
+            buttonLabel: string | null;
+            note: string | null;
+          }
+        | {
+            _key: string;
+            _type: "newsSection";
+            eyebrow: string | null;
+            heading: string;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            articles: Array<{
+              _id: string;
+              title: string;
+              slug: string;
+              publishedAt: string;
+              excerpt: string | null;
+              category: "Club" | "Competitie" | "Evenement" | "Jeugd" | null;
+              featured: boolean | null;
+              coverImage: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "pricingSection";
+            eyebrow: string | null;
+            heading: string;
+            intro: string | null;
+            packages: Array<{
+              _id: string;
+              title: string;
+              description: string | null;
+              price: number;
+              priceSuffix: string | null;
+              features: Array<string> | null;
+              highlighted: boolean | null;
+              highlightLabel: string | null;
+              ctaLabel: string | null;
+              ctaHref: string | null;
+            }> | null;
+            footnote: string | null;
+          }
+        | {
+            _key: string;
+            _type: "sponsorsSection";
+            eyebrow: string | null;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            joinLabel: string | null;
+            joinHref: string | null;
+            sponsors: Array<{
+              _id: string;
+              name: string;
+              url: string | null;
+              logo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
           }
         | {
             _key: string;
@@ -673,6 +1302,54 @@ export type HOME_QUERY_RESULT =
           }
         | {
             _key: string;
+            _type: "teamSection";
+            eyebrow: string | null;
+            heading: string;
+            trainers: Array<{
+              _id: string;
+              name: string;
+              role: string;
+              group: "trainer";
+              activeSince: number | null;
+              bio: string | null;
+              photo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+            board: Array<{
+              _id: string;
+              name: string;
+              role: string;
+              group: "bestuur";
+              activeSince: number | null;
+              bio: string | null;
+              photo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
             _type: "testimonials";
             eyebrow: string | null;
             heading: string;
@@ -696,6 +1373,7 @@ export type HOME_QUERY_RESULT =
             rows: Array<{
               _id: string;
               group: string;
+              activity: "training" | "vrij spelen" | null;
               day:
                 | "dinsdag"
                 | "donderdag"
@@ -706,6 +1384,503 @@ export type HOME_QUERY_RESULT =
                 | "zondag";
               startTime: string;
               endTime: string;
+              location: {
+                name: string;
+                street: string | null;
+                city: string | null;
+                mapsUrl: string | null;
+              } | null;
+              override: {
+                enabled: boolean | null;
+                note: string | null;
+                day:
+                  | "dinsdag"
+                  | "donderdag"
+                  | "maandag"
+                  | "vrijdag"
+                  | "woensdag"
+                  | "zaterdag"
+                  | "zondag"
+                  | null;
+                startTime: string | null;
+                endTime: string | null;
+                location: string | null;
+              } | null;
+            }>;
+          }
+      > | null;
+      seo: {
+        title: string | null;
+        description: string | null;
+        ogImage: {
+          asset: {
+            url: string;
+          } | null;
+        } | null;
+      } | null;
+    }
+  | {
+      title: string | null;
+      sections: Array<
+        | {
+            _key: string;
+            _type: "agendaSection";
+            eyebrow: string | null;
+            heading: string;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            events: Array<{
+              _id: string;
+              title: string;
+              description: string | null;
+              date: string;
+              ctaLabel: string | null;
+              ctaLink: string | null;
+              featured: boolean | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "announcement";
+            tag: string | null;
+            heading: string;
+            body: string | null;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            image: {
+              alt: string;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+              asset: {
+                _id: string;
+                url: string;
+                metadata: {
+                  lqip: string | null;
+                  dimensions: SanityImageDimensions | null;
+                } | null;
+              } | null;
+            } | null;
+          }
+        | {
+            _key: string;
+            _type: "audienceSegments";
+            eyebrow: string | null;
+            heading: string;
+            segments: Array<{
+              _key: string;
+              title: string;
+              description: string | null;
+              link: {
+                label: string;
+                href: string;
+              };
+              image: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }> | null;
+          }
+        | {
+            _key: string;
+            _type: "comparisonSection";
+            eyebrow: string | null;
+            heading: string;
+            columns: Array<{
+              _key: string;
+              label: string;
+              highlighted: boolean | null;
+            }> | null;
+            rows: Array<{
+              _key: string;
+              label: string;
+              values: Array<string> | null;
+            }> | null;
+            footnote: string | null;
+            ctaLabel: string | null;
+            ctaLink: string | null;
+          }
+        | {
+            _key: string;
+            _type: "contactSection";
+            eyebrow: string | null;
+            heading: string;
+            intro: string | null;
+            settings:
+              | {
+                  email: null;
+                  phone: null;
+                  socialLinks: null;
+                }
+              | {
+                  email: string | null;
+                  phone: null;
+                  socialLinks: null;
+                }
+              | {
+                  email: string | null;
+                  phone: string | null;
+                  socialLinks: Array<{
+                    _key: string;
+                    label: string;
+                    href: string;
+                  }> | null;
+                }
+              | null;
+            locations: Array<{
+              _id: string;
+              name: string;
+              street: string | null;
+              city: string | null;
+              mapsUrl: string | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "ctaBanner";
+            heading: string;
+            cta: {
+              label: string;
+              href: string;
+            };
+            microcopy: string | null;
+            theme: "lime" | "navy";
+            enableGame: boolean | null;
+          }
+        | {
+            _key: string;
+            _type: "faqList";
+            heading: string;
+            items: Array<{
+              _id: string;
+              question: string;
+              answer: string;
+            }> | null;
+          }
+        | {
+            _key: string;
+            _type: "featureGrid";
+            eyebrow: string | null;
+            heading: string;
+            features: Array<{
+              _key: string;
+              title: string;
+              description: string | null;
+            }> | null;
+          }
+        | {
+            _key: string;
+            _type: "gallery";
+            eyebrow: string | null;
+            images: Array<{
+              _key: string;
+              alt: string;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+              asset: {
+                _id: string;
+                url: string;
+                metadata: {
+                  lqip: string | null;
+                  dimensions: SanityImageDimensions | null;
+                } | null;
+              } | null;
+            }> | null;
+          }
+        | {
+            _key: string;
+            _type: "hero";
+            eyebrow: string | null;
+            heading: string;
+            tagline: string | null;
+            primaryCta: {
+              label: string;
+              href: string;
+            };
+            secondaryCta: {
+              label: string;
+              href: string;
+            } | null;
+            microcopy: string | null;
+            videoUrl: string | null;
+            videoPoster: {
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+              asset: {
+                _id: string;
+                url: string;
+                metadata: {
+                  lqip: string | null;
+                  dimensions: SanityImageDimensions | null;
+                } | null;
+              } | null;
+            } | null;
+            rating: {
+              score: number | null;
+              source: string | null;
+              note: string | null;
+            } | null;
+          }
+        | {
+            _key: string;
+            _type: "honoraryMembersSection";
+            eyebrow: string | null;
+            heading: string;
+            intro: string | null;
+            members: Array<{
+              _id: string;
+              name: string;
+              memberSince: number | null;
+              contribution: string;
+              photo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "newsletterSection";
+            heading: string;
+            body: string | null;
+            buttonLabel: string | null;
+            note: string | null;
+          }
+        | {
+            _key: string;
+            _type: "newsSection";
+            eyebrow: string | null;
+            heading: string;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            articles: Array<{
+              _id: string;
+              title: string;
+              slug: string;
+              publishedAt: string;
+              excerpt: string | null;
+              category: "Club" | "Competitie" | "Evenement" | "Jeugd" | null;
+              featured: boolean | null;
+              coverImage: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "pricingSection";
+            eyebrow: string | null;
+            heading: string;
+            intro: string | null;
+            packages: Array<{
+              _id: string;
+              title: string;
+              description: string | null;
+              price: number;
+              priceSuffix: string | null;
+              features: Array<string> | null;
+              highlighted: boolean | null;
+              highlightLabel: string | null;
+              ctaLabel: string | null;
+              ctaHref: string | null;
+            }> | null;
+            footnote: string | null;
+          }
+        | {
+            _key: string;
+            _type: "sponsorsSection";
+            eyebrow: string | null;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            joinLabel: string | null;
+            joinHref: string | null;
+            sponsors: Array<{
+              _id: string;
+              name: string;
+              url: string | null;
+              logo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "sportHighlight";
+            eyebrow: string | null;
+            heading: string;
+            body: string | null;
+            image: {
+              alt: string;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+              asset: {
+                _id: string;
+                url: string;
+                metadata: {
+                  lqip: string | null;
+                  dimensions: SanityImageDimensions | null;
+                } | null;
+              } | null;
+            } | null;
+            stats: Array<{
+              _key: string;
+              value: string;
+              label: string;
+            }> | null;
+            footnote: string | null;
+          }
+        | {
+            _key: string;
+            _type: "teamSection";
+            eyebrow: string | null;
+            heading: string;
+            trainers: Array<{
+              _id: string;
+              name: string;
+              role: string;
+              group: "trainer";
+              activeSince: number | null;
+              bio: string | null;
+              photo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+            board: Array<{
+              _id: string;
+              name: string;
+              role: string;
+              group: "bestuur";
+              activeSince: number | null;
+              bio: string | null;
+              photo: {
+                alt: string;
+                hotspot: SanityImageHotspot | null;
+                crop: SanityImageCrop | null;
+                asset: {
+                  _id: string;
+                  url: string;
+                  metadata: {
+                    lqip: string | null;
+                    dimensions: SanityImageDimensions | null;
+                  } | null;
+                } | null;
+              } | null;
+            }>;
+          }
+        | {
+            _key: string;
+            _type: "testimonials";
+            eyebrow: string | null;
+            heading: string;
+            reviews: Array<{
+              _id: string;
+              quote: string;
+              name: string;
+              role: string | null;
+              rating: number;
+            }> | null;
+          }
+        | {
+            _key: string;
+            _type: "trainingTimes";
+            eyebrow: string | null;
+            heading: string;
+            link: {
+              label: string;
+              href: string;
+            } | null;
+            rows: Array<{
+              _id: string;
+              group: string;
+              activity: "training" | "vrij spelen" | null;
+              day:
+                | "dinsdag"
+                | "donderdag"
+                | "maandag"
+                | "vrijdag"
+                | "woensdag"
+                | "zaterdag"
+                | "zondag";
+              startTime: string;
+              endTime: string;
+              location: {
+                name: string;
+                street: string | null;
+                city: string | null;
+                mapsUrl: string | null;
+              } | null;
+              override: {
+                enabled: boolean | null;
+                note: string | null;
+                day:
+                  | "dinsdag"
+                  | "donderdag"
+                  | "maandag"
+                  | "vrijdag"
+                  | "woensdag"
+                  | "zaterdag"
+                  | "zondag"
+                  | null;
+                startTime: string | null;
+                endTime: string | null;
+                location: string | null;
+              } | null;
             }>;
           }
       > | null;
@@ -722,18 +1897,631 @@ export type HOME_QUERY_RESULT =
   | null;
 
 // Source: ../frontend/src/sanity/queries.ts
+// Variable: PAGE_QUERY
+// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  title,  "slug": slug.current,  intro,  "sections": sections[]{    _key,    _type,    _type == "hero" => {      eyebrow,      heading,      tagline,      primaryCta{label, href},      secondaryCta{label, href},      microcopy,      videoUrl,      videoPoster{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},      rating{score, source, note}    },    _type == "featureGrid" => {      eyebrow,      heading,      features[]{_key, title, description}    },    _type == "sportHighlight" => {      eyebrow,      heading,      body,      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},      stats[]{_key, value, label},      footnote    },    _type == "announcement" => {      tag,      heading,      body,      link{label, href},      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}    },    _type == "audienceSegments" => {      eyebrow,      heading,      segments[]{        _key,        title,        description,        link{label, href},        image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "ctaBanner" => {      heading,      cta{label, href},      microcopy,      theme,      enableGame    },    _type == "trainingTimes" => {      eyebrow,      heading,      link{label, href},      "rows": *[_type == "trainingTime"] | order(order asc, group asc){        _id, group, activity, day, startTime, endTime,        location->{name, street, city, mapsUrl},        override{enabled, note, day, startTime, endTime, location}      }    },    _type == "gallery" => {      eyebrow,      images[]{_key, alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}    },    _type == "testimonials" => {      eyebrow,      heading,      "reviews": reviews[]->{_id, quote, name, role, rating}    },    _type == "faqList" => {      heading,      "items": items[]->{_id, question, answer}    },    _type == "pricingSection" => {      eyebrow,      heading,      intro,      "packages": packages[]->{        _id, title, description, price, priceSuffix, features,        highlighted, highlightLabel, ctaLabel, ctaHref      },      footnote    },    _type == "teamSection" => {      eyebrow,      heading,      "trainers": *[_type == "teamMember" && group == "trainer"] | order(sortOrder asc, name asc){        _id, name, role, group, activeSince, bio,        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      },      "board": *[_type == "teamMember" && group == "bestuur"] | order(sortOrder asc, name asc){        _id, name, role, group, activeSince, bio,        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "honoraryMembersSection" => {      eyebrow,      heading,      intro,      "members": *[_type == "honoraryMember"] | order(sortOrder asc, memberSince asc){        _id, name, memberSince, contribution,        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "contactSection" => {      eyebrow,      heading,      intro,      "settings": *[_id == "siteSettings"][0]{        email, phone,        socialLinks[]{_key, label, href}      },      "locations": *[_type == "location"] | order(sortOrder asc, name asc){        _id, name, street, city, mapsUrl      }    },    _type == "comparisonSection" => {      eyebrow,      heading,      columns[]{_key, label, highlighted},      rows[]{_key, label, values},      footnote,      ctaLabel,      ctaLink    },    _type == "agendaSection" => {      eyebrow,      heading,      link{label, href},      "events": *[_type == "event" && date >= now()] | order(date asc)[0..2]{        _id, title, description, date, ctaLabel, ctaLink, featured      }    },    _type == "sponsorsSection" => {      eyebrow,      link{label, href},      joinLabel,      joinHref,      "sponsors": *[_type == "sponsor"] | order(sortOrder asc, name asc){        _id, name, url,        logo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    },    _type == "newsletterSection" => {      heading,      body,      buttonLabel,      note    },    _type == "newsSection" => {      eyebrow,      heading,      link{label, href},      "articles": *[_type == "newsArticle"] | order(publishedAt desc)[0..2]{        _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,        coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}      }    }},  seo{title, description, ogImage{"asset": asset->{url}}}}
+export type PAGE_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  slug: string;
+  intro: string | null;
+  sections: Array<
+    | {
+        _key: string;
+        _type: "agendaSection";
+        eyebrow: string | null;
+        heading: string;
+        link: {
+          label: string;
+          href: string;
+        } | null;
+        events: Array<{
+          _id: string;
+          title: string;
+          description: string | null;
+          date: string;
+          ctaLabel: string | null;
+          ctaLink: string | null;
+          featured: boolean | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "announcement";
+        tag: string | null;
+        heading: string;
+        body: string | null;
+        link: {
+          label: string;
+          href: string;
+        } | null;
+        image: {
+          alt: string;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          asset: {
+            _id: string;
+            url: string;
+            metadata: {
+              lqip: string | null;
+              dimensions: SanityImageDimensions | null;
+            } | null;
+          } | null;
+        } | null;
+      }
+    | {
+        _key: string;
+        _type: "audienceSegments";
+        eyebrow: string | null;
+        heading: string;
+        segments: Array<{
+          _key: string;
+          title: string;
+          description: string | null;
+          link: {
+            label: string;
+            href: string;
+          };
+          image: {
+            alt: string;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            asset: {
+              _id: string;
+              url: string;
+              metadata: {
+                lqip: string | null;
+                dimensions: SanityImageDimensions | null;
+              } | null;
+            } | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "comparisonSection";
+        eyebrow: string | null;
+        heading: string;
+        columns: Array<{
+          _key: string;
+          label: string;
+          highlighted: boolean | null;
+        }> | null;
+        rows: Array<{
+          _key: string;
+          label: string;
+          values: Array<string> | null;
+        }> | null;
+        footnote: string | null;
+        ctaLabel: string | null;
+        ctaLink: string | null;
+      }
+    | {
+        _key: string;
+        _type: "contactSection";
+        eyebrow: string | null;
+        heading: string;
+        intro: string | null;
+        settings:
+          | {
+              email: null;
+              phone: null;
+              socialLinks: null;
+            }
+          | {
+              email: string | null;
+              phone: null;
+              socialLinks: null;
+            }
+          | {
+              email: string | null;
+              phone: string | null;
+              socialLinks: Array<{
+                _key: string;
+                label: string;
+                href: string;
+              }> | null;
+            }
+          | null;
+        locations: Array<{
+          _id: string;
+          name: string;
+          street: string | null;
+          city: string | null;
+          mapsUrl: string | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "ctaBanner";
+        heading: string;
+        cta: {
+          label: string;
+          href: string;
+        };
+        microcopy: string | null;
+        theme: "lime" | "navy";
+        enableGame: boolean | null;
+      }
+    | {
+        _key: string;
+        _type: "faqList";
+        heading: string;
+        items: Array<{
+          _id: string;
+          question: string;
+          answer: string;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "featureGrid";
+        eyebrow: string | null;
+        heading: string;
+        features: Array<{
+          _key: string;
+          title: string;
+          description: string | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "gallery";
+        eyebrow: string | null;
+        images: Array<{
+          _key: string;
+          alt: string;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          asset: {
+            _id: string;
+            url: string;
+            metadata: {
+              lqip: string | null;
+              dimensions: SanityImageDimensions | null;
+            } | null;
+          } | null;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "hero";
+        eyebrow: string | null;
+        heading: string;
+        tagline: string | null;
+        primaryCta: {
+          label: string;
+          href: string;
+        };
+        secondaryCta: {
+          label: string;
+          href: string;
+        } | null;
+        microcopy: string | null;
+        videoUrl: string | null;
+        videoPoster: {
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          asset: {
+            _id: string;
+            url: string;
+            metadata: {
+              lqip: string | null;
+              dimensions: SanityImageDimensions | null;
+            } | null;
+          } | null;
+        } | null;
+        rating: {
+          score: number | null;
+          source: string | null;
+          note: string | null;
+        } | null;
+      }
+    | {
+        _key: string;
+        _type: "honoraryMembersSection";
+        eyebrow: string | null;
+        heading: string;
+        intro: string | null;
+        members: Array<{
+          _id: string;
+          name: string;
+          memberSince: number | null;
+          contribution: string;
+          photo: {
+            alt: string;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            asset: {
+              _id: string;
+              url: string;
+              metadata: {
+                lqip: string | null;
+                dimensions: SanityImageDimensions | null;
+              } | null;
+            } | null;
+          } | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "newsletterSection";
+        heading: string;
+        body: string | null;
+        buttonLabel: string | null;
+        note: string | null;
+      }
+    | {
+        _key: string;
+        _type: "newsSection";
+        eyebrow: string | null;
+        heading: string;
+        link: {
+          label: string;
+          href: string;
+        } | null;
+        articles: Array<{
+          _id: string;
+          title: string;
+          slug: string;
+          publishedAt: string;
+          excerpt: string | null;
+          category: "Club" | "Competitie" | "Evenement" | "Jeugd" | null;
+          featured: boolean | null;
+          coverImage: {
+            alt: string;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            asset: {
+              _id: string;
+              url: string;
+              metadata: {
+                lqip: string | null;
+                dimensions: SanityImageDimensions | null;
+              } | null;
+            } | null;
+          } | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "pricingSection";
+        eyebrow: string | null;
+        heading: string;
+        intro: string | null;
+        packages: Array<{
+          _id: string;
+          title: string;
+          description: string | null;
+          price: number;
+          priceSuffix: string | null;
+          features: Array<string> | null;
+          highlighted: boolean | null;
+          highlightLabel: string | null;
+          ctaLabel: string | null;
+          ctaHref: string | null;
+        }> | null;
+        footnote: string | null;
+      }
+    | {
+        _key: string;
+        _type: "sponsorsSection";
+        eyebrow: string | null;
+        link: {
+          label: string;
+          href: string;
+        } | null;
+        joinLabel: string | null;
+        joinHref: string | null;
+        sponsors: Array<{
+          _id: string;
+          name: string;
+          url: string | null;
+          logo: {
+            alt: string;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            asset: {
+              _id: string;
+              url: string;
+              metadata: {
+                lqip: string | null;
+                dimensions: SanityImageDimensions | null;
+              } | null;
+            } | null;
+          } | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "sportHighlight";
+        eyebrow: string | null;
+        heading: string;
+        body: string | null;
+        image: {
+          alt: string;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          asset: {
+            _id: string;
+            url: string;
+            metadata: {
+              lqip: string | null;
+              dimensions: SanityImageDimensions | null;
+            } | null;
+          } | null;
+        } | null;
+        stats: Array<{
+          _key: string;
+          value: string;
+          label: string;
+        }> | null;
+        footnote: string | null;
+      }
+    | {
+        _key: string;
+        _type: "teamSection";
+        eyebrow: string | null;
+        heading: string;
+        trainers: Array<{
+          _id: string;
+          name: string;
+          role: string;
+          group: "trainer";
+          activeSince: number | null;
+          bio: string | null;
+          photo: {
+            alt: string;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            asset: {
+              _id: string;
+              url: string;
+              metadata: {
+                lqip: string | null;
+                dimensions: SanityImageDimensions | null;
+              } | null;
+            } | null;
+          } | null;
+        }>;
+        board: Array<{
+          _id: string;
+          name: string;
+          role: string;
+          group: "bestuur";
+          activeSince: number | null;
+          bio: string | null;
+          photo: {
+            alt: string;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            asset: {
+              _id: string;
+              url: string;
+              metadata: {
+                lqip: string | null;
+                dimensions: SanityImageDimensions | null;
+              } | null;
+            } | null;
+          } | null;
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "testimonials";
+        eyebrow: string | null;
+        heading: string;
+        reviews: Array<{
+          _id: string;
+          quote: string;
+          name: string;
+          role: string | null;
+          rating: number;
+        }> | null;
+      }
+    | {
+        _key: string;
+        _type: "trainingTimes";
+        eyebrow: string | null;
+        heading: string;
+        link: {
+          label: string;
+          href: string;
+        } | null;
+        rows: Array<{
+          _id: string;
+          group: string;
+          activity: "training" | "vrij spelen" | null;
+          day:
+            | "dinsdag"
+            | "donderdag"
+            | "maandag"
+            | "vrijdag"
+            | "woensdag"
+            | "zaterdag"
+            | "zondag";
+          startTime: string;
+          endTime: string;
+          location: {
+            name: string;
+            street: string | null;
+            city: string | null;
+            mapsUrl: string | null;
+          } | null;
+          override: {
+            enabled: boolean | null;
+            note: string | null;
+            day:
+              | "dinsdag"
+              | "donderdag"
+              | "maandag"
+              | "vrijdag"
+              | "woensdag"
+              | "zaterdag"
+              | "zondag"
+              | null;
+            startTime: string | null;
+            endTime: string | null;
+            location: string | null;
+          } | null;
+        }>;
+      }
+  > | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    ogImage: {
+      asset: {
+        url: string;
+      } | null;
+    } | null;
+  } | null;
+} | null;
+
+// Source: ../frontend/src/sanity/queries.ts
+// Variable: PAGE_SLUGS_QUERY
+// Query: *[_type == "page" && defined(slug.current)].slug.current
+export type PAGE_SLUGS_QUERY_RESULT = Array<string>;
+
+// Source: ../frontend/src/sanity/queries.ts
+// Variable: NEWS_LIST_QUERY
+// Query: *[_type == "newsArticle"] | order(publishedAt desc){  _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,  coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}}
+export type NEWS_LIST_QUERY_RESULT = Array<{
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt: string | null;
+  category: "Club" | "Competitie" | "Evenement" | "Jeugd" | null;
+  featured: boolean | null;
+  coverImage: {
+    alt: string;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+    asset: {
+      _id: string;
+      url: string;
+      metadata: {
+        lqip: string | null;
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+  } | null;
+}>;
+
+// Source: ../frontend/src/sanity/queries.ts
+// Variable: NEWS_ARTICLE_QUERY
+// Query: *[_type == "newsArticle" && slug.current == $slug][0]{  _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,  coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},  body[]{    ...,    _type == "image" => {alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}  }}
+export type NEWS_ARTICLE_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt: string | null;
+  category: "Club" | "Competitie" | "Evenement" | "Jeugd" | null;
+  featured: boolean | null;
+  coverImage: {
+    alt: string;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+    asset: {
+      _id: string;
+      url: string;
+      metadata: {
+        lqip: string | null;
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+  } | null;
+  body: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          url: string;
+          metadata: {
+            lqip: string | null;
+            dimensions: SanityImageDimensions | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string;
+        _type: "image";
+        _key: string;
+      }
+  > | null;
+} | null;
+
+// Source: ../frontend/src/sanity/queries.ts
+// Variable: NEWS_SLUGS_QUERY
+// Query: *[_type == "newsArticle" && defined(slug.current)].slug.current
+export type NEWS_SLUGS_QUERY_RESULT = Array<string>;
+
+// Source: ../frontend/src/sanity/queries.ts
 // Variable: SETTINGS_QUERY
-// Query: *[_id == "siteSettings"][0]{  mainNav[]{_key, label, href},  headerSecondaryCta{label, href},  headerPrimaryCta{label, href},  footerTagline,  footerColumns[]{_key, title, links[]{_key, label, href}},  contactTitle,  addressLines,  email,  socialLinks[]{_key, label, href},  legalLinks[]{_key, label, href},  copyright,  stickyBarCta{label, href},  stickyBarMicrocopy,  defaultSeo{title, description, ogImage{"asset": asset->{url}}}}
+// Query: *[_id == "siteSettings"][0]{  mainNav[]{_key, label, href},  headerSecondaryCta{label, href},  headerPrimaryCta{label, href},  announcement{enabled, text, linkLabel, link},  footerTagline,  footerColumns[]{_key, title, links[]{_key, label, href}},  contactTitle,  "locations": *[_type == "location"] | order(sortOrder asc, name asc){    _id, name, street, city, mapsUrl  },  email,  phone,  socialLinks[]{_key, label, href},  legalLinks[]{_key, label, href},  copyright,  stickyBarCta{label, href},  stickyBarMicrocopy,  defaultSeo{title, description, ogImage{"asset": asset->{url}}}}
 export type SETTINGS_QUERY_RESULT =
   | {
       mainNav: null;
       headerSecondaryCta: null;
       headerPrimaryCta: null;
+      announcement: null;
       footerTagline: null;
       footerColumns: null;
       contactTitle: null;
-      addressLines: null;
+      locations: Array<{
+        _id: string;
+        name: string;
+        street: string | null;
+        city: string | null;
+        mapsUrl: string | null;
+      }>;
       email: null;
+      phone: null;
+      socialLinks: null;
+      legalLinks: null;
+      copyright: null;
+      stickyBarCta: null;
+      stickyBarMicrocopy: null;
+      defaultSeo: null;
+    }
+  | {
+      mainNav: null;
+      headerSecondaryCta: null;
+      headerPrimaryCta: null;
+      announcement: null;
+      footerTagline: null;
+      footerColumns: null;
+      contactTitle: null;
+      locations: Array<{
+        _id: string;
+        name: string;
+        street: string | null;
+        city: string | null;
+        mapsUrl: string | null;
+      }>;
+      email: string | null;
+      phone: null;
       socialLinks: null;
       legalLinks: null;
       copyright: null;
@@ -755,6 +2543,12 @@ export type SETTINGS_QUERY_RESULT =
         label: string;
         href: string;
       } | null;
+      announcement: {
+        enabled: boolean | null;
+        text: string | null;
+        linkLabel: string | null;
+        link: string | null;
+      } | null;
       footerTagline: string | null;
       footerColumns: Array<{
         _key: string;
@@ -766,8 +2560,15 @@ export type SETTINGS_QUERY_RESULT =
         }> | null;
       }> | null;
       contactTitle: string | null;
-      addressLines: string | null;
+      locations: Array<{
+        _id: string;
+        name: string;
+        street: string | null;
+        city: string | null;
+        mapsUrl: string | null;
+      }>;
       email: string | null;
+      phone: string | null;
       socialLinks: Array<{
         _key: string;
         label: string;
@@ -800,7 +2601,12 @@ export type SETTINGS_QUERY_RESULT =
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_id == "homePage"][0]{\n  title,\n  "sections": sections[]{\n    _key,\n    _type,\n    _type == "hero" => {\n      eyebrow,\n      heading,\n      tagline,\n      primaryCta{label, href},\n      secondaryCta{label, href},\n      microcopy,\n      videoUrl,\n      videoPoster{alt, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n      rating{score, source, note}\n    },\n    _type == "featureGrid" => {\n      eyebrow,\n      heading,\n      features[]{_key, title, description}\n    },\n    _type == "sportHighlight" => {\n      eyebrow,\n      heading,\n      body,\n      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n      stats[]{_key, value, label},\n      footnote\n    },\n    _type == "announcement" => {\n      tag,\n      heading,\n      body,\n      link{label, href},\n      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n    },\n    _type == "audienceSegments" => {\n      eyebrow,\n      heading,\n      segments[]{\n        _key,\n        title,\n        description,\n        link{label, href},\n        image{alt, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "ctaBanner" => {\n      heading,\n      cta{label, href},\n      microcopy,\n      theme,\n      enableGame\n    },\n    _type == "trainingTimes" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "rows": *[_type == "trainingTime"] | order(order asc, group asc){\n        _id, group, day, startTime, endTime\n      }\n    },\n    _type == "gallery" => {\n      eyebrow,\n      images[]{_key, alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n    },\n    _type == "testimonials" => {\n      eyebrow,\n      heading,\n      "reviews": reviews[]->{_id, quote, name, role, rating}\n    },\n    _type == "faqList" => {\n      heading,\n      "items": items[]->{_id, question, answer}\n    }\n  },\n  seo{title, description, ogImage{"asset": asset->{url}}}\n}': HOME_QUERY_RESULT;
-    '*[_id == "siteSettings"][0]{\n  mainNav[]{_key, label, href},\n  headerSecondaryCta{label, href},\n  headerPrimaryCta{label, href},\n  footerTagline,\n  footerColumns[]{_key, title, links[]{_key, label, href}},\n  contactTitle,\n  addressLines,\n  email,\n  socialLinks[]{_key, label, href},\n  legalLinks[]{_key, label, href},\n  copyright,\n  stickyBarCta{label, href},\n  stickyBarMicrocopy,\n  defaultSeo{title, description, ogImage{"asset": asset->{url}}}\n}': SETTINGS_QUERY_RESULT;
+    '*[_id == "homePage"][0]{\n  title,\n  "sections": sections[]{\n    _key,\n    _type,\n    _type == "hero" => {\n      eyebrow,\n      heading,\n      tagline,\n      primaryCta{label, href},\n      secondaryCta{label, href},\n      microcopy,\n      videoUrl,\n      videoPoster{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n      rating{score, source, note}\n    },\n    _type == "featureGrid" => {\n      eyebrow,\n      heading,\n      features[]{_key, title, description}\n    },\n    _type == "sportHighlight" => {\n      eyebrow,\n      heading,\n      body,\n      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n      stats[]{_key, value, label},\n      footnote\n    },\n    _type == "announcement" => {\n      tag,\n      heading,\n      body,\n      link{label, href},\n      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n    },\n    _type == "audienceSegments" => {\n      eyebrow,\n      heading,\n      segments[]{\n        _key,\n        title,\n        description,\n        link{label, href},\n        image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "ctaBanner" => {\n      heading,\n      cta{label, href},\n      microcopy,\n      theme,\n      enableGame\n    },\n    _type == "trainingTimes" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "rows": *[_type == "trainingTime"] | order(order asc, group asc){\n        _id, group, activity, day, startTime, endTime,\n        location->{name, street, city, mapsUrl},\n        override{enabled, note, day, startTime, endTime, location}\n      }\n    },\n    _type == "gallery" => {\n      eyebrow,\n      images[]{_key, alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n    },\n    _type == "testimonials" => {\n      eyebrow,\n      heading,\n      "reviews": reviews[]->{_id, quote, name, role, rating}\n    },\n    _type == "faqList" => {\n      heading,\n      "items": items[]->{_id, question, answer}\n    },\n    _type == "pricingSection" => {\n      eyebrow,\n      heading,\n      intro,\n      "packages": packages[]->{\n        _id, title, description, price, priceSuffix, features,\n        highlighted, highlightLabel, ctaLabel, ctaHref\n      },\n      footnote\n    },\n    _type == "teamSection" => {\n      eyebrow,\n      heading,\n      "trainers": *[_type == "teamMember" && group == "trainer"] | order(sortOrder asc, name asc){\n        _id, name, role, group, activeSince, bio,\n        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      },\n      "board": *[_type == "teamMember" && group == "bestuur"] | order(sortOrder asc, name asc){\n        _id, name, role, group, activeSince, bio,\n        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "honoraryMembersSection" => {\n      eyebrow,\n      heading,\n      intro,\n      "members": *[_type == "honoraryMember"] | order(sortOrder asc, memberSince asc){\n        _id, name, memberSince, contribution,\n        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "contactSection" => {\n      eyebrow,\n      heading,\n      intro,\n      "settings": *[_id == "siteSettings"][0]{\n        email, phone,\n        socialLinks[]{_key, label, href}\n      },\n      "locations": *[_type == "location"] | order(sortOrder asc, name asc){\n        _id, name, street, city, mapsUrl\n      }\n    },\n    _type == "comparisonSection" => {\n      eyebrow,\n      heading,\n      columns[]{_key, label, highlighted},\n      rows[]{_key, label, values},\n      footnote,\n      ctaLabel,\n      ctaLink\n    },\n    _type == "agendaSection" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "events": *[_type == "event" && date >= now()] | order(date asc)[0..2]{\n        _id, title, description, date, ctaLabel, ctaLink, featured\n      }\n    },\n    _type == "sponsorsSection" => {\n      eyebrow,\n      link{label, href},\n      joinLabel,\n      joinHref,\n      "sponsors": *[_type == "sponsor"] | order(sortOrder asc, name asc){\n        _id, name, url,\n        logo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "newsletterSection" => {\n      heading,\n      body,\n      buttonLabel,\n      note\n    },\n    _type == "newsSection" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "articles": *[_type == "newsArticle"] | order(publishedAt desc)[0..2]{\n        _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,\n        coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    }\n},\n  seo{title, description, ogImage{"asset": asset->{url}}}\n}': HOME_QUERY_RESULT;
+    '*[_type == "page" && slug.current == $slug][0]{\n  _id,\n  title,\n  "slug": slug.current,\n  intro,\n  "sections": sections[]{\n    _key,\n    _type,\n    _type == "hero" => {\n      eyebrow,\n      heading,\n      tagline,\n      primaryCta{label, href},\n      secondaryCta{label, href},\n      microcopy,\n      videoUrl,\n      videoPoster{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n      rating{score, source, note}\n    },\n    _type == "featureGrid" => {\n      eyebrow,\n      heading,\n      features[]{_key, title, description}\n    },\n    _type == "sportHighlight" => {\n      eyebrow,\n      heading,\n      body,\n      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n      stats[]{_key, value, label},\n      footnote\n    },\n    _type == "announcement" => {\n      tag,\n      heading,\n      body,\n      link{label, href},\n      image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n    },\n    _type == "audienceSegments" => {\n      eyebrow,\n      heading,\n      segments[]{\n        _key,\n        title,\n        description,\n        link{label, href},\n        image{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "ctaBanner" => {\n      heading,\n      cta{label, href},\n      microcopy,\n      theme,\n      enableGame\n    },\n    _type == "trainingTimes" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "rows": *[_type == "trainingTime"] | order(order asc, group asc){\n        _id, group, activity, day, startTime, endTime,\n        location->{name, street, city, mapsUrl},\n        override{enabled, note, day, startTime, endTime, location}\n      }\n    },\n    _type == "gallery" => {\n      eyebrow,\n      images[]{_key, alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n    },\n    _type == "testimonials" => {\n      eyebrow,\n      heading,\n      "reviews": reviews[]->{_id, quote, name, role, rating}\n    },\n    _type == "faqList" => {\n      heading,\n      "items": items[]->{_id, question, answer}\n    },\n    _type == "pricingSection" => {\n      eyebrow,\n      heading,\n      intro,\n      "packages": packages[]->{\n        _id, title, description, price, priceSuffix, features,\n        highlighted, highlightLabel, ctaLabel, ctaHref\n      },\n      footnote\n    },\n    _type == "teamSection" => {\n      eyebrow,\n      heading,\n      "trainers": *[_type == "teamMember" && group == "trainer"] | order(sortOrder asc, name asc){\n        _id, name, role, group, activeSince, bio,\n        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      },\n      "board": *[_type == "teamMember" && group == "bestuur"] | order(sortOrder asc, name asc){\n        _id, name, role, group, activeSince, bio,\n        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "honoraryMembersSection" => {\n      eyebrow,\n      heading,\n      intro,\n      "members": *[_type == "honoraryMember"] | order(sortOrder asc, memberSince asc){\n        _id, name, memberSince, contribution,\n        photo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "contactSection" => {\n      eyebrow,\n      heading,\n      intro,\n      "settings": *[_id == "siteSettings"][0]{\n        email, phone,\n        socialLinks[]{_key, label, href}\n      },\n      "locations": *[_type == "location"] | order(sortOrder asc, name asc){\n        _id, name, street, city, mapsUrl\n      }\n    },\n    _type == "comparisonSection" => {\n      eyebrow,\n      heading,\n      columns[]{_key, label, highlighted},\n      rows[]{_key, label, values},\n      footnote,\n      ctaLabel,\n      ctaLink\n    },\n    _type == "agendaSection" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "events": *[_type == "event" && date >= now()] | order(date asc)[0..2]{\n        _id, title, description, date, ctaLabel, ctaLink, featured\n      }\n    },\n    _type == "sponsorsSection" => {\n      eyebrow,\n      link{label, href},\n      joinLabel,\n      joinHref,\n      "sponsors": *[_type == "sponsor"] | order(sortOrder asc, name asc){\n        _id, name, url,\n        logo{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    },\n    _type == "newsletterSection" => {\n      heading,\n      body,\n      buttonLabel,\n      note\n    },\n    _type == "newsSection" => {\n      eyebrow,\n      heading,\n      link{label, href},\n      "articles": *[_type == "newsArticle"] | order(publishedAt desc)[0..2]{\n        _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,\n        coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n      }\n    }\n},\n  seo{title, description, ogImage{"asset": asset->{url}}}\n}': PAGE_QUERY_RESULT;
+    '*[_type == "page" && defined(slug.current)].slug.current': PAGE_SLUGS_QUERY_RESULT;
+    '*[_type == "newsArticle"] | order(publishedAt desc){\n  _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,\n  coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n}': NEWS_LIST_QUERY_RESULT;
+    '*[_type == "newsArticle" && slug.current == $slug][0]{\n  _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,\n  coverImage{alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}},\n  body[]{\n    ...,\n    _type == "image" => {alt, hotspot, crop, "asset": asset->{_id, url, metadata{lqip, dimensions}}}\n  }\n}': NEWS_ARTICLE_QUERY_RESULT;
+    '*[_type == "newsArticle" && defined(slug.current)].slug.current': NEWS_SLUGS_QUERY_RESULT;
+    '*[_id == "siteSettings"][0]{\n  mainNav[]{_key, label, href},\n  headerSecondaryCta{label, href},\n  headerPrimaryCta{label, href},\n  announcement{enabled, text, linkLabel, link},\n  footerTagline,\n  footerColumns[]{_key, title, links[]{_key, label, href}},\n  contactTitle,\n  "locations": *[_type == "location"] | order(sortOrder asc, name asc){\n    _id, name, street, city, mapsUrl\n  },\n  email,\n  phone,\n  socialLinks[]{_key, label, href},\n  legalLinks[]{_key, label, href},\n  copyright,\n  stickyBarCta{label, href},\n  stickyBarMicrocopy,\n  defaultSeo{title, description, ogImage{"asset": asset->{url}}}\n}': SETTINGS_QUERY_RESULT;
   }
 }

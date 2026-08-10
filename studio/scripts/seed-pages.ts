@@ -516,8 +516,8 @@ async function run() {
     ),
   ]
   await page('page-trainingen', {
-    title: 'Trainingen',
-    slug: {_type: 'slug', current: 'trainingen'},
+    title: 'Tijden',
+    slug: {_type: 'slug', current: 'tijden'},
     intro:
       'Waar en wanneer we spelen. Kom gerust een keer meekijken of meespelen — je eerste maand is gratis.',
     sections: [
@@ -826,7 +826,7 @@ async function run() {
         'Nieuw',
         '’t Wooldrik Hal B — onze nieuwe thuisbasis',
         'Vanaf 27 augustus spelen we in de nieuwe sporthal aan ’t Wooldrik 1. Een frisse vloer, goede verlichting en eindelijk ruimte voor iedereen. Op onze eerste speelavonden ben je meer dan welkom om mee te doen.',
-        {label: 'Bekijk de trainingstijden', href: '/trainingen'},
+        {label: 'Bekijk de trainingstijden', href: '/tijden'},
       ),
       featureGrid(undefined, 'Wat de nieuwe hal brengt', [
         ['Nieuwe vloer & verlichting', 'Prettig spelen op een sportvloer die is gemaakt voor snelle sporten als badminton.'],

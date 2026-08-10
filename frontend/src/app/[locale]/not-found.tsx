@@ -1,6 +1,7 @@
 import { getLocale } from "next-intl/server";
 import { MiniGameZone } from "@/components/fx/MiniGameZone";
 import { BrandButton } from "@/components/ui/BrandButton";
+import { localizeHref } from "@/lib/links";
 
 /**
  * 404 "Verloren rally" (design 6d): statische pagina met het racket-cursor-
@@ -28,11 +29,11 @@ export default async function NotFound() {
           een shuttle terug — of speel verder op de homepage.
         </p>
         <div className="flex w-full flex-col justify-center gap-3.5 sm:w-auto sm:flex-row">
-          <BrandButton href={`/${locale}`} variant="primary" size="lg">
+          <BrandButton href={localizeHref("/", locale)} variant="primary" size="lg">
             Naar de homepage
           </BrandButton>
           <BrandButton
-            href={`/${locale}/probeer-gratis`}
+            href={localizeHref("/probeer-gratis", locale)}
             variant="outline-light"
             size="lg"
           >

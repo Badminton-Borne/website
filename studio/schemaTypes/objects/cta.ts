@@ -1,7 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {LinkIcon} from '@sanity/icons'
 
-/** Knop of tekstlink: label + interne route (bv. /trainingen) of externe URL. */
+/** Knop of tekstlink: label + interne route (bv. /tijden) of externe URL. */
 export const cta = defineType({
   name: 'cta',
   title: 'Knop / link',
@@ -17,7 +17,7 @@ export const cta = defineType({
     defineField({
       name: 'href',
       title: 'Link',
-      description: 'Interne route (bv. /trainingen) of volledige URL',
+      description: 'Interne route (bv. /tijden) of volledige URL',
       type: 'string',
       validation: (rule) =>
         rule.required().custom((value) => {

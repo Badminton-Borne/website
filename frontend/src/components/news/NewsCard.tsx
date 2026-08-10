@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SanityImg } from "@/components/ui/SanityImg";
 import { formatNewsDate } from "@/lib/format";
+import { localizeHref } from "@/lib/links";
 import type { NewsCardData } from "@/sanity/types";
 
 /**
@@ -18,7 +19,7 @@ export function NewsCard({
 }) {
   return (
     <Link
-      href={`/${locale}/nieuws/${article.slug}`}
+      href={localizeHref(`/nieuws/${article.slug}`, locale)}
       className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-white/10 bg-navy-800 transition-[transform,border-color] duration-200 ease-brand hover:-translate-y-1 hover:border-lime-400/40"
     >
       <div

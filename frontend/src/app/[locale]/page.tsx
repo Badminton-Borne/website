@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { localizeHref } from "@/lib/links";
 import { getHomePage, getSiteSettings } from "@/sanity/content";
 import { SectionRenderer } from "@/components/home/SectionRenderer";
 
@@ -26,6 +27,7 @@ export async function generateMetadata({
   return {
     title: { absolute: title },
     description,
+    alternates: { canonical: localizeHref("/", locale) },
     openGraph: {
       title,
       description,

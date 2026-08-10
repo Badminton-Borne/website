@@ -306,7 +306,7 @@ async function run() {
         heading: 'De snelste sport van Borne',
         tagline: 'Van eerste keer tot competitie. Alle leeftijden, alle niveaus.',
         primaryCta: cta('Plan je eerste bezoek', '/probeer-gratis'),
-        secondaryCta: cta('Bekijk trainingstijden', '/trainingen'),
+        secondaryCta: cta('Bekijk trainingstijden', '/tijden'),
         microcopy: MICROCOPY,
         videoUrl:
           'https://badmintonverenigingborne.nl/wordpress2/wp-content/uploads/2023/03/Badminton-Borne.mp4',
@@ -449,7 +449,7 @@ async function run() {
       {...cta('Home', '/'), _key: key()},
       {...cta('Over ons', '/over-ons'), _key: key()},
       {...cta('Badminton', '/badminton'), _key: key()},
-      {...cta('Tijden', '/trainingen'), _key: key()},
+      {...cta('Tijden', '/tijden'), _key: key()},
       {...cta('Jeugd', '/jeugd'), _key: key()},
       {...cta('Volwassenen', '/volwassenen'), _key: key()},
       {...cta('Competitie', '/competitie'), _key: key()},
@@ -485,7 +485,7 @@ async function run() {
         _key: key(),
         title: 'Spelen',
         links: [
-          {...cta('Trainingen', '/trainingen'), _key: key()},
+          {...cta('Tijden', '/tijden'), _key: key()},
           {...cta('Jeugd', '/jeugd'), _key: key()},
           {...cta('Volwassenen', '/volwassenen'), _key: key()},
           {...cta('Competitie', '/competitie'), _key: key()},
