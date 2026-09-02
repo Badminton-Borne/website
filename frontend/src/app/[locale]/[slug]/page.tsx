@@ -74,6 +74,14 @@ export default async function SubPage({ params }: PageProps) {
         title={title}
         intro={page.intro}
         crumbs={[{ label: "Home", href: localizeHref("/", locale) }, { label: title }]}
+        cta={
+          page.heroCta?.label && page.heroCta.href
+            ? {
+                label: page.heroCta.label,
+                href: localizeHref(page.heroCta.href, locale),
+              }
+            : null
+        }
       />
       <SectionRenderer sections={page.sections ?? []} locale={locale} />
       <script

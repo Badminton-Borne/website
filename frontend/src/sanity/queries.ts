@@ -182,6 +182,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
   title,
   "slug": slug.current,
   intro,
+  heroCta{label, href},
   "sections": sections[]{${SECTION_FIELDS}},
   ${SEO_FIELDS}
 }`);

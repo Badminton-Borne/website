@@ -27,8 +27,7 @@ export const HOME_FALLBACK: HomePageData = {
       primaryCta: { label: "Plan je eerste bezoek", href: "/probeer-gratis" },
       secondaryCta: { label: "Bekijk trainingstijden", href: "/tijden" },
       microcopy: MICROCOPY,
-      videoUrl:
-        "https://badmintonverenigingborne.nl/wordpress2/wp-content/uploads/2023/03/Badminton-Borne.mp4",
+      videoUrl: "/badminton-borne-hero.mp4",
       rating: { score: 4.8, source: "op Google", note: "Alle leeftijden en niveaus" },
     },
     {

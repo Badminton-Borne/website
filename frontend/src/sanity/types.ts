@@ -384,6 +384,7 @@ export interface PageData {
   title?: string | null;
   slug?: string | null;
   intro?: string | null;
+  heroCta?: Cta | null;
   sections?: PageSection[] | null;
   seo?: Seo | null;
 }

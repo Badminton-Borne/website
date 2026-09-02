@@ -56,10 +56,11 @@ export const hero = defineType({
     defineField({
       name: 'videoUrl',
       title: 'Video-URL',
-      description: 'MP4-bestand; speelt automatisch, zonder geluid, in een loop',
+      description:
+        'MP4-bestand; speelt automatisch, zonder geluid, in een loop. Gebruik /badminton-borne-hero.mp4 voor het bestand dat in de site zelf zit, of een volledige URL.',
       type: 'url',
       group: 'media',
-      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
+      validation: (rule) => rule.uri({scheme: ['http', 'https'], allowRelative: true}),
     }),
     defineField({
       name: 'videoPoster',

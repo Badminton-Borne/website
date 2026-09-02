@@ -58,6 +58,14 @@ export const page = defineType({
       group: 'content',
     }),
     defineField({
+      name: 'heroCta',
+      title: 'Knop bovenaan',
+      description:
+        'Optioneel. Verschijnt direct onder de intro, boven de secties. Handig om de belangrijkste actie meteen bovenaan te zetten.',
+      type: 'cta',
+      group: 'content',
+    }),
+    defineField({
       name: 'sections',
       title: 'Secties',
       description: 'Sleep om de volgorde te wijzigen',

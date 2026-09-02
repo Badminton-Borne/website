@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AccentBar } from "@/components/ui/AccentBar";
+import { BrandButton } from "@/components/ui/BrandButton";
 
 export interface Crumb {
   label: string;
@@ -16,6 +17,7 @@ export function PageHero({
   intro,
   crumbs,
   meta,
+  cta,
 }: {
   title: string;
   intro?: string | null;
@@ -23,6 +25,8 @@ export function PageHero({
   crumbs: Crumb[];
   /** Optionele extra regel (bv. Tag + datum op de nieuws-detailpagina). */
   meta?: React.ReactNode;
+  /** Optionele knop onder de intro — href is al gelokaliseerd. */
+  cta?: { label: string; href: string } | null;
 }) {
   return (
     <div className="border-b border-white/8 bg-navy-900 px-5 pb-12 pt-[calc(var(--header-h)+40px)] lg:px-20 lg:pb-[72px] lg:pt-[calc(var(--header-h)+64px)]">
@@ -61,6 +65,11 @@ export function PageHero({
           </p>
         )}
         {meta}
+        {cta && (
+          <BrandButton href={cta.href} variant="primary" size="lg">
+            {cta.label}
+          </BrandButton>
+        )}
         <AccentBar />
       </div>
     </div>
