@@ -452,6 +452,8 @@ async function run() {
       {...cta('Jeugd', '/jeugd'), _key: key()},
       {...cta('Volwassenen', '/volwassenen'), _key: key()},
       {...cta('Competitie', '/competitie'), _key: key()},
+      {...cta('Nieuws', '/nieuws'), _key: key()},
+      {...cta('Agenda', '/agenda'), _key: key()},
       {...cta('Contact', '/contact'), _key: key()},
     ],
     headerSecondaryCta: cta('Lid worden', '/lid-worden'),
