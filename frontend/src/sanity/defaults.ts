@@ -142,7 +142,7 @@ export const HOME_FALLBACK: HomePageData = {
           _id: "q1",
           question: "Wat kost het?",
           answer:
-            "Je eerste maand is gratis. Daarna betaal je een vast bedrag per kwartaal — jeugd goedkoper dan volwassenen. De actuele tarieven staan op de lidmaatschapspagina.",
+            "Je eerste maand is gratis. Daarna betaal je een vast bedrag per kwartaal, jeugd goedkoper dan volwassenen. De actuele tarieven staan op de lidmaatschapspagina.",
         },
         {
           _id: "q2",
@@ -160,7 +160,7 @@ export const HOME_FALLBACK: HomePageData = {
           _id: "q4",
           question: "Vanaf welke leeftijd?",
           answer:
-            "De jeugdtraining is vanaf 8 jaar. Daarboven is er geen grens — bij ons speelt iedereen van 8 tot 80 mee.",
+            "De jeugdtraining is vanaf 8 jaar. Daarboven is er geen grens: bij ons speelt iedereen van 8 tot 80 mee.",
         },
         {
           _id: "q5",
@@ -181,7 +181,7 @@ export const HOME_FALLBACK: HomePageData = {
     },
   ],
   seo: {
-    title: "Badminton Borne — De snelste sport van Borne",
+    title: "Badminton Borne | De snelste sport van Borne",
     description:
       "Badmintonvereniging in Borne voor alle leeftijden en niveaus. Eerste maand gratis, geen verplichtingen, maandelijks opzegbaar.",
   },
@@ -203,7 +203,7 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
   headerSecondaryCta: { label: "Lid worden", href: "/lid-worden" },
   headerPrimaryCta: { label: "Plan je eerste bezoek", href: "/probeer-gratis" },
   footerTagline:
-    "Elke smash telt. Badminton voor heel Borne — van eerste shuttle tot competitie.",
+    "Elke smash telt. Badminton voor heel Borne, van eerste shuttle tot competitie.",
   footerColumns: [
     {
       _key: "c1",
@@ -231,7 +231,7 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
   ],
   announcement: {
     enabled: false,
-    text: "Nieuwe sporthal vanaf augustus — wij spelen er als eersten",
+    text: "Nieuwe sporthal vanaf augustus: wij spelen er als eersten",
     linkLabel: "Lees meer",
     link: "/nieuwe-hal",
   },
@@ -272,9 +272,9 @@ export const SETTINGS_FALLBACK: SiteSettingsData = {
 };
 
 /* ==========================================================================
-   Componenten-handoff (artboards 4a–4f, 5a): fallback-subpagina's met exact
+   Componenten-handoff (artboards 4a tot 4f, 5a): fallback-subpagina's met exact
    de designcontent, zolang Sanity nog niet gekoppeld/geseed is.
-   ⚠ Prijzen en vergelijkingscijfers zijn illustratief — club vult echte
+   ⚠ Prijzen en vergelijkingscijfers zijn illustratief, club vult echte
    waarden in via Sanity (voetnoten staan er al).
    ========================================================================== */
 
@@ -291,7 +291,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
   lidmaatschap: {
     title: "Lidmaatschap",
     slug: "lidmaatschap",
-    intro: "Kies het pakket dat bij je past — overstappen kan altijd.",
+    intro: "Kies het pakket dat bij je past, overstappen kan altijd.",
     sections: [
       {
         _type: "pricingSection",
@@ -299,7 +299,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
         eyebrow: "Lidmaatschap",
         heading: "Kies je pakket",
         intro:
-          "Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis — daarna maandelijks opzegbaar.",
+          "Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis, daarna maandelijks opzegbaar.",
         packages: [
           {
             _id: "pkg-jeugd",
@@ -336,7 +336,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           },
         ],
         footnote:
-          "Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten — de toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.",
+          "Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten. De toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.",
       },
       {
         _type: "comparisonSection",
@@ -358,7 +358,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           {
             _key: "row3",
             label: "Instapkosten",
-            values: ["Laag — racket lenen kan", "Middel", "Middel"],
+            values: ["Laag, racket lenen kan", "Middel", "Middel"],
           },
           {
             _key: "row4",
@@ -368,10 +368,10 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           {
             _key: "row5",
             label: "In Borne, zonder wachtlijst",
-            values: ["✓", "—", "Wachtlijsten"],
+            values: ["✓", "-", "Wachtlijsten"],
           },
         ],
-        footnote: "*Cijfers ter illustratie — checken vóór publicatie.",
+        footnote: "*Cijfers ter illustratie, checken vóór publicatie.",
         ctaLabel: "Probeer het zelf gratis",
         ctaLink: "/probeer-gratis",
       },
@@ -385,7 +385,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
       },
     ],
     seo: {
-      title: "Lidmaatschap — Badminton Borne",
+      title: "Lidmaatschap | Badminton Borne",
       description:
         "Kies je pakket bij Badminton Borne: jeugd, recreatief of competitie. Eerste maand gratis, maandelijks opzegbaar.",
     },
@@ -394,7 +394,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
     title: "Over ons",
     slug: "over-ons",
     intro:
-      "Dé badmintonclub van Borne — gezellig, fanatiek en voor alle leeftijden.",
+      "Dé badmintonclub van Borne: gezellig, fanatiek en voor alle leeftijden.",
     sections: [
       {
         _type: "teamSection",
@@ -440,7 +440,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
             name: "Naam Erelid",
             memberSince: 2012,
             contribution:
-              "Het gezicht van de gezelligheid — organiseerde jarenlang alle clubtoernooien.",
+              "Het gezicht van de gezelligheid, organiseerde jarenlang alle clubtoernooien.",
           },
         ],
       },
@@ -454,7 +454,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           {
             _id: "ev-1",
             title: "Opening nieuwe sporthal",
-            description: "Feestelijke eerste speelavond — iedereen welkom, racket lenen kan.",
+            description: "Feestelijke eerste speelavond, iedereen welkom, racket lenen kan.",
             date: "2026-08-15T19:00:00Z",
             ctaLabel: "Ik kom",
             ctaLink: "/contact",
@@ -463,7 +463,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           {
             _id: "ev-2",
             title: "Start competitieseizoen",
-            description: "Eerste thuiswedstrijden — kom aanmoedigen.",
+            description: "Eerste thuiswedstrijden: kom aanmoedigen.",
             date: "2026-09-05T19:00:00Z",
             ctaLabel: "Programma",
             ctaLink: "/competitie",
@@ -472,7 +472,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           {
             _id: "ev-3",
             title: "Open toernooi voor niet-leden",
-            description: "Neem een vriend mee — team van 2, iedereen kan meedoen.",
+            description: "Neem een vriend mee: team van 2, iedereen kan meedoen.",
             date: "2026-09-27T10:00:00Z",
             ctaLabel: "Doe mee",
             ctaLink: "/contact",
@@ -504,7 +504,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
       },
     ],
     seo: {
-      title: "Over ons — Badminton Borne",
+      title: "Over ons | Badminton Borne",
       description:
         "Maak kennis met de trainers, het bestuur en de ere-leden van Badminton Borne.",
     },
@@ -520,7 +520,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
         eyebrow: "Contact",
         heading: "Stel je vraag",
         intro:
-          "Twijfel je nog, of wil je gewoon een keer komen kijken? Stuur een berichtje — we reageren meestal binnen een dag.",
+          "Twijfel je nog, of wil je gewoon een keer komen kijken? Stuur een berichtje, we reageren meestal binnen een dag.",
         settings: CONTACT_SETTINGS,
         locations: SETTINGS_FALLBACK.locations,
       },
@@ -534,7 +534,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           {
             _id: "ev-1",
             title: "Opening nieuwe sporthal",
-            description: "Feestelijke eerste speelavond — iedereen welkom, racket lenen kan.",
+            description: "Feestelijke eerste speelavond, iedereen welkom, racket lenen kan.",
             date: "2026-08-15T19:00:00Z",
             ctaLabel: "Ik kom",
             ctaLink: "/contact",
@@ -544,7 +544,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
       },
     ],
     seo: {
-      title: "Contact — Badminton Borne",
+      title: "Contact | Badminton Borne",
       description:
         "Stel je vraag aan Badminton Borne. We reageren meestal binnen een dag.",
     },
@@ -574,7 +574,7 @@ export const NEWS_FALLBACK: NewsArticleData[] = [
     category: "Club",
     featured: true,
     body: NEWS_BODY_INTRO(
-      "Vanaf augustus spelen we als eersten in de splinternieuwe sporthal van Borne. Nieuwe vloer, nieuwe verlichting en eindelijk ruimte voor iedereen. Op de openingsavond is iedereen welkom — racket lenen kan, shuttles liggen klaar. [Voorbeeldbericht — vervang via Sanity.]",
+      "Vanaf augustus spelen we als eersten in de splinternieuwe sporthal van Borne. Nieuwe vloer, nieuwe verlichting en eindelijk ruimte voor iedereen. Op de openingsavond is iedereen welkom. Racket lenen kan, shuttles liggen klaar. [Voorbeeldbericht, vervang via Sanity.]",
     ),
   },
   {
@@ -587,7 +587,7 @@ export const NEWS_FALLBACK: NewsArticleData[] = [
     category: "Competitie",
     featured: false,
     body: NEWS_BODY_INTRO(
-      "In september beginnen de eerste thuiswedstrijden van het nieuwe competitieseizoen. Publiek is meer dan welkom — de koffie staat klaar. [Voorbeeldbericht — vervang via Sanity.]",
+      "In september beginnen de eerste thuiswedstrijden van het nieuwe competitieseizoen. Publiek is meer dan welkom, de koffie staat klaar. [Voorbeeldbericht, vervang via Sanity.]",
     ),
   },
   {
@@ -600,7 +600,7 @@ export const NEWS_FALLBACK: NewsArticleData[] = [
     category: "Jeugd",
     featured: false,
     body: NEWS_BODY_INTRO(
-      "Ruim dertig kinderen deden mee aan het jaarlijkse jeugdtoernooi. Van eerste shuttle tot finale-rally: de zaal stond vol energie. [Voorbeeldbericht — vervang via Sanity.]",
+      "Ruim dertig kinderen deden mee aan het jaarlijkse jeugdtoernooi. Van eerste shuttle tot finale-rally: de zaal stond vol energie. [Voorbeeldbericht, vervang via Sanity.]",
     ),
   },
 ];

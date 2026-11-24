@@ -94,7 +94,7 @@ export function ComparisonSection({
                               }`
                         }
                       >
-                        {row.values?.[colIndex] ?? "—"}
+                        {row.values?.[colIndex] ?? "-"}
                       </div>
                     ))}
                   </div>

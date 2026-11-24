@@ -17,7 +17,7 @@ const CONTENT = `# Badminton Borne
 
 ## Waarom badminton bij een vereniging?
 - Goedkoper dan commerciële padel- of tennisbanen
-- Altijd makkelijk te joinen — geen eigen groep nodig
+- Altijd makkelijk te joinen, geen eigen groep nodig
 - Sociaal: je leert direct mensen kennen
 - Training beschikbaar voor alle niveaus
 - Competitie mogelijk voor wie dat wil

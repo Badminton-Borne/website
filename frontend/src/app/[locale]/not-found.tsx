@@ -26,7 +26,7 @@ export default async function NotFound() {
         </h1>
         <p className="max-w-[48ch] text-base leading-[1.65] text-navy-300 lg:text-lg">
           De pagina die je zocht is uit beeld geslagen. Sla ondertussen gerust
-          een shuttle terug — of speel verder op de homepage.
+          een shuttle terug, of speel verder op de homepage.
         </p>
         <div className="flex w-full flex-col justify-center gap-3.5 sm:w-auto sm:flex-row">
           <BrandButton href={localizeHref("/", locale)} variant="primary" size="lg">
@@ -41,7 +41,7 @@ export default async function NotFound() {
           </BrandButton>
         </div>
         <p className="hidden text-[13px] text-navy-300 motion-reduce:hidden pointer-fine:block">
-          Beweeg je muis — elke paar seconden vliegt er een shuttle voorbij.
+          Beweeg je muis. Elke paar seconden vliegt er een shuttle voorbij.
         </p>
       </div>
     </MiniGameZone>

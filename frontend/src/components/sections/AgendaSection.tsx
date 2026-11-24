@@ -99,7 +99,7 @@ export function AgendaSection({
 
         {events.length === 0 && (
           <p className="text-[15px] text-navy-300">
-            Er staat op dit moment niets in de agenda — kom snel terug!
+            Er staat op dit moment niets in de agenda. Kom snel terug!
           </p>
         )}
 

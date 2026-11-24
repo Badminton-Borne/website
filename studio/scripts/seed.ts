@@ -96,7 +96,7 @@ async function run() {
       _type: 'faqItem',
       question: 'Vanaf welke leeftijd?',
       answer:
-        'De jeugdtraining is vanaf 8 jaar. Daarboven is er geen grens — bij ons speelt iedereen van 8 tot 80 mee.',
+        'De jeugdtraining is vanaf 8 jaar. Daarboven is er geen grens: bij ons speelt iedereen van 8 tot 80 mee.',
     },
     {
       _type: 'faqItem',
@@ -160,7 +160,7 @@ async function run() {
 
   await ensureCollection('event', [
     {_type: 'event', title: 'Opening nieuwe sporthal', description: 'Feestelijke eerste speelavond — iedereen welkom, racket lenen kan.', date: '2026-08-15T19:00:00Z', ctaLabel: 'Ik kom', ctaLink: '/contact', featured: false},
-    {_type: 'event', title: 'Start competitieseizoen', description: 'Eerste thuiswedstrijden — kom aanmoedigen.', date: '2026-09-05T19:00:00Z', ctaLabel: 'Programma', ctaLink: '/competitie', featured: false},
+    {_type: 'event', title: 'Start competitieseizoen', description: 'Eerste thuiswedstrijden: kom aanmoedigen.', date: '2026-09-05T19:00:00Z', ctaLabel: 'Programma', ctaLink: '/competitie', featured: false},
     {_type: 'event', title: 'Open toernooi voor niet-leden', description: 'Neem een vriend mee — team van 2, iedereen kan meedoen.', date: '2026-09-27T10:00:00Z', ctaLabel: 'Doe mee', ctaLink: '/contact', featured: true},
   ])
 
@@ -190,7 +190,7 @@ async function run() {
       excerpt: 'Vanaf augustus spelen we als eersten in de splinternieuwe hal van Borne. Kom kijken op de feestelijke openingsavond.',
       category: 'Club',
       featured: true,
-      body: newsBody('Vanaf augustus spelen we als eersten in de splinternieuwe sporthal van Borne. Nieuwe vloer, nieuwe verlichting en eindelijk ruimte voor iedereen. Op de openingsavond is iedereen welkom — racket lenen kan, shuttles liggen klaar. [Voorbeeldbericht — vervang via de Studio.]'),
+      body: newsBody('Vanaf augustus spelen we als eersten in de splinternieuwe sporthal van Borne. Nieuwe vloer, nieuwe verlichting en eindelijk ruimte voor iedereen. Op de openingsavond is iedereen welkom. Racket lenen kan, shuttles liggen klaar. [Voorbeeldbericht — vervang via de Studio.]'),
     },
     {
       _type: 'newsArticle',
@@ -244,18 +244,18 @@ async function run() {
           rows: [
             {_type: 'comparisonRow', _key: key(), label: 'Topsnelheid', values: ['±400 km/u*', '±250 km/u', '±180 km/u']},
             {_type: 'comparisonRow', _key: key(), label: 'Hele jaar binnen spelen', values: ['✓', 'Seizoensgebonden', 'Vaak buiten']},
-            {_type: 'comparisonRow', _key: key(), label: 'Instapkosten', values: ['Laag — racket lenen kan', 'Middel', 'Middel']},
+            {_type: 'comparisonRow', _key: key(), label: 'Instapkosten', values: ['Laag, racket lenen kan', 'Middel', 'Middel']},
             {_type: 'comparisonRow', _key: key(), label: 'Direct meespelen als beginner', values: ['✓ Eerste avond al', 'Lessen nodig', 'Snel te leren']},
             {_type: 'comparisonRow', _key: key(), label: 'In Borne, zonder wachtlijst', values: ['✓', '—', 'Wachtlijsten']},
           ],
-          footnote: '*Cijfers ter illustratie — checken vóór publicatie.',
+          footnote: '*Cijfers ter illustratie, checken vóór publicatie.',
           ctaLabel: 'Probeer het zelf gratis',
           ctaLink: '/probeer-gratis',
         },
         {_type: 'newsletterSection', _key: key(), heading: 'Mis geen smash', body: 'Eén mailtje per maand over toernooien, de nieuwe hal en clubnieuws.', buttonLabel: 'Aanmelden', note: 'Uitschrijven kan altijd met één klik.'},
       ],
       seo: {
-        title: 'Lidmaatschap — Badminton Borne',
+        title: 'Lidmaatschap | Badminton Borne',
         description: 'Kies je pakket bij Badminton Borne: jeugd, recreatief of competitie. Eerste maand gratis, maandelijks opzegbaar.',
       },
     },
@@ -272,7 +272,7 @@ async function run() {
         {_type: 'newsletterSection', _key: key(), heading: 'Mis geen smash', body: 'Eén mailtje per maand over toernooien, de nieuwe hal en clubnieuws.', buttonLabel: 'Aanmelden', note: 'Uitschrijven kan altijd met één klik.'},
       ],
       seo: {
-        title: 'Over ons — Badminton Borne',
+        title: 'Over ons | Badminton Borne',
         description: 'Maak kennis met de trainers, het bestuur en de ere-leden van Badminton Borne.',
       },
     },
@@ -286,7 +286,7 @@ async function run() {
         {_type: 'agendaSection', _key: key(), eyebrow: 'Agenda', heading: 'Binnenkort bij Borne', link: cta('Hele agenda', '/agenda')},
       ],
       seo: {
-        title: 'Contact — Badminton Borne',
+        title: 'Contact | Badminton Borne',
         description: 'Stel je vraag aan Badminton Borne. We reageren meestal binnen een dag.',
       },
     },
@@ -433,7 +433,7 @@ async function run() {
       },
     ],
     seo: {
-      title: 'Badminton Borne — De snelste sport van Borne',
+      title: 'Badminton Borne | De snelste sport van Borne',
       description:
         'Badmintonvereniging in Borne voor alle leeftijden en niveaus. Eerste maand gratis, geen verplichtingen, maandelijks opzegbaar.',
     },

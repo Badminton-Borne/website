@@ -60,7 +60,7 @@ export function NewsletterSection({ section }: { section: NewsletterData }) {
               className="text-base font-bold text-navy-900"
               role="status"
             >
-              Je staat op de lijst — tot in je inbox! 🏸
+              Je staat op de lijst. Tot in je inbox! 🏸
             </p>
           ) : (
             <>
@@ -99,7 +99,7 @@ export function NewsletterSection({ section }: { section: NewsletterData }) {
               )}
               {status === "error" && (
                 <p className="text-[13px] font-bold text-pink-600" role="alert">
-                  Aanmelden lukte even niet — probeer het later opnieuw.
+                  Aanmelden lukte even niet. Probeer het later opnieuw.
                 </p>
               )}
               {section.note && (

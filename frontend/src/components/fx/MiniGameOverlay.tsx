@@ -167,7 +167,7 @@ export default function MiniGameOverlay({
       const label = document.createElement("span");
       label.style.color = win ? "#C2F03C" : "#8A97B0";
       label.textContent = prefix;
-      t.append(label, `  Jij ${score.you} — Website ${score.site}`);
+      t.append(label, `  Jij ${score.you} tegen website ${score.site}`);
       overlay.appendChild(t);
       requestAnimationFrame(() => {
         t.style.opacity = "1";

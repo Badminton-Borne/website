@@ -36,7 +36,7 @@ export function TestimonialsSection({
                 </blockquote>
                 <figcaption className="text-[13px] font-bold text-navy-300 lg:text-sm">
                   {review.name}
-                  {review.role ? ` — ${review.role}` : ""}
+                  {review.role ? `, ${review.role}` : ""}
                 </figcaption>
               </figure>
             </Reveal>
