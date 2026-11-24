@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // terug naar het ongefilterde overzicht, zodat ze niet als duplicaten tellen.
     alternates: { canonical: localizeHref("/nieuws", locale) },
     openGraph: {
-      title: "Nieuws — Badminton Borne",
+      title: "Nieuws | Badminton Borne",
       description:
         "Al het nieuws van Badminton Borne: clubnieuws, competitie, jeugd en evenementen.",
       type: "website",
@@ -60,7 +60,7 @@ export default async function NieuwsPage({ params, searchParams }: PageProps) {
     <article className="bg-navy-950">
       <PageHero
         title="Nieuws"
-        intro="Clubnieuws, competitie, jeugd en evenementen — alles wat er speelt bij Borne."
+        intro="Clubnieuws, competitie, jeugd en evenementen: alles wat er speelt bij Borne."
         crumbs={[{ label: "Home", href: localizeHref("/", locale) }, { label: "Nieuws" }]}
       />
 
@@ -110,7 +110,7 @@ export default async function NieuwsPage({ params, searchParams }: PageProps) {
           </div>
         ) : (
           <p className="text-[15px] text-navy-300">
-            Nog geen nieuws in deze categorie — kom snel terug!
+            Nog geen nieuws in deze categorie. Kom snel terug!
           </p>
         )}
       </div>

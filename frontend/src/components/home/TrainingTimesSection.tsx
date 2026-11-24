@@ -111,7 +111,7 @@ function GroupSchedule({ label, rows }: { label: string; rows: EffectiveRow[] })
 
             {/* Tijd */}
             <span className="text-sm text-navy-300 lg:text-right lg:text-base lg:font-semibold lg:text-white">
-              {row.startTime} – {row.endTime}
+              {row.startTime} tot {row.endTime}
             </span>
 
             {/* Locatie (tertiair, klikbaar naar Google Maps) */}

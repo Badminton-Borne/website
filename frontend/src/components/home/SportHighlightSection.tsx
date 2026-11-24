@@ -32,7 +32,7 @@ export function SportHighlightSection({
               image={section.image}
               width={620}
               height={480}
-              placeholderLabel="Actiefoto — smash of sprong, bevroren beweging"
+              placeholderLabel="Actiefoto: smash of sprong, bevroren beweging"
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="block h-[280px] w-full object-cover transition-transform duration-[420ms] ease-brand group-hover:scale-[1.03] lg:h-[480px]"
             />

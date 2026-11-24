@@ -15,7 +15,7 @@ function TeamCard({ member }: { member: TeamMemberCard }) {
             image={member.photo}
             width={400}
             height={260}
-            placeholderLabel={`Portret — ${member.role ?? member.name ?? "teamlid"}`}
+            placeholderLabel={`Portret: ${member.role ?? member.name ?? "teamlid"}`}
             className="h-full w-full object-cover"
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           />

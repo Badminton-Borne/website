@@ -87,7 +87,7 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
         <Link
           href={localizeHref("/", locale)}
           className="shrink-0"
-          aria-label="Badminton Borne — naar de homepage"
+          aria-label="Badminton Borne, naar de homepage"
         >
           <Image
             src="/logos/logo-borne-horizontaal.svg"

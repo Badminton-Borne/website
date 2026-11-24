@@ -8,10 +8,10 @@ import { imageUrl } from "@/sanity/image";
 import type { GallerySection as GalleryData, SanityImage } from "@/sanity/types";
 
 const PLACEHOLDER_LABELS = [
-  "Drone — de hal van boven",
-  "Actie — mid-rally",
-  "Community — high-five",
-  "Jeugd — training",
+  "Drone: de hal van boven",
+  "Actie: mid-rally",
+  "Community: high-five",
+  "Jeugd: training",
 ];
 
 const FRAME_CLASSES =

@@ -208,10 +208,10 @@ async function upsertSection(
 const USP_FEATURES: Array<[string, string]> = [
   ['Splinternieuwe zaal', 'We spelen in de nieuwe sporthal ’t Wooldrik in Borne: mooie vloer, goede verlichting en ruimte zat.'],
   ['Gezellige club', 'Fanatiek op de baan, gezellig eromheen. Bij ons hoor je er meteen bij.'],
-  ['Voor iedereen plek', 'Van 8 tot 80 en van eerste keer tot ervaren speler — iedereen speelt op zijn eigen niveau mee.'],
+  ['Voor iedereen plek', 'Van 8 tot 80 en van eerste keer tot ervaren speler: iedereen speelt op zijn eigen niveau mee.'],
   ['Recreatie tot competitie', 'Jeugd én volwassenen, recreatief vrij spelen of wedstrijden namens Borne. Alles kan.'],
   ['Begin wanneer je wilt', 'Geen seizoen en geen instapschema: elke week kun je instappen en meteen meespelen.'],
-  ['Lage contributie', 'We zijn een vereniging, geen commerciële hal. Daarom is de contributie laag — en je eerste maand is gratis.'],
+  ['Lage contributie', 'We zijn een vereniging, geen commerciële hal. Daarom is de contributie laag, en je eerste maand is gratis.'],
 ]
 
 // Lokale SEO-landingspagina's. Per plaats unieke intro, sportHighlight, FAQ's
@@ -237,31 +237,31 @@ const PLACES: Place[] = [
       'Badminton in Borne? Dan zit je bij ons goed. Badminton Borne is dé badmintonvereniging van Borne, met een nieuwe zaal in sportpark ’t Wooldrik.',
     hlHeading: 'Dé badmintonclub van Borne',
     hlBody:
-      'Wij zijn geworteld in Borne en spelen in de splinternieuwe sporthal ’t Wooldrik, midden in het dorp. Van de allereerste shuttle tot de competitie: bij ons vindt iedere Bornenaar een plek. Kom gewoon een keer langs — beginnen kan elke week, want we kennen geen seizoen of instapschema.',
+      'Wij zijn geworteld in Borne en spelen in de splinternieuwe sporthal ’t Wooldrik, midden in het dorp. Van de allereerste shuttle tot de competitie: bij ons vindt iedere Bornenaar een plek. Kom gewoon een keer langs. Beginnen kan elke week, want we kennen geen seizoen of instapschema.',
     stat: ['dé club', 'van Borne'],
     ctaHeading: 'Kom badmintonnen in Borne.',
     desc: 'Badminton in Borne? Badminton Borne is dé club van het dorp: nieuwe zaal in ’t Wooldrik, gezellig, voor jeugd én volwassenen. Elke week instappen, eerste maand gratis.',
     faqs: [
       ['faq-loc-borne-1', 'Waar kun je badmintonnen in Borne?', 'Bij Badminton Borne, in de nieuwe sporthal ’t Wooldrik (’t Wooldrik 1) en in De Hooiberg. Bekijk de trainingstijden en kom een keer meespelen.'],
       ['faq-loc-borne-2', 'Voor wie is de club?', 'Voor iedereen uit Borne en omgeving: jeugd en volwassenen, recreatief of competitie, beginner of gevorderd. Je speelt op je eigen niveau mee.'],
-      ['faq-loc-borne-3', 'Kan ik zomaar beginnen?', 'Ja. We hebben geen seizoen of instapschema — elke week kun je instappen. Je eerste maand is gratis en een racket lenen we je.'],
+      ['faq-loc-borne-3', 'Kan ik zomaar beginnen?', 'Ja. We hebben geen seizoen of instapschema. Elke week kun je instappen. Je eerste maand is gratis en een racket lenen we je.'],
     ],
   },
   {
     slug: 'zenderen',
     name: 'Zenderen',
     intro:
-      'Woon je in Zenderen en wil je badmintonnen? Badminton Borne ligt om de hoek — Zenderen hoort bij de gemeente Borne en je bent zo in onze nieuwe zaal.',
+      'Woon je in Zenderen en wil je badmintonnen? Badminton Borne ligt om de hoek. Zenderen hoort bij de gemeente Borne en je bent zo in onze nieuwe zaal.',
     hlHeading: 'Vanuit Zenderen zo op de baan',
     hlBody:
-      'Zenderen ligt pal boven Borne, dus je bent in een paar minuten bij sportpark ’t Wooldrik. Onze vereniging is gezellig en er is plek voor elk niveau, van de jeugd tot de fanatieke competitiespeler. Instappen kan elke week — geen wachtlijst, geen seizoen.',
+      'Zenderen ligt pal boven Borne, dus je bent in een paar minuten bij sportpark ’t Wooldrik. Onze vereniging is gezellig en er is plek voor elk niveau, van de jeugd tot de fanatieke competitiespeler. Instappen kan elke week, zonder wachtlijst en zonder seizoen.',
     stat: ['om de hoek', 'vanuit Zenderen'],
     ctaHeading: 'Badminton, ook vanuit Zenderen.',
     desc: 'Badminton vanuit Zenderen? Badminton Borne ligt om de hoek: nieuwe zaal, gezellige vereniging, recreatie tot competitie. Begin elke week, eerste maand gratis.',
     faqs: [
       ['faq-loc-zenderen-1', 'Kun je vanuit Zenderen bij Badminton Borne spelen?', 'Zeker. Zenderen ligt vlak boven Borne, dus je bent zo bij de hal aan ’t Wooldrik. Veel leden komen uit de dorpen rond Borne.'],
       ['faq-loc-zenderen-2', 'Is er badminton in Zenderen zelf?', 'In Zenderen zelf is geen badmintonvereniging, maar Badminton Borne ligt om de hoek en biedt alles: jeugd, volwassenen, recreatie en competitie.'],
-      ['faq-loc-zenderen-3', 'Wanneer kan ik beginnen?', 'Wanneer je wilt. We kennen geen seizoen of instapschema — kom een willekeurige week langs, de eerste maand is gratis.'],
+      ['faq-loc-zenderen-3', 'Wanneer kan ik beginnen?', 'Wanneer je wilt. We kennen geen seizoen of instapschema. Kom een willekeurige week langs, de eerste maand is gratis.'],
     ],
   },
   {
@@ -271,10 +271,10 @@ const PLACES: Place[] = [
       'Badminton in Hertme? Kom bij Badminton Borne. Hertme hoort bij de gemeente Borne en ligt op een steenworp van onze nieuwe sporthal.',
     hlHeading: 'Badminton om de hoek van Hertme',
     hlBody:
-      'Hertme is een van de dorpen van Borne en ligt vlakbij sportpark ’t Wooldrik. Bij ons is de sfeer gemoedelijk en speelt iedereen mee — jong en oud, recreatief en competitie. Je hoeft niet te wachten op een nieuw seizoen: elke week kun je instappen.',
+      'Hertme is een van de dorpen van Borne en ligt vlakbij sportpark ’t Wooldrik. Bij ons is de sfeer gemoedelijk en speelt iedereen mee: jong en oud, recreatief en competitie. Je hoeft niet te wachten op een nieuw seizoen: elke week kun je instappen.',
     stat: ['vlakbij', 'vanuit Hertme'],
     ctaHeading: 'Badminton, ook vanuit Hertme.',
-    desc: 'Badminton vanuit Hertme? Bij Badminton Borne speel je om de hoek in een nieuwe zaal — jeugd en volwassenen, recreatie tot competitie, met een lage contributie.',
+    desc: 'Badminton vanuit Hertme? Bij Badminton Borne speel je om de hoek in een nieuwe zaal, jeugd en volwassenen, recreatie tot competitie, met een lage contributie.',
     faqs: [
       ['faq-loc-hertme-1', 'Kun je vanuit Hertme badmintonnen bij Borne?', 'Ja. Hertme ligt om de hoek bij Borne, dus onze hal aan ’t Wooldrik is zo bereikt. Iedereen uit Hertme is welkom.'],
       ['faq-loc-hertme-2', 'Wat kost het?', 'Omdat we een vereniging zijn, is de contributie laag. Je eerste maand is bovendien gratis, zodat je rustig kunt kijken of het bevalt.'],
@@ -288,14 +288,14 @@ const PLACES: Place[] = [
       'Woon je in Saasveld en zoek je een badmintonclub? Badminton Borne ligt vlakbij, net over de gemeentegrens, met een nieuwe zaal en een gezellige vereniging.',
     hlHeading: 'Vanuit Saasveld naar Borne',
     hlBody:
-      'Saasveld ligt op een prettige afstand van Borne — goed te doen voor een vaste badmintonavond. Onze club heeft plek voor iedereen: recreatief of competitie, jeugd of volwassenen. En je begint gewoon wanneer het jou uitkomt, zonder seizoen of instapschema.',
+      'Saasveld ligt op een prettige afstand van Borne, goed te doen voor een vaste badmintonavond. Onze club heeft plek voor iedereen: recreatief of competitie, jeugd of volwassenen. En je begint gewoon wanneer het jou uitkomt, zonder seizoen of instapschema.',
     stat: ['vlakbij', 'vanuit Saasveld'],
     ctaHeading: 'Badminton, ook vanuit Saasveld.',
     desc: 'Badminton vanuit Saasveld? Badminton Borne ligt vlakbij: nieuwe zaal, gezellige club, elk niveau. Instappen kan elke week, de eerste maand is gratis.',
     faqs: [
       ['faq-loc-saasveld-1', 'Kun je vanuit Saasveld bij Badminton Borne spelen?', 'Zeker. Saasveld ligt vlakbij Borne, goed te doen voor een avondje badminton. Je bent van harte welkom.'],
       ['faq-loc-saasveld-2', 'Wat biedt de club?', 'Alles van recreatief vrij spelen tot competitie, voor jeugd én volwassenen, in de nieuwe sporthal ’t Wooldrik in Borne.'],
-      ['faq-loc-saasveld-3', 'Wanneer kan ik instappen?', 'Elke week. We hebben geen seizoen of instapschema, dus kom gerust een keer meespelen — de eerste maand is gratis.'],
+      ['faq-loc-saasveld-3', 'Wanneer kan ik instappen?', 'Elke week. We hebben geen seizoen of instapschema, dus kom gerust een keer meespelen. De eerste maand is gratis.'],
     ],
   },
   {
@@ -305,14 +305,14 @@ const PLACES: Place[] = [
       'Badminton in Hengelo? Veel Hengeloërs spelen al bij Badminton Borne. We zitten vlak naast Hengelo en je staat in een paar minuten in onze nieuwe zaal.',
     hlHeading: 'Al veel leden uit Hengelo',
     hlBody:
-      'Borne grenst aan Hengelo, dus je bent zo bij sportpark ’t Wooldrik — en juist daarom komen veel van onze leden uit Hengelo. Onze vereniging is gezellig, betaalbaar en heeft plek voor elk niveau, van jeugd tot competitie. Instappen kan elke week, zonder wachtlijst.',
+      'Borne grenst aan Hengelo, dus je bent zo bij sportpark ’t Wooldrik, en juist daarom komen veel van onze leden uit Hengelo. Onze vereniging is gezellig, betaalbaar en heeft plek voor elk niveau, van jeugd tot competitie. Instappen kan elke week, zonder wachtlijst.',
     stat: ['veel leden', 'uit Hengelo'],
     ctaHeading: 'Badminton vanuit Hengelo? Kom langs.',
     desc: 'Badminton vanuit Hengelo? Veel leden komen uit Hengelo. Badminton Borne: nieuwe zaal vlakbij, gezellig, jeugd tot competitie, lage contributie. Eerste maand gratis.',
     faqs: [
       ['faq-loc-hengelo-1', 'Kun je vanuit Hengelo bij Badminton Borne spelen?', 'Absoluut. We zitten vlak naast Hengelo en veel van onze leden komen uit Hengelo. In een paar minuten sta je in de hal aan ’t Wooldrik.'],
       ['faq-loc-hengelo-2', 'Waarom naar Borne in plaats van in Hengelo?', 'Onze vereniging combineert een splinternieuwe zaal, een gezellige sfeer, plek voor elk niveau en een lage contributie. Kom een keer gratis meespelen en ervaar het verschil.'],
-      ['faq-loc-hengelo-3', 'Kan ik het eerst proberen?', 'Ja. Je eerste maand is gratis, een racket lenen we je en beginnen kan elke week — geen seizoen of instapschema.'],
+      ['faq-loc-hengelo-3', 'Kan ik het eerst proberen?', 'Ja. Je eerste maand is gratis, een racket lenen we je en beginnen kan elke week, zonder seizoen of instapschema.'],
     ],
   },
   {
@@ -322,14 +322,14 @@ const PLACES: Place[] = [
       'Woon je in Delden en wil je badmintonnen? Vanuit Delden ben je zo in Borne, waar Badminton Borne in een nieuwe zaal speelt met plek voor iedereen.',
     hlHeading: 'Vanuit Delden naar de baan',
     hlBody:
-      'Delden ligt op korte afstand van Borne — een mooie rit voor je vaste badmintonavond. Bij ons speelt iedereen mee: jeugd en volwassenen, recreatief en competitie. En omdat we een vereniging zijn, is de contributie laag. Beginnen kan bovendien elke week.',
+      'Delden ligt op korte afstand van Borne, een mooie rit voor je vaste badmintonavond. Bij ons speelt iedereen mee: jeugd en volwassenen, recreatief en competitie. En omdat we een vereniging zijn, is de contributie laag. Beginnen kan bovendien elke week.',
     stat: ['korte rit', 'vanuit Delden'],
     ctaHeading: 'Badminton, ook vanuit Delden.',
-    desc: 'Badminton vanuit Delden? Bij Badminton Borne speel je in een nieuwe zaal in Borne — voor iedereen, recreatie tot competitie, met een lage contributie.',
+    desc: 'Badminton vanuit Delden? Bij Badminton Borne speel je in een nieuwe zaal in Borne, voor iedereen, recreatie tot competitie, met een lage contributie.',
     faqs: [
       ['faq-loc-delden-1', 'Kun je vanuit Delden bij Badminton Borne spelen?', 'Ja. Delden ligt op korte afstand van Borne, dus onze hal aan ’t Wooldrik is goed te bereiken. Iedereen uit Delden is welkom.'],
       ['faq-loc-delden-2', 'Wat kost het lidmaatschap?', 'De contributie is laag omdat we een vereniging zijn. De eerste maand is gratis, zodat je vrijblijvend kunt proberen.'],
-      ['faq-loc-delden-3', 'Voor welk niveau?', 'Voor elk niveau. Van je allereerste shuttle tot competitie namens Borne — we delen je in op wat bij je past.'],
+      ['faq-loc-delden-3', 'Voor welk niveau?', 'Voor elk niveau. Van je allereerste shuttle tot competitie namens Borne. We delen je in op wat bij je past.'],
     ],
   },
   {
@@ -339,14 +339,14 @@ const PLACES: Place[] = [
       'Badminton in Azelo? Badminton Borne ligt op een steenworp afstand. Azelo hoort bij de gemeente Borne en onze nieuwe zaal is zo bereikt.',
     hlHeading: 'Badminton op een steenworp van Azelo',
     hlBody:
-      'Azelo ligt vlakbij Borne, dus je bent snel bij sportpark ’t Wooldrik. Onze club is gezellig en heeft plek voor iedereen — jeugd en volwassenen, recreatief of fanatiek. Je stapt in wanneer je wilt, want we kennen geen seizoen of instapschema.',
+      'Azelo ligt vlakbij Borne, dus je bent snel bij sportpark ’t Wooldrik. Onze club is gezellig en heeft plek voor iedereen: jeugd en volwassenen, recreatief of fanatiek. Je stapt in wanneer je wilt, want we kennen geen seizoen of instapschema.',
     stat: ['steenworp', 'vanuit Azelo'],
     ctaHeading: 'Badminton, ook vanuit Azelo.',
     desc: 'Badminton vanuit Azelo? Badminton Borne ligt op een steenworp: nieuwe zaal, gezellige vereniging, elk niveau. Elke week instappen, eerste maand gratis.',
     faqs: [
       ['faq-loc-azelo-1', 'Kun je vanuit Azelo bij Badminton Borne spelen?', 'Zeker. Azelo ligt op een steenworp van Borne, dus onze hal aan ’t Wooldrik is zo bereikt. Je bent van harte welkom.'],
       ['faq-loc-azelo-2', 'Is er badminton in Azelo zelf?', 'In Azelo zelf niet, maar Badminton Borne ligt vlakbij en biedt alles: jeugd, volwassenen, recreatie en competitie in een nieuwe zaal.'],
-      ['faq-loc-azelo-3', 'Wanneer kan ik beginnen?', 'Wanneer je wilt — elke week kun je instappen. Geen seizoen, geen instapschema, en de eerste maand is gratis.'],
+      ['faq-loc-azelo-3', 'Wanneer kan ik beginnen?', 'Wanneer je wilt. Elke week kun je instappen. Geen seizoen, geen instapschema, en de eerste maand is gratis.'],
     ],
   },
 ]
@@ -406,9 +406,9 @@ async function run() {
   }
   const packageRefs = pkgs.map((p) => ({_type: 'reference', _key: key(), _ref: p._id}))
   const PRICING_INTRO =
-    'Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis — daarna maandelijks opzegbaar.'
+    'Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis, daarna maandelijks opzegbaar.'
   const PRICING_FOOTNOTE =
-    'Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten — de toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.'
+    'Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten. De toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.'
 
   // Bestaande /lidmaatschap-pagina: intro + voetnoot van de prijstabel
   // gelijktrekken met de echte tarieven (illustratieve tekst weghalen).
@@ -484,7 +484,7 @@ async function run() {
       ctaBanner('Kom badminton een keer proberen.', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Badminton — de snelste racketsport | Borne',
+      title: 'Badminton: de snelste racketsport | Borne',
       description:
         'Wat maakt badminton zo bijzonder? Snel, tactisch en voor alle leeftijden. Ontdek de sport bij Badminton Borne en kom gratis proberen.',
     },
@@ -599,9 +599,9 @@ async function run() {
       ctaBanner('Laat je kind een keer meespelen.', 'Plan een gratis eerste bezoek', '/probeer-gratis', 'lime', true),
     ],
     seo: {
-      title: 'Jeugdbadminton in Borne — goed voor je kind',
+      title: 'Jeugdbadminton in Borne: goed voor je kind',
       description:
-        'Badminton ontwikkelt reactievermogen, coördinatie en sociale contacten — en is vooral heel leuk. Kom met je kind gratis meespelen in Borne.',
+        'Badminton ontwikkelt reactievermogen, coördinatie en sociale contacten, en is vooral heel leuk. Kom met je kind gratis meespelen in Borne.',
     },
   })
 
@@ -717,7 +717,7 @@ async function run() {
     seo: {
       title: 'Competitie bij Badminton Borne',
       description:
-        'Speel met een team wedstrijden in de regionale bondscompetitie van Badminton Nederland. Jeugd en senioren — meld je aan bij Borne.',
+        'Speel met een team wedstrijden in de regionale bondscompetitie van Badminton Nederland. Jeugd en senioren. Meld je aan bij Borne.',
     },
   })
 
@@ -862,7 +862,7 @@ async function run() {
         ['Glow in the dark badminton', 'Spelen in het donker met lichtgevende shuttles — een van onze populairste avonden.'],
         ['Vrienden- en familietoernooi', 'Neem je vrienden of familie mee: iedereen kan meedoen, van jong tot oud.'],
         ['Clubtoernooien', 'Gezellige onderlinge toernooien voor alle leden, op elk niveau.'],
-        ['Start competitieseizoen', 'In september beginnen de eerste thuiswedstrijden — kom aanmoedigen.'],
+        ['Start competitieseizoen', 'In september beginnen de eerste thuiswedstrijden: kom aanmoedigen.'],
       ]),
       ctaBanner('Ook een keer meedoen?', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
@@ -975,7 +975,7 @@ async function run() {
     seo: {
       title: 'Lidmaatschap opzeggen | Badminton Borne',
       description:
-        'Je lidmaatschap bij Badminton Borne opzeggen kan met een opzegtermijn van één maand. Vul het opzegformulier in — wij regelen de rest.',
+        'Je lidmaatschap bij Badminton Borne opzeggen kan met een opzegtermijn van één maand. Vul het opzegformulier in, wij regelen de rest.',
     },
   })
 
@@ -987,7 +987,7 @@ async function run() {
     slug: {_type: 'slug', current: 'badminton-vs-andere-sporten'},
     pageGroup: 'vergelijking',
     intro:
-      'Padel, tennis, squash — allemaal leuk. Maar hoe verhoudt badminton zich? We zetten het eerlijk naast elkaar.',
+      'Padel, tennis, squash: allemaal leuk. Maar hoe verhoudt badminton zich? We zetten het eerlijk naast elkaar.',
     sections: [
       comparison(
         'De vergelijking',
@@ -1047,7 +1047,7 @@ async function run() {
     await faq(
       'faq-padel-kosten',
       'Is padel of badminton goedkoper in Borne?',
-      'Padel reken je meestal per baan per uur af. Bij Badminton Borne betaal je een vaste, lage contributie per maand — shuttles inbegrepen en met een gratis eerste maand. Voor wie regelmatig speelt, is dat voordeliger.',
+      'Padel reken je meestal per baan per uur af. Bij Badminton Borne betaal je een vaste, lage contributie per maand, shuttles inbegrepen en met een gratis eerste maand. Voor wie regelmatig speelt, is dat voordeliger.',
     ),
     await faq(
       'faq-padel-sneller',
@@ -1056,7 +1056,7 @@ async function run() {
     ),
     await faq(
       'faq-padel-twijfel',
-      'Ik twijfel tussen padel en badminton — wat raden jullie aan?',
+      'Ik twijfel tussen padel en badminton: wat raden jullie aan?',
       'Kom gewoon een keer gratis badmintonnen in Borne en voel het verschil. Bevalt het niet, dan zit je nergens aan vast.',
     ),
   ]
@@ -1065,7 +1065,7 @@ async function run() {
     slug: {_type: 'slug', current: 'badminton-vs-padel'},
     pageGroup: 'vergelijking',
     intro:
-      'Padel is booming — ook in en rond Borne wil iedereen het proberen. Maar is padel of badminton de slimste keuze? We vergelijken beide sporten eerlijk: snelheid, kosten en waar je in Borne terechtkunt.',
+      'Padel is booming, ook in en rond Borne wil iedereen het proberen. Maar is padel of badminton de slimste keuze? We vergelijken beide sporten eerlijk: snelheid, kosten en waar je in Borne terechtkunt.',
     sections: [
       comparison(
         'Badminton vs padel',
@@ -1087,7 +1087,7 @@ async function run() {
       featureGrid(undefined, 'Padel en badminton in Borne', [
         ['Padel in Borne', 'Padel groeit hard en er komen banen bij in de regio. Reken wel op baanhuur, reserveren en vaak buiten spelen.'],
         ['Badminton in Borne', 'Bij Badminton Borne speel je elke week binnen, zonder een baan te huren. Racket lenen kan en je eerste maand is gratis.'],
-        ['De kosten', 'Padel betaal je per baan per uur. Badminton kost een vaste, lage contributie per maand — shuttles inbegrepen.'],
+        ['De kosten', 'Padel betaal je per baan per uur. Badminton kost een vaste, lage contributie per maand, shuttles inbegrepen.'],
         ['Snel meedoen', 'Beide pak je snel op. Bij badminton sta je de eerste avond al te spelen, ingedeeld op jouw niveau.'],
       ]),
       sportHighlight(
@@ -1103,7 +1103,7 @@ async function run() {
       ctaBanner('Eerst gratis badminton proberen in Borne?', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Badminton vs padel in Borne — de verschillen',
+      title: 'Badminton vs padel in Borne: de verschillen',
       description:
         'Padel of badminton in Borne? Vergelijk snelheid, kosten en gemak. Badminton speel je het hele jaar binnen tegen een lage contributie. Kom gratis proberen.',
     },
@@ -1119,7 +1119,7 @@ async function run() {
     await faq(
       'faq-tennis-makkelijker',
       'Is badminton makkelijker dan tennis?',
-      'Om te beginnen wel. Een shuttle raken lukt sneller dan een tennisbal goed slaan, dus je hebt eerder plezier en langere rally’s — ook als je nog nooit hebt gespeeld.',
+      'Om te beginnen wel. Een shuttle raken lukt sneller dan een tennisbal goed slaan, dus je hebt eerder plezier en langere rally’s, ook als je nog nooit hebt gespeeld.',
     ),
     await faq(
       'faq-tennis-intensief',
@@ -1175,7 +1175,7 @@ async function run() {
       ctaBanner('Liever binnen spelen? Kom badmintonnen.', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Badminton vs tennis in Borne — de verschillen',
+      title: 'Badminton vs tennis in Borne: de verschillen',
       description:
         'Tennis of badminton in Borne? Badminton is sneller, explosiever en makkelijker te beginnen, het hele jaar binnen. Vergelijk en kom gratis proberen.',
     },
@@ -1240,14 +1240,14 @@ async function run() {
         'Squash is intens, maar vooral een sport voor twee. Badminton speel je net zo makkelijk met vier: dubbelspel is bij ons de norm, wat het socialer maakt. En doordat het van 8 tot 80 te spelen is, kom je bij Borne iedereen tegen.',
         [
           ['4', 'spelers bij dubbel'],
-          ['8–80', 'jaar op de baan'],
+          ['8 tot 80', 'jaar op de baan'],
         ],
       ),
       faqList('Squash of badminton in Borne?', faqSquash),
       ctaBanner('Liever samen spelen? Kom badmintonnen.', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Badminton vs squash in Borne — de verschillen',
+      title: 'Badminton vs squash in Borne: de verschillen',
       description:
         'Squash of badminton in Borne? Badminton is socialer (veel dubbelspel) en voor alle leeftijden. Vergelijk de sporten en kom gratis proberen.',
     },
@@ -1298,7 +1298,7 @@ async function run() {
       ctaBanner('Lijkt Air Badminton je wat?', 'Laat het ons weten', '/contact', 'lime'),
     ],
     seo: {
-      title: 'Air Badminton — badminton op zand | Borne',
+      title: 'Air Badminton: badminton op zand | Borne',
       description:
         'Air Badminton is de buitenvariant met een windbestendige AirShuttle, op zand of gras. Dankzij de beachhal in ’t Wooldrik overwegen we het bij Borne.',
     },
@@ -1384,7 +1384,7 @@ async function run() {
       ),
     ],
     seo: {
-      title: 'Jeugdfonds Sport & Cultuur — badminton in Borne',
+      title: 'Jeugdfonds Sport & Cultuur: badminton in Borne',
       description:
         'Contributie voor badminton lastig te betalen? Het Jeugdfonds Sport & Cultuur betaalt mee zodat je kind kan sporten in Borne. Lees hoe je het aanvraagt.',
     },
@@ -1418,7 +1418,7 @@ async function run() {
       ctaBanner('Kom een keer meespelen.', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Badminton vanuit het AZC — welkom in Borne',
+      title: 'Badminton vanuit het AZC: welkom in Borne',
       description:
         'Nieuw in Borne? Bij Badminton Borne speelt iedereen mee: dichtbij het AZC, eerste maand gratis en taal is geen probleem. Vergroot je sociale kring.',
     },
@@ -1439,7 +1439,7 @@ async function run() {
         sportHighlight(`Badminton in ${p.name}`, p.hlHeading, p.hlBody, [p.stat, ['1e maand', 'gratis']]),
         featureGrid('Waarom Badminton Borne', 'Waarom je bij ons op je plek zit', USP_FEATURES),
         trainingTimes('Trainingstijden', {label: 'Plan je eerste bezoek', href: '/probeer-gratis'}),
-        faqList(`Veelgestelde vragen — badminton vanuit ${p.name}`, faqIds),
+        faqList(`Veelgestelde vragen over badminton vanuit ${p.name}`, faqIds),
         ctaBanner(p.ctaHeading, 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
       ],
       seo: {
@@ -1454,10 +1454,10 @@ async function run() {
   const placeBySlug = Object.fromEntries(PLACES.map((p) => [p.slug, p]))
   const BLURB: Record<string, string> = {
     borne: 'Dé club van het dorp, met een nieuwe zaal in ’t Wooldrik.',
-    zenderen: 'Om de hoek — Zenderen hoort bij de gemeente Borne.',
+    zenderen: 'Om de hoek. Zenderen hoort bij de gemeente Borne.',
     hertme: 'Op een steenworp; Hertme is een van de dorpen van Borne.',
     azelo: 'Vlakbij Borne, zo bij sportpark ’t Wooldrik.',
-    hengelo: 'Vlak naast Hengelo — veel van onze leden komen er vandaan.',
+    hengelo: 'Vlak naast Hengelo. Veel van onze leden komen er vandaan.',
     delden: 'Op korte afstand; een mooie rit voor je vaste badmintonavond.',
     saasveld: 'Vlakbij, goed te doen voor een avondje badminton.',
   }
@@ -1488,7 +1488,7 @@ async function run() {
       ctaBanner('Kom een keer meespelen.', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Badminton in de buurt — Borne & omgeving',
+      title: 'Badminton in de buurt | Borne & omgeving',
       description:
         'Badminton in Borne, Zenderen, Hertme, Azelo, Hengelo, Delden of Saasveld? Bij Badminton Borne speel je altijd dichtbij. Bekijk je plaats en kom proberen.',
     },
