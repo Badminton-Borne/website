@@ -100,12 +100,12 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
         </Link>
 
         {/* Desktop-navigatie */}
-        <nav className="hidden gap-7 xl:flex" aria-label="Hoofdmenu">
+        <nav className="hidden gap-5 xl:flex 2xl:gap-7" aria-label="Hoofdmenu">
           {nav.map((item) => (
             <Link
               key={item._key}
               href={localizeHref(item.href, locale)}
-              className={`text-[15px] transition-colors hover:text-lime-400 ${
+              className={`whitespace-nowrap text-[15px] transition-colors hover:text-lime-400 ${
                 isActive(localizeHref(item.href, locale))
                   ? "border-b-[3px] border-lime-400 pb-1 font-bold text-lime-400"
                   : "font-semibold text-white"
@@ -120,15 +120,6 @@ export function SiteHeader({ settings, locale }: SiteHeaderProps) {
         </nav>
 
         <div className="hidden items-center gap-5 xl:flex">
-          {secondary?.label && (
-            <BrandButton
-              href={localizeHref(secondary.href, locale)}
-              variant="outline-light"
-              size="sm"
-            >
-              {secondary.label}
-            </BrandButton>
-          )}
           {primary?.label && (
             <BrandButton
               href={localizeHref(primary.href, locale)}
