@@ -153,12 +153,19 @@ export default async function NieuwsArtikelPage({ params }: PageProps) {
   const article = await getNewsArticle(slug);
   if (!article) notFound();
 
+  // Optionele aanmeldknop uit het bericht (bv. een toernooiformulier): die
+  // vervangt de standaard "Plan je eerste bezoek"-knop in de band.
+  const signupCta = article.signupCta;
+  const hasSignupCta = Boolean(signupCta?.label && signupCta?.href);
+
   // De lime conversie-band van de homepage — sectie herbruikbaar
   const ctaBand: CtaBannerData = {
     _type: "ctaBanner",
     _key: "news-cta-band",
     heading: "Kom een keer langs.\nDe eerste maand is gratis.",
-    cta: { label: "Plan je eerste bezoek", href: "/probeer-gratis" },
+    cta: hasSignupCta
+      ? { label: signupCta!.label, href: signupCta!.href }
+      : { label: "Plan je eerste bezoek", href: "/probeer-gratis" },
     microcopy: "1 maand gratis · geen verplichtingen · maandelijks opzegbaar",
     theme: "lime",
     enableGame: false,

@@ -198,6 +198,7 @@ export const NEWS_LIST_QUERY = defineQuery(`*[_type == "newsArticle"] | order(pu
 
 export const NEWS_ARTICLE_QUERY = defineQuery(`*[_type == "newsArticle" && slug.current == $slug][0]{
   _id, title, "slug": slug.current, publishedAt, excerpt, category, featured,
+  signupCta{label, href},
   coverImage{${IMAGE_FIELDS}},
   body[]{
     ...,
