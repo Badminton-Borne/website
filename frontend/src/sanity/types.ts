@@ -392,6 +392,8 @@ export interface PageData {
 /** Volledig nieuwsbericht voor de detailpagina. Nieuws is NL-only. */
 export interface NewsArticleData extends NewsCardData {
   body?: Array<{ _type: string; _key: string; [key: string]: unknown }> | null;
+  /** Optionele aanmeldknop: vervangt "Plan je eerste bezoek" in de CTA-band. */
+  signupCta?: Cta | null;
 }
 
 export interface FooterColumn {

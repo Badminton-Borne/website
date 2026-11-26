@@ -83,6 +83,13 @@ export const newsArticle = defineType({
       },
     }),
     defineField({
+      name: 'signupCta',
+      title: 'Aanmeldknop',
+      description:
+        'Optioneel. Vul je dit in, dan staat deze knop onderaan het bericht in plaats van "Plan je eerste bezoek" — bijvoorbeeld een aanmeldformulier voor een toernooi.',
+      type: 'cta',
+    }),
+    defineField({
       name: 'featured',
       title: 'Uitgelicht',
       description: 'Uitgelichte artikelen mogen groter op de homepage-sectie',
