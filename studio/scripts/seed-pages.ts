@@ -532,7 +532,7 @@ async function run() {
       ctaBanner('Klaar om te spelen?', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Trainingstijden & locaties | Badminton Borne',
+      title: 'Trainingstijden & locaties',
       description:
         'Bekijk wanneer en waar Badminton Borne traint en vrij speelt in ’t Wooldrik en De Hooiberg. Kom een keer gratis meespelen.',
     },
@@ -715,7 +715,7 @@ async function run() {
       ),
     ],
     seo: {
-      title: 'Competitie bij Badminton Borne',
+      title: 'Competitie spelen in Borne',
       description:
         'Speel met een team wedstrijden in de regionale bondscompetitie van Badminton Nederland. Jeugd en senioren. Meld je aan bij Borne.',
     },
@@ -764,7 +764,7 @@ async function run() {
       faqList('Veelgestelde vragen', faqLid),
     ],
     seo: {
-      title: 'Lid worden van Badminton Borne',
+      title: 'Lid worden in Borne',
       description:
         'Word lid van Badminton Borne: eerste maand gratis, daarna vanaf € 18,50 per maand. Racket lenen kan. Meld je aan via het formulier.',
     },
@@ -807,7 +807,7 @@ async function run() {
       faqList('Veelgestelde vragen', faqProbeer),
     ],
     seo: {
-      title: 'Plan je eerste bezoek | Badminton Borne',
+      title: 'Plan je eerste bezoek',
       description:
         'Kom gratis en vrijblijvend meespelen bij Badminton Borne. Racket lenen kan. Plan je eerste bezoek via het formulier.',
     },
@@ -837,7 +837,7 @@ async function run() {
       ctaBanner('Kom de nieuwe hal inspelen.', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'De nieuwe sporthal ’t Wooldrik | Badminton Borne',
+      title: 'De nieuwe sporthal ’t Wooldrik',
       description:
         'Badminton Borne speelt vanaf eind augustus in de nieuwe sporthal ’t Wooldrik in Borne. Nieuwe vloer, meer ruimte en Air Badminton in beeld.',
     },
@@ -867,7 +867,7 @@ async function run() {
       ctaBanner('Ook een keer meedoen?', 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
     ],
     seo: {
-      title: 'Agenda & activiteiten | Badminton Borne',
+      title: 'Agenda & activiteiten',
       description:
         'Bekijk de aankomende toernooien, competitieavonden en activiteiten van Badminton Borne, zoals Glow in the dark badminton en het vrienden- en familietoernooi.',
     },
@@ -898,7 +898,7 @@ async function run() {
       ctaBanner('Sponsor worden van Badminton Borne?', 'Mail ons', `mailto:${EMAIL}`, 'navy', false, null),
     ],
     seo: {
-      title: 'Sponsoring | Badminton Borne',
+      title: 'Sponsoring',
       description:
         'Word sponsor van Badminton Borne: shirtsponsor, bordreclame of een toernooi. Verbind je bedrijf aan de club en neem contact op.',
     },
@@ -926,7 +926,7 @@ async function run() {
       ctaBanner('Praten helpt.', 'Neem vertrouwelijk contact op', `mailto:${EMAIL}`, 'navy'),
     ],
     seo: {
-      title: 'Vertrouwenspersoon | Badminton Borne',
+      title: 'Vertrouwenspersoon',
       description:
         'Bij Badminton Borne kun je in vertrouwen terecht bij onze vertrouwenspersoon. Voor ongewenst gedrag, zorgen of gewoon een luisterend oor.',
     },
@@ -973,7 +973,7 @@ async function run() {
       ctaBanner('Lidmaatschap opzeggen', 'Naar het opzegformulier', FORM_OPZEGGEN, 'navy'),
     ],
     seo: {
-      title: 'Lidmaatschap opzeggen | Badminton Borne',
+      title: 'Lidmaatschap opzeggen',
       description:
         'Je lidmaatschap bij Badminton Borne opzeggen kan met een opzegtermijn van één maand. Vul het opzegformulier in, wij regelen de rest.',
     },
@@ -1324,7 +1324,7 @@ async function run() {
       ctaBanner('Vragen over je privacy?', 'Mail ons', `mailto:${EMAIL}`, 'navy'),
     ],
     seo: {
-      title: 'Privacyverklaring | Badminton Borne',
+      title: 'Privacyverklaring',
       description:
         'Lees hoe Badmintonvereniging Borne omgaat met je persoonsgegevens: welke gegevens we verwerken, waarvoor en welke rechten je hebt.',
     },
@@ -1443,7 +1443,7 @@ async function run() {
         ctaBanner(p.ctaHeading, 'Plan je eerste bezoek', '/probeer-gratis', 'lime'),
       ],
       seo: {
-        title: `Badminton in ${p.name} — bij Badminton Borne`,
+        title: `Badminton in ${p.name}`,
         description: p.desc,
       },
     })

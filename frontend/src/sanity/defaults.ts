@@ -385,7 +385,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
       },
     ],
     seo: {
-      title: "Lidmaatschap | Badminton Borne",
+      title: "Lidmaatschap",
       description:
         "Kies je pakket bij Badminton Borne: jeugd, recreatief of competitie. Eerste maand gratis, maandelijks opzegbaar.",
     },
@@ -504,7 +504,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
       },
     ],
     seo: {
-      title: "Over ons | Badminton Borne",
+      title: "Over ons",
       description:
         "Maak kennis met de trainers, het bestuur en de ere-leden van Badminton Borne.",
     },
@@ -544,7 +544,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
       },
     ],
     seo: {
-      title: "Contact | Badminton Borne",
+      title: "Contact",
       description:
         "Stel je vraag aan Badminton Borne. We reageren meestal binnen een dag.",
     },
