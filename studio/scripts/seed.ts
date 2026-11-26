@@ -110,7 +110,7 @@ async function run() {
   // ⚠ Bedragen, jaren en cijfers zijn illustratief (uit het design) —
   //   de club vult echte waarden in via de Studio.
   // Twee lidmaatschappen: Jeugd en Senioren. Competitie is geen apart
-  // pakket — de toeslag varieert (€ 50 p.p. jeugd / € 260 per team) en
+  // pakket — de toeslag varieert (bedragen bij de penningmeester) en
   // staat in de features + voetnoot van de prijstabel.
   const packageIds = await ensureCollection('membershipPackage', [
     {
@@ -119,7 +119,7 @@ async function run() {
       description: 'T/m 18 jaar. Training met leeftijdsgenoten.',
       price: 18.5,
       priceSuffix: 'per maand',
-      features: ['Wekelijkse jeugdtraining', 'Racket lenen kan altijd', 'Shuttles inbegrepen', 'Competitie mogelijk (toeslag € 50 p.p. per seizoen)'],
+      features: ['Wekelijkse jeugdtraining', 'Racket lenen kan altijd', 'Shuttles inbegrepen', 'Competitie mogelijk (toeslag per persoon)'],
       highlighted: false,
       ctaLabel: 'Aanmelden',
       ctaHref: '/lid-worden',

@@ -353,8 +353,8 @@ const PLACES: Place[] = [
 
 async function run() {
   // ---- Contributie: twee pakketten (Jeugd + Senioren) --------------------
-  // Competitie is géén apart pakket — de toeslag varieert (€ 50 p.p. jeugd /
-  // € 260 per team) en staat in de features + voetnoot. Bestaande pakketten
+  // Competitie is géén apart pakket — de toeslag varieert (bedragen bij de
+  // penningmeester) en staat in de features + voetnoot. Bestaande pakketten
   // worden NIET overschreven: de club beheert ze in de Studio.
   let pkgs: Array<{_id: string; title: string}> = await client.fetch(
     `*[_type == "membershipPackage" && !(_id in path("drafts.**"))] | order(sortOrder asc){_id, title}`,
@@ -371,7 +371,7 @@ async function run() {
         'Wekelijkse jeugdtraining',
         'Racket lenen kan altijd',
         'Shuttles inbegrepen',
-        'Competitie mogelijk (toeslag € 50 p.p. per seizoen)',
+        'Competitie mogelijk (toeslag per persoon)',
       ],
       highlighted: false,
       ctaLabel: 'Aanmelden',
@@ -408,7 +408,7 @@ async function run() {
   const PRICING_INTRO =
     'Contributie per maand, plus eenmalig inschrijfgeld. Je eerste maand is altijd gratis, daarna maandelijks opzegbaar.'
   const PRICING_FOOTNOTE =
-    'Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten. De toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.'
+    'Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten. Vraag de penningmeester naar de toeslag. Eerste maand gratis.'
 
   // Bestaande /lidmaatschap-pagina: intro + voetnoot van de prijstabel
   // gelijktrekken met de echte tarieven (illustratieve tekst weghalen).
@@ -665,7 +665,7 @@ async function run() {
     await faq(
       'faq-comp-kosten',
       'Wat kost competitie?',
-      'Competitie komt bovenop je gewone contributie. De competitietoeslag is per seizoen € 50 per persoon (jeugd) of € 260 per team (senioren).',
+      'Competitie komt bovenop je gewone contributie. De toeslag is per seizoen: bij de jeugd per persoon, bij de senioren per team. Vraag de penningmeester naar de actuele bedragen via info@badmintonborne.nl.',
     ),
     await faq(
       'faq-comp-niveau',
