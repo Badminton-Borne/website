@@ -311,7 +311,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
               "Wekelijkse jeugdtraining",
               "Racket lenen kan altijd",
               "Shuttles inbegrepen",
-              "Competitie mogelijk (toeslag € 50 p.p. per seizoen)",
+              "Competitie mogelijk (toeslag per persoon)",
             ],
             highlighted: false,
             ctaLabel: "Aanmelden",
@@ -336,7 +336,7 @@ export const PAGE_FALLBACKS: Record<string, PageData> = {
           },
         ],
         footnote:
-          "Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten. De toeslag varieert: € 50 p.p. per seizoen (jeugd) of € 260 per team (senioren). Eerste maand gratis.",
+          "Eenmalig inschrijfgeld: € 10 (jeugd) / € 15 (volwassenen). Competitie spelen kan bij beide pakketten. Vraag de penningmeester naar de toeslag. Eerste maand gratis.",
       },
       {
         _type: "comparisonSection",
