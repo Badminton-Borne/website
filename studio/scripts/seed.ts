@@ -255,7 +255,7 @@ async function run() {
         {_type: 'newsletterSection', _key: key(), heading: 'Mis geen smash', body: 'Eén mailtje per maand over toernooien, de nieuwe hal en clubnieuws.', buttonLabel: 'Aanmelden', note: 'Uitschrijven kan altijd met één klik.'},
       ],
       seo: {
-        title: 'Lidmaatschap | Badminton Borne',
+        title: 'Lidmaatschap',
         description: 'Kies je pakket bij Badminton Borne: jeugd, recreatief of competitie. Eerste maand gratis, maandelijks opzegbaar.',
       },
     },
@@ -272,7 +272,7 @@ async function run() {
         {_type: 'newsletterSection', _key: key(), heading: 'Mis geen smash', body: 'Eén mailtje per maand over toernooien, de nieuwe hal en clubnieuws.', buttonLabel: 'Aanmelden', note: 'Uitschrijven kan altijd met één klik.'},
       ],
       seo: {
-        title: 'Over ons | Badminton Borne',
+        title: 'Over ons',
         description: 'Maak kennis met de trainers, het bestuur en de ere-leden van Badminton Borne.',
       },
     },
@@ -286,7 +286,7 @@ async function run() {
         {_type: 'agendaSection', _key: key(), eyebrow: 'Agenda', heading: 'Binnenkort bij Borne', link: cta('Hele agenda', '/agenda')},
       ],
       seo: {
-        title: 'Contact | Badminton Borne',
+        title: 'Contact',
         description: 'Stel je vraag aan Badminton Borne. We reageren meestal binnen een dag.',
       },
     },

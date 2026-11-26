@@ -18,6 +18,10 @@ const LEGACY_REDIRECTS: NextConfig["redirects"] = async () => [
   // De pagina "Tijden" heette eerst "Trainingen" (/trainingen); vangnet voor
   // bestaande links naar de oude slug.
   { source: "/trainingen", destination: "/tijden", statusCode: 301 },
+  // /lidmaatschap was een weespagina: geen enkele interne link wees erheen en
+  // de prijstabel stond ook al op /lid-worden. Samengevoegd naar /lid-worden,
+  // dat het stappenplan, de FAQ en de aanmeldknop heeft.
+  { source: "/lidmaatschap", destination: "/lid-worden", statusCode: 301 },
 ];
 
 const nextConfig: NextConfig = {
